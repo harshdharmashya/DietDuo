@@ -1,0 +1,19 @@
+.marquee{
+    height: 50vh;
+}
+.carousel-item{
+    height: 500px;
+}
+.add-image{
+    object-fit: cover;
+    height: 500px;
+}
+@media (max-width: 480px) {
+    .carousel-item{
+        height: 230px;
+    }
+    .add-image{
+        object-fit: cover;
+        height: 230px;
+    }
+}

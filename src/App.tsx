@@ -5,6 +5,7 @@ import './App.css'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Header from './component/Header'
+import Carousel from './component/Carousel';
 
 function App() {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
       <Header/>
+      <Carousel/>
     </>
   )
 }
