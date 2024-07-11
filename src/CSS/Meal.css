@@ -1,0 +1,30 @@
+.meal{
+    height: 100vh;
+    padding: 5%;
+    background-color: #1A5319;
+    color: white;
+}
+.btn-outline-light{
+    margin: 10px;
+}
+.active-meal{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5% 3%;
+}
+.card{
+    width: 400px;
+    
+}
+@media (max-width: 480px) {
+    .card{
+        width: 300px;
+        display: block;
+    margin: auto;
+    }
+}
+.css-k7y545-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: white !important;
+    background-color: #0f360e;
+    border-radius: 9px;
+}
