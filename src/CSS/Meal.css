@@ -1,5 +1,5 @@
 .meal{
-    height: auto;
+    height: 100vh;
     padding: 3% 2% 2% 2%;
     background-color: #1A5319;
     color: white;
@@ -17,7 +17,11 @@
 }
 .card{
     width: 350px;
- 
+    height: 470px;
+}
+.card:hover{
+    transform: scale(1.1);
+    transition: 1s;
 }
 .card-title{
     height: 50px;
@@ -25,6 +29,23 @@
 .contain-summry-pie{
     display: flex !important;
     flex-wrap: wrap;
+    position: "relative"
+}
+.pie-chart-health{
+    position: absolute;
+    left: 20px;
+    width: 100px;
+    height:100px;
+}
+.diets-array{
+    position: absolute;
+    right: 0;
+    width: 200px; 
+}
+.diets-array-p{
+    color: black;
+    height:80px;
+    width: 200px;
 }
 /* .css-1kza5gv-MuiResponsiveChart-container {
     width: 150px;
@@ -34,10 +55,16 @@
     width: 100% !important;
     height: 81% !important;
 }
+.css-k7y545-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: white !important;
+    background-color: #0f360e !important;
+    border-radius: 9px !important;
+}
 .css-lyabzg-MuiResponsiveChart-container{
     width: 150px;
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
+    left: 9px;
 }
 .css-1u0lry5-MuiChartsLegend-root {
     display: none;
@@ -48,14 +75,40 @@
     flex-basis: 50%;
 }
 @media (max-width: 480px) {
+    .meal{
+        height: 1666px;
+    }
     .card{
         width: 300px;
         display: block;
     margin: auto;
+    height: 500px;
     }
-}
-.css-k7y545-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    color: white !important;
-    background-color: #0f360e;
-    border-radius: 9px;
+    .contain-summry-pie{
+        display: flex !important;
+        flex-wrap: wrap;
+        position: "relative";
+    }
+    .css-lyabzg-MuiResponsiveChart-container{
+        width: 150px;
+        position: absolute;
+        bottom: 10px;
+    }
+    .css-k7y545-MuiButtonBase-root-MuiTab-root.Mui-selected {
+        color: white !important;
+        background-color: #0f360e !important;
+        border-radius: 9px !important;
+    }
+    .pie-chart-health {
+        margin-left: 20px;
+    }
+    .diets-array {
+        width: 150px;
+    }
+    .diets-array-p {
+        width: 150px;
+    }
+    .btn-Add-to-meal{
+        margin-top: 110px;
+    }
 }

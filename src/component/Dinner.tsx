@@ -40,37 +40,35 @@ export default function Dinner() {
   return (
     <>
     <div className='active-meal'>
-      {meals?.recipes?.map((datab: any, i: number) => (
-        <div className="card mb-3 m-2" key={i}>
-          <img src={datab?.image} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title text-dark">{datab?.title}</h5>
-            {/* <p className="card-text text-dark">{datab?.summary}</p> */}
-            <div className='contain-summry-pie' style={{ position: "relative" }}>
-              <div style={{ position: "absolute", left: 0, width: 100 }}>
-                <p style={{ color: "black" }}>Health Score :</p>
-                <PieChart series={[{
-                  data:[
-                  { value: datab.healthScore, label: 'A' },
-                  { value: 100, label: 'B' }
-                  ], innerRadius: 15
-                }]} {...size}>
-                  <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
-                </PieChart>
-              </div>
-              <div style={{ position: "absolute", right: 0, width: 200 }} className='diets-array'>
-                <p style={{ color: "black",height:90 }}>Diets : <br />{datab.diets}{console.log(datab.diets)}</p>
-                
+        {meals?.recipes?.map((datab: any, i: number) => (
+          <div className="card mb-3 m-2" key={i}>
+            <img style={{height:270}} src={datab?.image} className="card-img-top" alt="not available right now.." />
+            <div className="card-body">
+              <h5 className="card-title text-dark">{datab?.title}</h5>
+              <div className='contain-summry-pie'>
+                <div className='pie-chart-health'>
+                  <p style={{ color: "black" }}>Health Score :</p>
+                  <PieChart series={[{
+                    data:[
+                    { value: datab.healthScore, label: 'A' },
+                    { value: 100, label: 'B' }
+                    ], innerRadius: 15
+                  }]} {...size}>
+                    <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
+                  </PieChart>
+                </div>
+                <div className='diets-array'>
+                  <p className='diets-array-p'>Diets : {datab.diets}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className='contain-summry-pie'>
-          <button className='btn-Add-to-meal'>Add to Meal</button>
-          <button className='btn-Add-to-meal'>Read more..</button>
-          </div>
-        </div>))
-      }
-    </div>
+            <div className='contain-summry-pie'>
+            <button className='btn-Add-to-meal'>Add to Meal</button>
+            <button className='btn-Add-to-meal'>Read more..</button>
+            </div>
+          </div>))
+        }
+      </div>
   </>
   )
 }

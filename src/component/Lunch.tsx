@@ -45,8 +45,8 @@ export default function Lunch() {
             <img style={{ height: 270 }} src={datab?.image} className="card-img-top" alt="..." />
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
-              <div className='contain-summry-pie' style={{ position: "relative" }}>
-                <div style={{ position: "absolute", left: 0, width: 100, height: 100 }}>
+              <div className='contain-summry-pie'>
+                <div className='pie-chart-health'>
                   <p style={{ color: "black" }}>Health Score :</p>
                   <PieChart series={[{
                     data: [
@@ -57,8 +57,8 @@ export default function Lunch() {
                     <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
                   </PieChart>
                 </div>
-                <div style={{ position: "absolute", right: 0, width: 200 }} className='diets-array'>
-                  <p style={{ color: "black", height: 80 }}>Diets : {datab.diets}</p>
+                <div className='diets-array'>
+                  <p className='diets-array-p'>Diets : {datab.diets}</p>
 
                 </div>
               </div>
