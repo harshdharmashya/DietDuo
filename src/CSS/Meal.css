@@ -1,6 +1,6 @@
 .meal{
-    height: 100vh;
-    padding: 5%;
+    height: auto;
+    padding: 3% 2% 2% 2%;
     background-color: #1A5319;
     color: white;
 }
@@ -11,10 +11,41 @@
     display: flex;
     flex-wrap: wrap;
     margin: 5% 3%;
+    height: 500px;
+    justify-content: center;
+    column-gap: 20px;
 }
 .card{
-    width: 400px;
-    
+    width: 350px;
+ 
+}
+.card-title{
+    height: 50px;
+}
+.contain-summry-pie{
+    display: flex !important;
+    flex-wrap: wrap;
+}
+/* .css-1kza5gv-MuiResponsiveChart-container {
+    width: 150px;
+    height: 70px;
+} */
+.css-lyabzg-MuiResponsiveChart-container>svg {
+    width: 100% !important;
+    height: 81% !important;
+}
+.css-lyabzg-MuiResponsiveChart-container{
+    width: 150px;
+    position: absolute;
+    bottom: 10px;
+}
+.css-1u0lry5-MuiChartsLegend-root {
+    display: none;
+}
+.btn-Add-to-meal{
+    border-radius: 3px;
+    background-color:#3c6b3b;
+    flex-basis: 50%;
 }
 @media (max-width: 480px) {
     .card{

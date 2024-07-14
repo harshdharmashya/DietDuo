@@ -12,8 +12,7 @@ import { Numbers } from "@mui/icons-material";
 
 export default function Meal(props:any) {
   const [value, setValue] = React.useState(0);
-  
-  console.log(props)
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   }
