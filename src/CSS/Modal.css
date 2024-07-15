@@ -1,0 +1,39 @@
+.card-Box{
+    display: flex;
+}
+.read-image{
+    width: 400px;
+}
+.read-title,.read-summary{
+    color: black;
+    height: auto;
+}
+.read-check{
+    display: flex;
+    color: black;
+    height: auto;
+}
+.DoneIcon{
+    background-color: #1A5319;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+}
+.CloseIcon{
+    background-color: red;
+    border-radius: 50%;
+    height: 13px;
+    width: 13px;
+}
+
+@media (max-width: 480px) {
+    .card-Box{
+        flex-direction: column;
+    }
+    .read-image{
+        width: 300px;
+    }
+    .css-1ijv3kx-MuiPaper-root-MuiCard-root {
+        width: 330px !important;
+    }
+}

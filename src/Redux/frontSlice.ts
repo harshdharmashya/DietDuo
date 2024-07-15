@@ -4,7 +4,8 @@ const initialState = {
   value: 0,
   breakfast: [],
   lunch: [],
-  dinner: []
+  dinner: [],
+  show:true
 }
 
 export const counterSlice = createSlice({
@@ -19,6 +20,9 @@ export const counterSlice = createSlice({
     },
     setDinner: (state, action) => {
       state.dinner = action.payload
+    },
+    setShow:(state, action) =>{
+      state.show = action.payload
     }
   },
 })

@@ -1,13 +1,15 @@
-.meal{
+.meal {
     height: 100vh;
     padding: 3% 2% 2% 2%;
     background-color: #1A5319;
     color: white;
 }
-.btn-outline-light{
+
+.btn-outline-light {
     margin: 10px;
 }
-.active-meal{
+
+.active-meal {
     display: flex;
     flex-wrap: wrap;
     margin: 5% 3%;
@@ -15,38 +17,51 @@
     justify-content: center;
     column-gap: 20px;
 }
-.card{
+
+.card-rec {
     width: 350px;
-    height: 470px;
+    height: auto;
 }
-.card:hover{
+
+.card-rec:hover {
     transform: scale(1.1);
     transition: 1s;
 }
-.card-title{
-    height: 50px;
+
+.card-title {
+    height: auto;
+    cursor: pointer;
+    margin: 0% 1%;
+    margin-bottom: 2%;
 }
-.contain-summry-pie{
+
+.contain-summry-pie {
     display: flex !important;
     flex-wrap: wrap;
     position: "relative"
 }
-.pie-chart-health{
+
+.pie-chart-health {
     position: absolute;
-    left: 20px;
+    left: 35px;
     width: 100px;
-    height:100px;
+    height: auto;
+    cursor: pointer;
 }
-.diets-array{
+
+.diets-array {
     position: absolute;
     right: 0;
-    width: 200px; 
+    width: 170px;
+    cursor: pointer;
 }
-.diets-array-p{
+
+.diets-array-p {
     color: black;
-    height:80px;
-    width: 200px;
+    height: auto;
+    width: 170px;
 }
+
 /* .css-1kza5gv-MuiResponsiveChart-container {
     width: 150px;
     height: 70px;
@@ -55,60 +70,77 @@
     width: 100% !important;
     height: 81% !important;
 }
+
 .css-k7y545-MuiButtonBase-root-MuiTab-root.Mui-selected {
     color: white !important;
     background-color: #0f360e !important;
     border-radius: 9px !important;
 }
-.css-lyabzg-MuiResponsiveChart-container{
+
+.css-lyabzg-MuiResponsiveChart-container {
     width: 150px;
     position: absolute;
     bottom: 15px;
     left: 9px;
 }
+
 .css-1u0lry5-MuiChartsLegend-root {
     display: none;
 }
-.btn-Add-to-meal{
+
+.btn-Add-to-meal {
     border-radius: 3px;
-    background-color:#3c6b3b;
+    background-color: #3c6b3b;
     flex-basis: 50%;
 }
+
 @media (max-width: 480px) {
-    .meal{
-        height: 1666px;
+    .meal {
+        height: 1580px;
     }
-    .card{
+
+    .card-rec {
         width: 300px;
         display: block;
-    margin: auto;
-    height: 500px;
+        margin: auto;
+        height: auto;
     }
-    .contain-summry-pie{
+
+    .contain-summry-pie {
         display: flex !important;
         flex-wrap: wrap;
         position: "relative";
     }
-    .css-lyabzg-MuiResponsiveChart-container{
+
+    .css-lyabzg-MuiResponsiveChart-container {
         width: 150px;
         position: absolute;
         bottom: 10px;
     }
+
     .css-k7y545-MuiButtonBase-root-MuiTab-root.Mui-selected {
         color: white !important;
         background-color: #0f360e !important;
         border-radius: 9px !important;
     }
-    .pie-chart-health {
-        margin-left: 20px;
+
+    .active-meal {
+        row-gap: 15px;
     }
+
+    .pie-chart-health {
+        margin-left: 10px;
+    }
+
     .diets-array {
         width: 150px;
     }
+
     .diets-array-p {
         width: 150px;
     }
-    .btn-Add-to-meal{
-        margin-top: 110px;
+
+    .btn-Add-to-meal {
+        margin-top: 80px;
     }
 }

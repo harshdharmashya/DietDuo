@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import './App.css'
 import AOS from "aos";
@@ -11,8 +9,7 @@ import {
   Route
 } from 'react-router-dom';
 
-import { setBreakfast, setLunch, setDinner } from './Redux/frontSlice';
-import Readmore from './component/Readmore';
+import { setBreakfast} from './Redux/frontSlice';
 import Home from './component/Home';
 
 function App() {
@@ -30,17 +27,9 @@ function App() {
       const data = await response.json();
       // 6845c5e2d08f447aba1b24ed78bae323
       // console.log(data)
-      if(mealType == 'breakfast'){
         dispatch(setBreakfast(data))
-      }else if(mealType == 'lunch'){
-        dispatch(setLunch(data))
-      }else{
-        dispatch(setDinner(data))
-      }
     };
-
     fetchMeals('breakfast');
-    fetchMeals('dinner');
   }, []);
   return (
     <>

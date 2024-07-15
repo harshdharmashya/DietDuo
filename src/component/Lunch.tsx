@@ -4,6 +4,8 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
 import { setLunch } from '../Redux/frontSlice';
+import { Link } from 'react-router-dom';
+import Modalcard from './Modalcard';
 
 const size = {
   width: 150,
@@ -25,7 +27,7 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
     </StyledText>
   );
 }
-export default function Lunch() {
+export default function Lunch(props:any) {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchMeals = async (mealType: string) => {
@@ -35,14 +37,22 @@ export default function Lunch() {
     };
     fetchMeals('lunch');
   }, []);
+  const handleOpen = () => props.setIsOpen(true);
+
+  function handleModal(data: any) {
+    props.setCurrentItem(data)
+    console.log(data);
+    handleOpen();
+  }
   const meals = useSelector((state: any) => state.counter.lunch)
   console.log(meals);
+
   return (
     <>
       <div className='active-meal'>
         {meals?.recipes?.map((datab: any, i: number) => (
-          <div className="card mb-3 m-2" key={i}>
-            <img style={{ height: 270 }} src={datab?.image} className="card-img-top" alt="..." />
+          <div className="card card-rec mb-3 m-2" key={i}>
+            <img style={{ height: 270 }} src={datab?.image} className="card-img-top" alt={datab?.title} />
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>
@@ -65,9 +75,12 @@ export default function Lunch() {
             </div>
             <div className='contain-summry-pie'>
               <button className='btn-Add-to-meal'>Add to Meal</button>
-              <button className='btn-Add-to-meal'>Read more..</button>
+              <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
             </div>
           </div>))
+        }
+        {props.isOpen &&
+          <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
         }
       </div>
     </>

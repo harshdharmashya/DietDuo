@@ -7,11 +7,12 @@ import Tab from '@mui/material/Tab';
 import Breakfast from "./Breakfast";
 import Lunch from "./Lunch";
 import Dinner from "./Dinner";
-import { Numbers } from "@mui/icons-material";
-
+import { useState } from "react";
 
 export default function Meal(props:any) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [currentItem, setCurrentItem] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -28,34 +29,19 @@ export default function Meal(props:any) {
         </Box>
         {value === 0 &&
           <Box>
-            <Breakfast/>
+            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
           </Box>
         }
         {value === 1 &&
           <Box>
-            <Lunch/>
+            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
           </Box>
         }
         {value === 2 &&
           <Box>
-            <Dinner />
+            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
           </Box>
         }
-        {/* <p className='meal-btn'>
-          <button type="button" className="btn btn-outline-light active">Breakfast</button>
-          <button type="button" className="btn btn-outline-light">Lunch</button>
-          <button type="button" className="btn btn-outline-light">Dinner</button>
-        </p>
-        <div className='active-meal'>
-          <div className="card mb-3">
-            <img src="..." className="card-img-top" alt="..."/>
-              <div className="card-body">
-                <h5 className="card-title text-dark">Card title</h5>
-                <p className="card-text text-dark">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-          </div>
-        </div> */}
       </div>
     </>
   )
