@@ -10,13 +10,13 @@ export default function Carousel() {
             <section className="marquee">
                 <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div className="carousel-inner">
-                        <div className="carousel-item">
+                        <div className="carousel-item active">
                             <img src={img1} className="d-block w-100 add-image" alt="..." />
                         </div>
                         <div className="carousel-item">
                             <img src={img2} className="d-block w-100 add-image" alt="..." />
                         </div>
-                        <div className="carousel-item active">
+                        <div className="carousel-item">
                             <img src={img3} className="d-block w-100 add-image" alt="..." />
                         </div>
                         <div className="carousel-item">

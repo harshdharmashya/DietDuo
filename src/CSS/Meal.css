@@ -134,10 +134,12 @@
 
     .diets-array {
         width: 150px;
+        height: auto;
     }
 
     .diets-array-p {
         width: 150px;
+        height: auto;
     }
 
     .btn-Add-to-meal {

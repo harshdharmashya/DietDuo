@@ -52,7 +52,7 @@ export default function Dinner(props:any) {
     <div className='active-meal'>
         {meals?.recipes?.map((datab: any, i: number) => (
           <div className="card card-rec mb-3 m-2" key={i}>
-            <img style={{height:270}} src={datab?.image} className="card-img-top" alt={datab?.title} />
+            <img style={{height:270,color:'black'}} src={datab?.image} className="card-img-top" alt={datab?.title} />
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>
