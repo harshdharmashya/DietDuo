@@ -1,0 +1,47 @@
+.work{
+    height: 98vh;
+    /* padding: 1% 2%; */
+    background-color: #1A5319;
+    color: white;
+}
+.workout-section{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2% 3%;
+    height: 500px;
+    justify-content: center;
+    column-gap: 20px;
+}
+.cardwork{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    box-sizing: border-box;
+    color: black;
+}
+.cardwork h2 {
+    margin-top: 0;
+    color: #333;
+}
+.cardwork p {
+    color: #555;
+}
+.cardwork p strong{
+    color: #474747;
+}
+.cardwork .equipment, .cardwork .muscle, .cardwork .type {
+    font-weight: bold;
+}
+.view-button{
+    padding: 1% 10%;
+    border-radius: 10px;
+}
+@media (max-width: 600px) {
+    .cardwork {
+        padding: 15px;
+    }
+}

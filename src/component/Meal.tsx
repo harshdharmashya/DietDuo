@@ -1,7 +1,7 @@
 // import React from 'react'
 import "../CSS/Meal.css"
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Breakfast from "./Breakfast";
@@ -20,6 +20,7 @@ export default function Meal(props:any) {
   return (
     <>
       <div className='meal'>
+    {/* <h1 style={{alignContent:"center",justifyContent:"center"}}>𝓨𝓸𝓾𝓻 𝓜𝓮𝓪𝓵𝓼 𝓪𝓻𝓮 𝓱𝓮𝓻𝓮</h1> */}
         <Box sx={{ width: '100%' }}>
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Breakfast" sx={{ color: "white" }} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
 import Card from '@mui/material/Card';

@@ -4,6 +4,7 @@ import Carousel from '../component/Carousel';
 import Meal from '../component/Meal';
 import Modal from './Modalcard';
 import Preference from './Preference';
+import Workout from './Workout';
 
 export default function Home() {
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Meal />
       <Modal/>
       <Preference/>
+      <Workout/>
     </>
   )
 }
