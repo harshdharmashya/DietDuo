@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
-import { Link } from "react-router-dom"
+import { createTheme } from '@mui/material/styles';
 import Modalcard from './Modalcard';
 
 const size = {
@@ -41,7 +41,7 @@ export default function Breakfast(props: any) {
         {meals?.recipes?.map((datab: any, i: number) => (
           // (i==5 || i==6 || i==7) &&
           <div className=" card card-rec mb-3 m-2" key={i}>
-            <img style={{ height: 270,color:'black' }} src={datab?.image} className="card-img-top" alt={datab?.title} />
+            <img src={datab?.image} className="card-img-top" alt={datab?.title} />
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>

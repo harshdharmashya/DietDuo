@@ -15,19 +15,24 @@
     margin: 5% 3%;
     height: 500px;
     justify-content: center;
-    column-gap: 20px;
+    column-gap: 30px;
 }
 
 .card-rec {
     width: 350px;
     height: auto;
+    box-shadow: 10px 10px 25px black;
 }
 
 .card-rec:hover {
     transform: scale(1.1);
     transition: 1s;
+    background-color: rgb(215, 214, 214);
 }
-
+.card-img-top{
+    height: 270px;
+    color:black;
+}
 .card-title {
     height: auto;
     cursor: pointer;
@@ -94,9 +99,14 @@
     flex-basis: 50%;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+
 @media (max-width: 480px) {
     .meal {
-        height: 1580px;
+        height: 1360px;
     }
 
     .card-rec {
@@ -105,7 +115,15 @@
         margin: auto;
         height: auto;
     }
-
+    .card-rec:hover {
+        transform: none;
+        transition: 1s;
+        background-color: rgb(215, 214, 214);
+    }
+    .card-img-top{
+        height: 200px;
+        color:black;
+    }
     .contain-summry-pie {
         display: flex !important;
         flex-wrap: wrap;
@@ -127,9 +145,12 @@
     .active-meal {
         row-gap: 15px;
     }
-
     .pie-chart-health {
-        margin-left: 10px;
+        position: absolute;
+        left: 25px;
+        width: 100px;
+        height: auto;
+        cursor: pointer;
     }
 
     .diets-array {

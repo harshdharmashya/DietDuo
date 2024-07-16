@@ -10,7 +10,7 @@
 }
 @media (max-width: 480px) {
     .marquee{
-        height: 37vh;
+        height: 30vh;
     }
     .carousel-item{
         height: 230px;
