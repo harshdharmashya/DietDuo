@@ -20,7 +20,6 @@ export default function Meal(props:any) {
   return (
     <>
       <div className='meal'>
-    {/* <h1 style={{alignContent:"center",justifyContent:"center"}}>𝓨𝓸𝓾𝓻 𝓜𝓮𝓪𝓵𝓼 𝓪𝓻𝓮 𝓱𝓮𝓻𝓮</h1> */}
         <Box sx={{ width: '100%' }}>
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Breakfast" sx={{ color: "white" }} />

@@ -1,19 +1,46 @@
 .work{
-    height: 98vh;
+    height: auto;
     /* padding: 1% 2%; */
     background-color: #1A5319;
     color: white;
 }
+.headline-work{
+    display: flex;
+    justify-content: center;
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+.beginner{
+
+}
+.dropdown-muscle{
+    background-color: white;
+    color: black;
+    border: 15px;
+    padding: 1%;
+    border: none;
+}
+.dropdown-muscle:hover{
+    box-shadow: 2px 2px 10px white;
+}
+.dropdown-muscle-option{
+    background-color: white;
+    color: black;
+}
 .workout-section{
     display: flex;
     flex-wrap: wrap;
-    margin: 2% 3%;
-    height: 500px;
+    margin: 2% 3% 0% 3%;
+    height: auto;
     justify-content: center;
     column-gap: 20px;
 }
+.muscle{
+    left: 210px;
+}
 .cardwork{
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: url(../Images/card-bg.jpg);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
@@ -43,5 +70,9 @@
 @media (max-width: 600px) {
     .cardwork {
         padding: 15px;
+    }
+    .muscle{
+        left: 100px;
+        margin: 20px 0px;
     }
 }

@@ -36,7 +36,7 @@
     position: relative;
 }
 .image-section img{
-    height: 570px;
+    height: 520px;
     position: absolute;
     bottom: -7px;
     filter: drop-shadow(5px 5px 10px black);
