@@ -51,7 +51,7 @@ export default function Beginner(props: any) {
         <>
             <div className='beginner'>
                 <div className="btn-group muscle">
-                    <span style={{width:70}}>Muscle : </span><select className='dropdown-muscle' value={muscle}
+                    <span style={{width:70,display:'flex',alignItems:'center'}}>Muscle : </span><select className='dropdown-muscle' value={muscle}
                         onChange={(e) => {
                             handleChange(e)
                         }}>

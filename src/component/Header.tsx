@@ -17,7 +17,7 @@ export default function Header() {
             <img className="img2" src={img2} alt=""/>
         </div>
         <div className='header-tag'>
-          <h1 className='seconds' data-aos="fade-right">𝓓𝓲𝓮𝓽𝓓𝓾𝓸...</h1>
+          <h1 className='LOGO' data-aos="fade-right">𝓓𝓲𝓮𝓽𝓓𝓾𝓸...</h1>
           <div className='header-2ndtext-image-resp'>
           <div className='seconds'>𝑮𝒆𝒏𝒆𝒓𝒂𝒕𝒆 𝒀𝒐𝒖𝒓 <br /> 𝑪𝒖𝒔𝒕𝒐𝒎 𝑫𝒊𝒆𝒕 <br />𝒊𝒏 𝑺𝒆𝒄𝒐𝒏𝒅𝒔 <br />....</div>
           <img className='img3'  data-aos="fade-down" src={img3} alt="" />

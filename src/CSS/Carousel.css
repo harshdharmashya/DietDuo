@@ -1,17 +1,21 @@
 .marquee {
-    height: 72vh;
+    height: 530px;
 }
 
 .carousel-item {
-    height: 501px;
+    height: 530px;
 }
 
 .add-image {
     object-fit: cover;
-    height: auto;
+    height: 530px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .marquee {
+        height: 451px;
+    }
+    
     .add-image {
         height: 450px;
     }

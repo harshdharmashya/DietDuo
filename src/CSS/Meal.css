@@ -100,7 +100,15 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-
+    .meal {
+        height: auto !important;
+    }
+    .active-meal {
+        height: auto !important;
+    }
+    .card-rec {
+        height: 474px;
+    }
 }
 
 
