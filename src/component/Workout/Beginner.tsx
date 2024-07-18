@@ -71,8 +71,8 @@ export default function Beginner(props: any) {
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
                             <div className='contain-summry-pie'>
-                                <button className='btn-Add-to-meal view-button'>Add to Meal</button>
-                                <button className='btn-Add-to-meal view-button'>Read more..</button>
+                                <button className='btn-workout'>Add to Meal</button>
+                                <button className='btn-workout'>Read more..</button>
                                 {/* <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button> */}
                             </div>
                         </div>

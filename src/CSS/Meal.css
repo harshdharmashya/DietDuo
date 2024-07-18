@@ -107,6 +107,7 @@
 @media (max-width: 480px) {
     .meal {
         height: 1360px;
+        padding: 6% 2% 2% 2%;
     }
 
     .card-rec {

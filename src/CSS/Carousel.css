@@ -1,22 +1,37 @@
-.marquee{
+.marquee {
     height: 72vh;
 }
-.carousel-item{
+
+.carousel-item {
     height: 501px;
 }
-.add-image{
+
+.add-image {
     object-fit: cover;
-    height: 501px;
+    height: auto;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .add-image {
+        height: 450px;
+    }
+}
+
 @media (max-width: 480px) {
-    .marquee{
-        height: 30vh;
+    .marquee {
+        height: auto;
     }
-    .carousel-item{
+
+    .carousel-item {
         height: 230px;
     }
-    .add-image{
+
+    .add-image {
         object-fit: cover;
-        height: 230px;
+        height: auto;
+    }
+
+    .carousel-fade .carousel-item {
+        height: auto;
     }
 }
