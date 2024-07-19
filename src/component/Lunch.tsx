@@ -27,7 +27,7 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
     </StyledText>
   );
 }
-export default function Lunch(props:any) {
+export default function Lunch(props: any) {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchMeals = async (mealType: string) => {
@@ -45,14 +45,23 @@ export default function Lunch(props:any) {
     handleOpen();
   }
   const meals = useSelector((state: any) => state.counter.lunch)
-  console.log(meals);
+  // console.log(meals);
+  if (meals.length === 0) {
+    return <>
+      <div className='loader-height'>
+        <div className="spinner-border text-light load" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    </>; // Display loader if data is empty
+  }
 
   return (
     <>
       <div className='active-meal'>
         {meals?.recipes?.map((datab: any, i: number) => (
           <div className="card card-rec mb-3 m-2" key={i}>
-            <img style={{ height: 270,color:'black' }} src={datab?.image} className="card-img-top" alt={datab?.title} />
+            <img style={{ height: 270, color: 'black' }} src={datab?.image} className="card-img-top" alt={datab?.title} />
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>

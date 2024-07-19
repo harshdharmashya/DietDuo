@@ -16,7 +16,7 @@ export default function Workout() {
         return (
             <>
                 <div className='work'>
-            <div className='headline-work'>𝓦𝓸𝓻𝓴 𝓸𝓾𝓽 𝓯𝓸𝓻 𝔂𝓸𝓾...</div>
+            <div className='headline-work headline-extra'>𝓦𝓸𝓻𝓴 𝓸𝓾𝓽 𝓯𝓸𝓻 𝔂𝓸𝓾...</div>
                     <Box sx={{ width: '100%' }}>
                         <Tabs value={value} onChange={handleChange} centered>
                             <Tab label="beginner" sx={{ color: "white" }} />

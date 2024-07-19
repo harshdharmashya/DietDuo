@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setBeginner, setexpert } from '../../Redux/workoutSlice';
+import { setexpert } from '../../Redux/workoutSlice';
 
 
 export default function Expert(props: any) {
@@ -26,12 +26,13 @@ export default function Expert(props: any) {
     const workout = async (difficulty: string) => {
         const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
         const data = await response.json();
-        console.log("api data : ", data)
+        // console.log("api data : ", data)
         dispatch(setexpert(data))
     };
     useEffect(() => {
         workout('expert');
     }, [muscle]);
+
 
     const handleOpen = () => props.setIsOpen(true);
 
@@ -46,18 +47,27 @@ export default function Expert(props: any) {
     // }
 
     function handlemuscle(e: any) {
-        console.log([e.target.value]);
         setmuscle(e.target.value);
     }
 
     const work_out: any = useSelector((state: any) => state.workout.expert)
-    console.log("work_out of expert: ", work_out)
+    // console.log("work_out of expert: ", work_out)
+    if (work_out.length === 0) {
+        return <>
+            <div className='loader-height'>
+                <div className="spinner-border text-light load" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </>; // Display loader if data is empty
+    }
+
 
     return (
         <>
             <div className='beginner'>
                 <div className="btn-group muscles">
-                <span style={{width:70}}>Muscle : </span><select className='dropdown-muscle' value={muscle}
+                    <span style={{ width: 70 }}>Muscle : </span><select className='dropdown-muscle' value={muscle}
                         onChange={(e) => {
                             handleChange(e)
                         }}>
@@ -70,7 +80,7 @@ export default function Expert(props: any) {
                     {work_out.map((data: any, i: number) => (
                         (i == 0 || i == 1 || i == 3 || i == 4 || i == 5 || i == 6) &&
                         <div className="cardwork" key={i}>
-                            <div style={{height:210}}>
+                            <div style={{ height: 210 }}>
                                 <h2>{data.name}</h2>
                                 <p className="equipment"><strong>Equipment : </strong>{data.equipment}</p>
                                 <p className="muscle"><strong>Muscle : </strong>{data.muscle}</p>

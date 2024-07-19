@@ -47,11 +47,21 @@ export default function Beginner(props: any) {
     // }
     const work_out: any = useSelector((state: any) => state.workout.Beginner)
     // console.log("work_out of beginner: ", work_out)
+    if (work_out.length === 0) {
+        return <>
+        <div className='loader-height'>
+            <div className="spinner-border text-light load" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+            </div>
+        </>; // Display loader if data is empty
+    }
+
     return (
         <>
             <div className='beginner'>
                 <div className="btn-group muscles">
-                    <span style={{width:70,display:'flex',alignItems:'center'}}>Muscle : </span><select className='dropdown-muscle' value={muscle}
+                    <span style={{ width: 70, display: 'flex', alignItems: 'center' }}>Muscle : </span><select className='dropdown-muscle' value={muscle}
                         onChange={(e) => {
                             handleChange(e)
                         }}>
@@ -64,7 +74,7 @@ export default function Beginner(props: any) {
                     {work_out.map((data: any, i: number) => (
                         (i == 0 || i == 1 || i == 3 || i == 4 || i == 5 || i == 6) &&
                         <div className="cardwork" key={i}>
-                            <div style={{height:210}}>
+                            <div style={{ height: 210 }}>
                                 <h2>{data.name}</h2>
                                 <p className="equipment"><strong>Equipment : </strong>{data.equipment}</p>
                                 <p className="muscle"><strong>Muscle : </strong>{data.muscle}</p>
