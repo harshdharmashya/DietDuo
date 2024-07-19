@@ -57,7 +57,8 @@ export default function Breakfast(props: any) {
                   </PieChart>
                 </div>
                 <div className='diets-array'>
-                  <p className='diets-array-p'>Diets : {datab.diets}</p>
+                  <p className='diets-array-p'>Diets  </p>
+                  <p style={{color:'black'}} className='ptag'>{datab.diets}</p>
                 </div>
               </div>
             </div>

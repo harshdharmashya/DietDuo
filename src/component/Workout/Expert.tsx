@@ -56,7 +56,7 @@ export default function Expert(props: any) {
     return (
         <>
             <div className='beginner'>
-                <div className="btn-group muscle">
+                <div className="btn-group muscles">
                 <span style={{width:70}}>Muscle : </span><select className='dropdown-muscle' value={muscle}
                         onChange={(e) => {
                             handleChange(e)
@@ -70,15 +70,15 @@ export default function Expert(props: any) {
                     {work_out.map((data: any, i: number) => (
                         (i == 0 || i == 1 || i == 3 || i == 4 || i == 5 || i == 6) &&
                         <div className="cardwork" key={i}>
-                            <div style={{ height: 210 }}>
+                            <div style={{height:210}}>
                                 <h2>{data.name}</h2>
                                 <p className="equipment"><strong>Equipment : </strong>{data.equipment}</p>
                                 <p className="muscle"><strong>Muscle : </strong>{data.muscle}</p>
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
                             <div className='contain-summry-pie'>
-                                <button className='btn-Add-to-meal view-button'>Add to Meal</button>
-                                <button className='btn-Add-to-meal view-button'>Read more..</button>
+                                <button className='btn-workout'>Add to Meal</button>
+                                <button className='btn-workout'>Read more..</button>
                                 {/* <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button> */}
                             </div>
                         </div>

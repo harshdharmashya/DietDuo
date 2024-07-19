@@ -46,11 +46,11 @@ export default function Beginner(props: any) {
     //     handleOpen();
     // }
     const work_out: any = useSelector((state: any) => state.workout.Beginner)
-    console.log("work_out of beginner: ", work_out)
+    // console.log("work_out of beginner: ", work_out)
     return (
         <>
             <div className='beginner'>
-                <div className="btn-group muscle">
+                <div className="btn-group muscles">
                     <span style={{width:70,display:'flex',alignItems:'center'}}>Muscle : </span><select className='dropdown-muscle' value={muscle}
                         onChange={(e) => {
                             handleChange(e)

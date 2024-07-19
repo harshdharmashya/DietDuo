@@ -1,6 +1,6 @@
 .work{
     height: auto;
-    /* padding: 1% 2%; */
+    padding-top: 10%;
     background-color: #1A5319;
     color: white;
 }
@@ -36,7 +36,7 @@
     justify-content: center;
     column-gap: 20px;
 }
-.muscle{
+.muscles{
     left: 210px;
 }
 .cardwork{
@@ -46,7 +46,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    padding: 20px;
+    padding: 15px 15px 0px 15px;
     margin: 20px;
     box-sizing: border-box;
     color: black;
@@ -72,15 +72,17 @@
     border-radius: 3px;
     background-color: #3c6b3b;
     flex-basis: 50%;
-    border-radius: 10px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .muscle {
+    .muscles {
         display: flex;
         justify-content: center;
         left: 0;
         margin: 3% 0;
+    }
+    .cardwork {
+        width: 43%;
     }
 }
 
@@ -88,14 +90,22 @@
     .cardwork {
         padding: 15px;
     }
-    .muscle{
-        left: 100px;
-        margin: 20px 0px;
+    .muscles{
+        display: flex;
+        justify-content: center;
+        left: 0;
+        margin: 3% 0;
     }
     .headline-work{
-        margin-left: 40px;
+        display: flex;
+        justify-content: center;
+        font-size: 2.2em;
+        margin-bottom: 5%;
     }
     .btn-workout{
         margin-top: 0px;
+    }
+    .beginner{
+        padding: 5%;
     }
 }

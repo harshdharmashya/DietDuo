@@ -25,7 +25,7 @@ export default function Header() {
         </div>
       </div>
       <div className='overdiv-btn1'>
-          <button className='btn1'>Try ----</button>
+          <button className='btn1'>Create My Diet Program Now -</button>
       </div>
     </header>
     </>

@@ -5,6 +5,8 @@ import Meal from '../component/Meal';
 import Modal from './Modalcard';
 import Preference from './Preference';
 import Workout from './Workout';
+import Services from './Services';
+import Footer from './Footer';
 
 export default function Home() {
 
@@ -16,6 +18,8 @@ export default function Home() {
       <Modal/>
       <Preference/>
       <Workout/>
+      <Services/>
+      <Footer/>
     </>
   )
 }
