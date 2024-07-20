@@ -35,7 +35,10 @@
     color:black;
 }
 .card-title {
-    height: auto;
+    height: 50px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* white-space: nowrap; */
     cursor: pointer;
     margin: 0% 1%;
     margin-bottom: 2%;
@@ -65,14 +68,16 @@
 }
 
 .diets-array-p {
-    display: flex;
-    justify-content: center;
+    margin-left: 50px;
     color: black;
     height: 5px;
     width: 170px;
 }
 .ptag{
+    height: 65px;
     width: 150px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 /* .css-1kza5gv-MuiResponsiveChart-container {
@@ -102,9 +107,10 @@
 }
 
 .btn-Add-to-meal {
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: #3c6b3b;
     flex-basis: 48%;
+    border: none;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -117,12 +123,17 @@
     .card-rec {
         height: 474px;
     }
+    .ptag{
+        height: 50px;
+        width: 130px;
+        margin-left: 5px;
+    }
 }
 
 
 @media (max-width: 480px) {
     .meal {
-        height: 1400px;
+        height: 1450px;
         padding: 6% 2% 2% 2%;
     }
 
@@ -184,5 +195,13 @@
 
     .btn-Add-to-meal {
         margin-top: 80px;
+    }
+    .ptag{
+        height: 60px;
+        width: 100px;
+        margin-left: 15px;
+    }
+    .diets-array-p {
+        margin-left: 42px;
     }
 }

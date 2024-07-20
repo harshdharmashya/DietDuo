@@ -49,7 +49,7 @@ export default function Beginner(props: any) {
 
 
     const work_out: any = useSelector((state: any) => state.workout.Beginner)
-    console.log("work_out of beginner: ", work_out)
+    // console.log("work_out of beginner: ", work_out)
     if (work_out.length === 0) {
         return <>
             <div className='loader-height'>
@@ -83,10 +83,10 @@ export default function Beginner(props: any) {
                                 <p className="muscle"><strong>Muscle : </strong>{data.muscle}</p>
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
-                            <div className='contain-summry-pie'>
+                            <div className='contain-summry-pie workbtn'>
                                 <button className='btn-workout'>Add to Meal</button>
                                 {/* <button className='btn-workout'>Read more..</button> */}
-                                <button className='btn-Add-to-meal' onClick={() => handleModal(data)}>Read more..</button>
+                                <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
                     ))

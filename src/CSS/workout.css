@@ -68,8 +68,8 @@
     padding: 1% 10%;
     border-radius: 10px;
 }
-.contain-summry-pie{
-    column-gap: 5px;
+.workbtn{
+    column-gap:14px;
 }
 .btn-workout{
     border-radius: 3px;
@@ -119,10 +119,13 @@
         margin-bottom: 5%;
     }
     .headline-extra{
-        margin-left: 30px;
+        margin-left: 55px;
     }
     .btn-workout{
         margin-top: 0px;
+    }
+    .workbtn{
+        column-gap:9px;
     }
     .beginner{
         padding: 5%;

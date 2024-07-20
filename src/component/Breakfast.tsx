@@ -28,15 +28,19 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
 }
 export default function Breakfast(props: any) {
   const meals = useSelector((state: any) => state.counter.breakfast)
+  // console.log(meals)
   if (meals.length === 0) {
     return <>
-    <div className='loader-height'>
+      <div className='loader-height'>
         <div className="spinner-border text-light load" role="status">
-            <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden">Loading...</span>
         </div>
-        </div>
+      </div>
     </>; // Display loader if data is empty
-}
+  }
+
+  
+
   const handleOpen = () => props.setIsOpen(true);
 
   function handleModal(data: any) {
@@ -67,12 +71,12 @@ export default function Breakfast(props: any) {
                 </div>
                 <div className='diets-array'>
                   <p className='diets-array-p'>Diets  </p>
-                  <p style={{color:'black'}} className='ptag'>{datab.diets}</p>
+                  <p style={{ color: 'black' }} className='ptag'>{datab.diets}</p>
                 </div>
               </div>
             </div>
             <div className='contain-summry-pie'>
-              <button className='btn-Add-to-meal'>Add to Meal</button>
+              <button className='btn-Add-to-meal' onClick={() => props.handleClick(datab)}>Add to Meal</button>
               <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
             </div>
           </div>))
