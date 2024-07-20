@@ -1,63 +1,41 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setexpert } from '../../Redux/workoutSlice';
+import Modalworkout from '../Modalworkout';
 
 
 export default function Expert(props: any) {
     const dispatch = useDispatch();
-    const [muscle, setmuscle] = useState([]);
-    const muscle_array = [
-        { name: 'abdominals' },
-        { name: 'adductors' },
-        { name: 'biceps' },
-        { name: 'calves' },
-        { name: 'chest' },
-        { name: 'forearms' },
-        { name: 'glutes' },
-        { name: 'hamstrings' },
-        { name: 'lats' },
-        { name: 'lower_back' },
-        { name: 'middle_back' },
-        { name: 'triceps' }
-        // neck,
-        // quadriceps,
-        // traps,
-    ]
+    const [muscle, setmuscle] = useState('');
     const workout = async (difficulty: string) => {
         const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
         const data = await response.json();
-        // console.log("api data : ", data)
         dispatch(setexpert(data))
+
     };
     useEffect(() => {
         workout('expert');
     }, [muscle]);
 
-
+    // to open modal
     const handleOpen = () => props.setIsOpen(true);
 
-    // for choose muscle 
-    const handleChange = (e: any) => {
-        setmuscle(e.target.value);
+    // transfer the data to the modal
+    function handleModal(data: any) {
+        props.setCurrentItem(data)
+        // console.log(data);
+        handleOpen();
     }
 
-    // function handleModal(data: any) {
-    //     props.setCurrentItem(data)
-    //     handleOpen();
-    // }
-
-    function handlemuscle(e: any) {
-        setmuscle(e.target.value);
-    }
-
+    
     const work_out: any = useSelector((state: any) => state.workout.expert)
-    // console.log("work_out of expert: ", work_out)
+    // console.log("work_out of beginner: ", work_out)
     if (work_out.length === 0) {
         return <>
-            <div className='loader-height'>
-                <div className="spinner-border text-light load" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
+        <div className='loader-height'>
+            <div className="spinner-border text-light load" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
             </div>
         </>; // Display loader if data is empty
     }
@@ -66,16 +44,6 @@ export default function Expert(props: any) {
     return (
         <>
             <div className='beginner'>
-                <div className="btn-group muscles">
-                    <span style={{ width: 70 }}>Muscle : </span><select className='dropdown-muscle' value={muscle}
-                        onChange={(e) => {
-                            handleChange(e)
-                        }}>
-                        {muscle_array.map((datam: any, i: number) => (
-                            <option className='dropdown-muscle-option' key={i} value={datam.name}>{datam.name}</option>
-                        ))}
-                    </select>
-                </div>
                 <div className='workout-section'>
                     {work_out.map((data: any, i: number) => (
                         (i == 0 || i == 1 || i == 3 || i == 4 || i == 5 || i == 6) &&
@@ -88,11 +56,13 @@ export default function Expert(props: any) {
                             </div>
                             <div className='contain-summry-pie'>
                                 <button className='btn-workout'>Add to Meal</button>
-                                <button className='btn-workout'>Read more..</button>
-                                {/* <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button> */}
+                                <button className='btn-Add-to-meal' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
                     ))
+                    }
+                    {props.isOpen &&
+                        <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
                 </div>
             </div>

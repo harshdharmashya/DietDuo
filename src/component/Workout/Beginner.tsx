@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setBeginner } from '../../Redux/workoutSlice';
+import Modalworkout from '../Modalworkout';
 
 
 export default function Beginner(props: any) {
@@ -39,20 +40,22 @@ export default function Beginner(props: any) {
     const handleChange = (e: any) => {
         setmuscle(e.target.value);
     }
+    // to transfer the data to modal
+    function handleModal(data: any) {
+        props.setCurrentItem(data)
+        // console.log(data);
+        handleOpen();
+    }
 
-    // function handleModal(data: any) {
-    //     props.setCurrentItem(data)
-    //     // console.log(data);
-    //     handleOpen();
-    // }
+
     const work_out: any = useSelector((state: any) => state.workout.Beginner)
-    // console.log("work_out of beginner: ", work_out)
+    console.log("work_out of beginner: ", work_out)
     if (work_out.length === 0) {
         return <>
-        <div className='loader-height'>
-            <div className="spinner-border text-light load" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div>
+            <div className='loader-height'>
+                <div className="spinner-border text-light load" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
             </div>
         </>; // Display loader if data is empty
     }
@@ -82,11 +85,14 @@ export default function Beginner(props: any) {
                             </div>
                             <div className='contain-summry-pie'>
                                 <button className='btn-workout'>Add to Meal</button>
-                                <button className='btn-workout'>Read more..</button>
-                                {/* <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button> */}
+                                {/* <button className='btn-workout'>Read more..</button> */}
+                                <button className='btn-Add-to-meal' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
                     ))
+                    }
+                    {props.isOpen &&
+                        <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
                 </div>
             </div>

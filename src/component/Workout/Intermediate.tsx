@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setintermediate } from '../../Redux/workoutSlice';
+import Modalworkout from '../Modalworkout';
 
 export default function Intermediate(props: any) {
   const dispatch = useDispatch();
@@ -38,11 +39,12 @@ export default function Intermediate(props: any) {
     setmuscle(e.target.value);
   }
 
-  // function handleModal(data: any) {
-  //   props.setCurrentItem(data)
-  //   // console.log(data);
-  //   handleOpen();
-  // }
+  function handleModal(data: any) {
+    props.setCurrentItem(data)
+    // console.log(data);
+    handleOpen();
+  }
+
   const work_out: any = useSelector((state: any) => state.workout.intermediate)
   // console.log("work_out of intermediate : ",work_out)
   if (work_out.length === 0) {
@@ -80,11 +82,13 @@ export default function Intermediate(props: any) {
               </div>
               <div className='contain-summry-pie'>
                 <button className='btn-workout'>Add to Meal</button>
-                <button className='btn-workout'>Read more..</button>
-                {/* <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button> */}
+                <button className='btn-Add-to-meal' onClick={() => handleModal(data)}>Read more..</button>
               </div>
             </div>
           ))
+          }
+          {props.isOpen &&
+            <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
           }
         </div>
       </div>

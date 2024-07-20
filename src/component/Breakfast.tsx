@@ -28,6 +28,15 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
 }
 export default function Breakfast(props: any) {
   const meals = useSelector((state: any) => state.counter.breakfast)
+  if (meals.length === 0) {
+    return <>
+    <div className='loader-height'>
+        <div className="spinner-border text-light load" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>
+        </div>
+    </>; // Display loader if data is empty
+}
   const handleOpen = () => props.setIsOpen(true);
 
   function handleModal(data: any) {
