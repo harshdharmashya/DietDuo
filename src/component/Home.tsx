@@ -7,19 +7,25 @@ import Preference from './Preference';
 import Workout from './Workout';
 import Services from './Services';
 import Footer from './Footer';
+import Usermeal from './Usermeal';
 
 export default function Home() {
-
+  // for toggle user meal component
+  const [show, setshow] = useState(true);
   return (
-    <>
-      <Header />
-      <Carousel />
-      <Meal />
-      <Modal/>
-      <Preference/>
-      <Workout/>
-      <Services/>
-      <Footer/>
+    <>{show ?
+      <div>
+        <Header />
+        <Carousel />
+        <Meal setshow={setshow} show={show}/>
+        <Modal />
+        <Preference />
+        <Workout />
+        <Services />
+        <Footer />
+      </div> :
+      <Usermeal/>
+    }
     </>
   )
 }

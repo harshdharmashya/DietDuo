@@ -74,10 +74,11 @@
     width: 170px;
 }
 .ptag{
-    height: 65px;
+    height: 54px;
     width: 150px;
     text-overflow: ellipsis;
     overflow: hidden;
+    margin-top: 25px;
 }
 
 /* .css-1kza5gv-MuiResponsiveChart-container {
@@ -112,7 +113,22 @@
     flex-basis: 48%;
     border: none;
 }
-
+.addcardicon{
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid black;
+    padding: 14px;
+    background-color: rgb(228, 227, 227);
+    box-shadow: 1px 1px 10px;
+    z-index: 99;
+  }
+  .addcardicon:hover{
+    scale: 1.1;
+  }
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .meal {
         height: auto !important;
@@ -197,9 +213,10 @@
         margin-top: 80px;
     }
     .ptag{
-        height: 60px;
+        height: 50px;
         width: 100px;
         margin-left: 15px;
+        margin-top: 0px;
     }
     .diets-array-p {
         margin-left: 42px;

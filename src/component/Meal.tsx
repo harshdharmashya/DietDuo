@@ -8,14 +8,23 @@ import Breakfast from "./Breakfast";
 import Lunch from "./Lunch";
 import Dinner from "./Dinner";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Meal(props:any) {
+  // for tab
   const [value, setValue] = useState(0);
+  // for modal data
   const [currentItem, setCurrentItem] = useState({});
+  // for open modal
   const [isOpen, setIsOpen] = useState(false);
+  // for user meal
+  const [Usermeal,setuserMeal] = useState([]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  }
+  const handleClick=(data:any)=>{
+      // setuserMeal([...Usermeal,data])
   }
   return (
     <>
@@ -29,19 +38,26 @@ export default function Meal(props:any) {
         </Box>
         {value === 0 &&
           <Box>
-            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} handleClick={handleClick}/>
           </Box>
         }
         {value === 1 &&
           <Box>
-            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} handleClick={handleClick}/>
           </Box>
         }
         {value === 2 &&
           <Box>
-            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} handleClick={handleClick}/>
           </Box>
         }
+        <Link to=''>
+        {/* <Link to='' state={props.cart}> */}
+        <button className='addcardicon' onClick={()=>props.setshow(false)}>
+          <i className="fa-solid fa-cart-shopping"></i>
+            <p className='cartcount'>{5}</p>
+        </button>
+      </Link>
       </div>
     </>
   )
