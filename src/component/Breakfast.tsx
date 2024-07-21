@@ -28,6 +28,7 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
   );
 }
 export default function Breakfast(props: any) {
+ 
   const meals = useSelector((state: any) => state.counter.breakfast)
   // console.log(meals)
   if (meals.length === 0) {

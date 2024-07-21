@@ -1,0 +1,44 @@
+.usermeal{
+    background-color: #1A5319;
+    height: 100vh;
+    padding: 3%;
+}
+.lunch-meal{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 50px;
+    border: 1px solid white;
+    padding: 2%;
+}
+.day-tab{
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+.user-image{
+    height: 60px;
+    width: 80px;
+    border-radius: 5px;
+}
+.user-image:hover{
+    transform: scale(1.1);
+    transition: 1s;
+}
+.user-title{
+    width: 600px;
+}
+.read-btn{
+    padding: 2px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
+.remove-btn{
+    margin-top: 8px;
+    padding: 2px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+}
