@@ -15,17 +15,17 @@ export default function Meal(props:any) {
   const [value, setValue] = useState(0);
   // for modal data
   const [currentItem, setCurrentItem] = useState({});
-  // for open modal
+  // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);
+  // for open modal for Add to cart
+  const [isOpenAdd, setIsOpenAdd] = useState(false);
   // for user meal
   const [Usermeal,setuserMeal] = useState([]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   }
-  const handleClick=(data:any)=>{
-      // setuserMeal([...Usermeal,data])
-  }
+  
   return (
     <>
       <div className='meal'>
@@ -38,17 +38,17 @@ export default function Meal(props:any) {
         </Box>
         {value === 0 &&
           <Box>
-            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} handleClick={handleClick}/>
+            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} setIsOpenAdd={setIsOpenAdd} isOpenAdd={isOpenAdd}/>
           </Box>
         }
         {value === 1 &&
           <Box>
-            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} handleClick={handleClick}/>
+            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd}/>
           </Box>
         }
         {value === 2 &&
           <Box>
-            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} handleClick={handleClick}/>
+            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
           </Box>
         }
         <Link to=''>

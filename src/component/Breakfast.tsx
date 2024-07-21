@@ -5,6 +5,7 @@ import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import Modalcard from './Modalcard';
+import Addtomeal_Modal from './Addtomeal_Modal';
 
 const size = {
   width: 150,
@@ -42,11 +43,20 @@ export default function Breakfast(props: any) {
   
 
   const handleOpen = () => props.setIsOpen(true);
+  const handleOpenAdd = () => props.setIsOpenAdd(true);
 
+  // onclick function for open read more modal
   function handleModal(data: any) {
     props.setCurrentItem(data)
     handleOpen();
   }
+
+  // onclick for open add to cart modal
+  function handleClick(datab: any): void {
+    props.setCurrentItem(datab)
+    handleOpenAdd();
+  }
+
   // console.log(meals)
   return (
     <>
@@ -76,13 +86,16 @@ export default function Breakfast(props: any) {
               </div>
             </div>
             <div className='contain-summry-pie'>
-              <button className='btn-Add-to-meal' onClick={() => props.handleClick(datab)}>Add to Meal</button>
+              <button className='btn-Add-to-meal' onClick={() => handleClick(datab)}>Add to Meal</button>
               <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
             </div>
           </div>))
         }
         {props.isOpen &&
           <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+        }
+        {props.isOpenAdd &&
+          <Addtomeal_Modal currentItem={props.currentItem} isOpenAdd={props.isOpenAdd} setIsOpenAdd={props.setIsOpenAdd} />
         }
       </div>
     </>

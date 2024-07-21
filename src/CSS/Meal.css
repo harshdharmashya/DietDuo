@@ -39,7 +39,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     /* white-space: nowrap; */
-    cursor: pointer;
     margin: 0% 1%;
     margin-bottom: 2%;
 }
@@ -55,7 +54,7 @@
     position: absolute;
     left: 35px;
     width: 100px;
-    height: auto;
+    height: 88px;
     cursor: pointer;
 }
 
@@ -63,8 +62,7 @@
     position: absolute;
     right: 0;
     width: 170px;
-    cursor: pointer;
-    
+
 }
 
 .diets-array-p {
@@ -74,7 +72,7 @@
     width: 170px;
 }
 .ptag{
-    height: 54px;
+    height: 47px;
     width: 150px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -120,9 +118,9 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 2px solid #1A5319;
     padding: 14px;
-    background-color: rgb(228, 227, 227);
+    background-color: #d9dc80;
     box-shadow: 1px 1px 10px;
     z-index: 99;
   }
