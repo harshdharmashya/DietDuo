@@ -9,7 +9,6 @@ import Lunch from "./Lunch";
 import Dinner from "./Dinner";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 export default function Meal(props:any) {
   // for tab
   const [value, setValue] = useState(0);
@@ -54,8 +53,8 @@ export default function Meal(props:any) {
         <Link to=''>
         {/* <Link to='' state={props.cart}> */}
         <button className='addcardicon' onClick={()=>props.setshow(false)}>
-          <i className="fa-solid fa-cart-shopping"></i>
-            <p className='cartcount'>{5}</p>
+        <i className="fa-solid fa-burger"></i>
+            <p className='cartcount'>{0}</p>
         </button>
       </Link>
       </div>

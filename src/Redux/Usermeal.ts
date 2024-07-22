@@ -29,10 +29,6 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     setDish: (state: any, action) => {
-      // if (!Array.isArray(state[action.payload.day])) {
-      //   state[action.payload.day] = [];
-      // }
-      console.log(action.payload)
       state[action.payload.day].push(action.payload.data);
     }
   },
