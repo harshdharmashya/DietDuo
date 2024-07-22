@@ -41,8 +41,6 @@ export default function Breakfast(props: any) {
     </>; // Display loader if data is empty
   }
 
-  
-
   const handleOpen = () => props.setIsOpen(true);
   const handleOpenAdd = () => props.setIsOpenAdd(true);
 
@@ -96,7 +94,7 @@ export default function Breakfast(props: any) {
           <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
         }
         {props.isOpenAdd &&
-          <Addtomeal_Modal currentItem={props.currentItem} isOpenAdd={props.isOpenAdd} setIsOpenAdd={props.setIsOpenAdd} />
+          <Addtomeal_Modal mealType={'Breakfast'} currentItem={props.currentItem} isOpenAdd={props.isOpenAdd} setIsOpenAdd={props.setIsOpenAdd} />
         }
       </div>
     </>

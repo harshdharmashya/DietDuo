@@ -23,8 +23,9 @@ function App() {
     );
     AOS.refresh();
     const fetchMeals = async (mealType: string) => {
-      const response = await fetch(`https://api.spoonacular.com/recipes/random?number=3&tags=${mealType}&apiKey=33f2cc0aa5bd4b88ac7f4b6b73558dfd`);
+      const response = await fetch(`https://api.spoonacular.com/recipes/random?number=3&tags=${mealType}&apiKey=6845c5e2d08f447aba1b24ed78bae323`);
       const data = await response.json();
+      // 33f2cc0aa5bd4b88ac7f4b6b73558dfd
       // 6845c5e2d08f447aba1b24ed78bae323
       // console.log(data)
         dispatch(setBreakfast(data))
@@ -35,7 +36,7 @@ function App() {
     <>
     <Router>
             <Routes>
-            <Route path="/" element={<Home/> }/>
+            <Route path="/" element={<Home/>}/>
             </Routes>
     </Router>
       

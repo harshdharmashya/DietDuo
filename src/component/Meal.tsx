@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export default function Meal(props:any) {
   // for tab
   const [value, setValue] = useState(0);
-  // for modal data
+  // for modal data 
   const [currentItem, setCurrentItem] = useState({});
   // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);

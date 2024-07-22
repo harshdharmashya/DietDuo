@@ -2,18 +2,20 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 
-export default function Monday() {
-    const Mon = useSelector((state: any) => state.meal.Mon);
-    console.log(Mon)
-    if (Mon.length === 0) {
-        return <>
-          <div className='loader-height'>
-            <div className="spinner-border text-light load" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-        </>; // Display loader if data is empty
-      }
+export default function Monday(props:any) {
+    
+    // console.log(Mon_Break)
+    // console.log(Mon_Lunch)
+    // console.log(Mon_Dinner)
+    // if (Mon.length === 0) {
+    //     return <>
+    //       <div className='loader-height'>
+    //         <div className="spinner-border text-light load" role="status">
+    //           <span className="visually-hidden">Loading...</span>
+    //         </div>
+    //       </div>
+    //     </>; // Display loader if data is empty
+    //   }
   return (
     <>
     <table className="table">
@@ -26,7 +28,7 @@ export default function Monday() {
               </tr>
             </thead>
             <tbody>
-                {Mon.map((data:any,i:number)=>(
+                {props.meal.map((data:any,i:number)=>(
                     <tr key={i}>
                     <th scope="row">{i+1}</th>
                     <td><img className='user-image' src={data?.image} alt="" /></td>

@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { setLunch } from '../Redux/frontSlice';
 import { Link } from 'react-router-dom';
 import Modalcard from './Modalcard';
+import Addtomeal_Modal from './Addtomeal_Modal';
 
 const size = {
   width: 150,
@@ -27,17 +28,25 @@ function PieCenterLabel({ children }: { children: React.ReactNode }) {
     </StyledText>
   );
 }
+
 export default function Lunch(props: any) {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchMeals = async (mealType: string) => {
-      const response = await fetch(`https://api.spoonacular.com/recipes/random?number=3&tags=${mealType}&apiKey=33f2cc0aa5bd4b88ac7f4b6b73558dfd`);
+      const response = await fetch(`https://api.spoonacular.com/recipes/random?number=3&tags=${mealType}&apiKey=6845c5e2d08f447aba1b24ed78bae323`);
       const data = await response.json();
       dispatch(setLunch(data))
     };
     fetchMeals('lunch');
   }, []);
   const handleOpen = () => props.setIsOpen(true);
+  const handleopenAdd = () => props.setIsOpenAdd(true);
+  
+  // onclick for open add to cart modal
+  function handleClick(datab: any): void {
+    props.setCurrentItem(datab)
+    handleopenAdd();
+  }
 
   function handleModal(data: any) {
     props.setCurrentItem(data)
@@ -83,13 +92,16 @@ export default function Lunch(props: any) {
               </div>
             </div>
             <div className='contain-summry-pie'>
-              <button className='btn-Add-to-meal'>Add to Meal</button>
+              <button className='btn-Add-to-meal' onClick={() => handleClick(datab)}>Add to Meal</button>
               <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
             </div>
           </div>))
         }
         {props.isOpen &&
           <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+        }
+        {props.isOpenAdd &&
+          <Addtomeal_Modal mealType={"Lunch"} currentItem={props.currentItem} isOpenAdd={props.isOpenAdd} setIsOpenAdd={props.setIsOpenAdd} />
         }
       </div>
     </>

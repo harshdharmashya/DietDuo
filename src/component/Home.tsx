@@ -24,7 +24,7 @@ export default function Home() {
         <Services />
         <Footer />
       </div> :
-      <Usermeal/>
+      <Usermeal setshow={setshow} show={show}/>
     }
     </>
   )

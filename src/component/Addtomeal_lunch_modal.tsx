@@ -8,14 +8,14 @@ import "../CSS/Modal.css"
 import { useDispatch } from 'react-redux';
 import { setDish } from '../Redux/Usermeal';
 
-export default function Addtomeal_Modal(props: any) {
+export default function Addtomeal_lunch_modal(props: any) {
     const dispatch = useDispatch();
     const [day, setDay] = useState('')
     let data = props.currentItem;
     const handleCloseAdd = () => props.setIsOpenAdd(false);
 
     function handleAddtomeal() {
-        dispatch(setDish({ data, day: day + "_" + props.mealType }))
+        dispatch(setDish({ data, day: day+props.mealType }))
         handleCloseAdd()
     };
     const style = {

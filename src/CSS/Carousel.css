@@ -19,6 +19,9 @@
     .add-image {
         height: 450px;
     }
+    .carousel-fade .carousel-item {
+        height: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -32,7 +35,7 @@
 
     .add-image {
         object-fit: cover;
-        height: auto;
+        height: 218px;
     }
 
     .carousel-fade .carousel-item {

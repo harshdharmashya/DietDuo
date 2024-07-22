@@ -1,6 +1,7 @@
 .usermeal{
     background-color: #1A5319;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: auto;
     padding: 3%;
 }
 .lunch-meal{
@@ -41,4 +42,15 @@
     color: black;
     border: none;
     border-radius: 5px;
+}
+.GoBack-btn{
+    position: fixed;
+    background-color: white;
+    border: none;
+    color: black;
+    border-radius: 3px;
+    padding: 1px 5px;
+    box-shadow: 5px 5px 10px black;
+    right: 50px;
+    bottom:90px;
 }
