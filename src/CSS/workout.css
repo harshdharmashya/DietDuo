@@ -44,7 +44,7 @@
     background-image: url(../Images/card-bg.jpg);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 360px;
     width: 100%;
     padding: 15px 15px 2px 15px;
     margin: 20px;
@@ -69,7 +69,7 @@
     border-radius: 10px;
 }
 .workbtn{
-    column-gap:14px;
+    column-gap:10px;
 }
 .btn-workout{
     border-radius: 3px;

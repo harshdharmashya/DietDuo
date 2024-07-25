@@ -106,7 +106,8 @@
 
 @media (max-width: 480px) {
     .Preference {
-        height: 45vh;
+        min-height: 55vh;
+        max-height: auto;
         flex-direction: column;
         row-gap: 30px;
         padding: 5% 0% 0% 0%;

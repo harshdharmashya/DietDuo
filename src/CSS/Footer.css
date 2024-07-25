@@ -1,6 +1,7 @@
 .footer-container {
     background-color: #0d3b0d;
-    height: 60vh;
+    min-height: 60vh;
+    max-height: auto;
     padding: 5%;
     position: relative;
 }
@@ -37,7 +38,8 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .footer-container {
-        height: 30vh;
+        min-height: 30vh;
+        max-height: auto;
     }
 
     .footer-data {

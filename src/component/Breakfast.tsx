@@ -84,7 +84,7 @@ export default function Breakfast(props: any) {
                 </div>
               </div>
             </div>
-            <div className='contain-summry-pie'>
+            <div className='contain-summry-pie mealbtn'>
               <button className='btn-Add-to-meal' onClick={() => handleClick(datab)}>Add to Meal</button>
               <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
             </div>

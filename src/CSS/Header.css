@@ -1,5 +1,6 @@
 .header {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: auto;
   background-color: #1A5319;
 }
 
@@ -22,7 +23,7 @@
 
 .img2 {
   position: absolute;
-  height: 280px;
+  height: 250px;
   top: 250px;
   left: 400px;
   border-radius: 20px;
@@ -45,21 +46,20 @@
 }
 
 .btn1 {
-  position: absolute;
-  top: 580px;
-  /* left: 90px; */
-  margin-left: 90px;
-  width: 350px;
-  padding: 10px 5px;
+  position: relative;
+  left: 90px;
+  width: auto;
+  padding: 8px 25px;
   border-radius: 5px;
-  border: none;
+  border: none; 
   background-color: white;
   color: black;
+  top: 0px;
 }
 
 .btn1:hover {
   box-shadow: 5px 5px 15px black;
-  background-color: #446e44;
+  background-color: #e6e930;
 }
 
 .header-tag {
@@ -68,14 +68,15 @@
 }
 
 .seconds {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .header{
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 47vh;
+    min-height: 40vh;
+    max-height: auto;
     /* filter: brightness(0.7) contrast(1.2) blur(3px); */
   }
   .LOGO{
@@ -98,18 +99,18 @@
     justify-content: center;
   }
   .btn1 {
-    position: absolute;
-    top: 555px;
-    /* left: none; */
-    margin-left: 0px;
+    position: relative;
+  left: 90px;
+  width: auto;
+  padding: 8px 25px;
+  border-radius: 5px;
+  top: 300px;
   }
 }
 
-
-
 @media (max-width: 768px) {
   .header {
-    height: auto;
+    min-height: auto;
     padding: 20px;
   }
 
@@ -177,5 +178,15 @@
     width: 80%;
     display: block;
     margin: auto;
+    padding: 5px 5px;
+
+    /* position: relative;
+  left: 90px;
+  width: auto;
+  border-radius: 5px;
+  border: none; 
+  background-color: white;
+  color: black;
+  */
   }
 }
