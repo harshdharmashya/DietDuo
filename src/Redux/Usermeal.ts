@@ -22,6 +22,7 @@ const initialState = {
   Fri_Dinner:[],
   Sat_Dinner:[],
   Sun_Dinner:[],
+  filter:[]
 }
 
 export const counterSlice = createSlice({
@@ -30,11 +31,14 @@ export const counterSlice = createSlice({
   reducers: {
     setDish: (state: any, action) => {
       state[action.payload.day].push(action.payload.data);
+    },
+    update: (state:any,action)=>{
+      state.filter = action.payload
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { setDish } = counterSlice.actions
+export const { setDish,update } = counterSlice.actions
 
 export default counterSlice.reducer

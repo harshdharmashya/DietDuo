@@ -12,8 +12,7 @@ import { Link } from "react-router-dom";
 export default function Meal(props:any) {
   // for tab
   const [value, setValue] = useState(0);
-  // for modal data 
-  const [currentItem, setCurrentItem] = useState({});
+
   // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);
   // for open modal for Add to cart
@@ -37,17 +36,17 @@ export default function Meal(props:any) {
         </Box>
         {value === 0 &&
           <Box>
-            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} setIsOpenAdd={setIsOpenAdd} isOpenAdd={isOpenAdd}/>
+            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} setIsOpenAdd={setIsOpenAdd} isOpenAdd={isOpenAdd}/>
           </Box>
         }
         {value === 1 &&
           <Box>
-            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd}/>
+            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd}/>
           </Box>
         }
         {value === 2 &&
           <Box>
-            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={currentItem} setCurrentItem={setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
+            <Dinner isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
           </Box>
         }
         <Link to=''>

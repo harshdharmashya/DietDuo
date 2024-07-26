@@ -29,6 +29,10 @@ export default function Addtomeal_Modal(props: any) {
         boxShadow: 24,
         p: 2
     };
+    function handleSelect(e: any): void {
+        setDay(e.target.value)
+    }
+
     return (
         <Modal
             open={props.isOpenAdd}
@@ -45,7 +49,7 @@ export default function Addtomeal_Modal(props: any) {
                         <div style={{ display: 'flex', columnGap: '30px', alignItems: 'center' }}>
                             <div style={{ background: "#1A5319", width: '130px', borderRadius: 5, paddingLeft: 10 }}> Ready in {data?.readyInMinutes}min</div>
                             <div>
-                                <select onChange={(e) => { setDay(e.target.value) }} value={day} name="" id="" style={{ padding: '0px 15px', background: '#1A5319', borderRadius: '5px' }}>
+                                <select onChange={(e)=>handleSelect(e)} value={day} style={{ padding: '0px 15px', background: '#1A5319', borderRadius: '5px' }}>
                                     <option value="">Day</option>
                                     <option value="Mon">Mon</option>
                                     <option value="Tus">Tus</option>

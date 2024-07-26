@@ -3,11 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setBeginner } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
+import Addtoworkout_Modal from '../Addtoworkout_Modal';
 
 
 export default function Beginner(props: any) {
     const dispatch = useDispatch();
     const [muscle, setmuscle] = useState('');
+    // for open modal for Add to cart
+    const [isOpenAdd, setIsOpenAdd] = useState(false);
     const muscle_array = [
         { name: 'abdominals' },
         { name: 'adductors' },
@@ -35,6 +38,14 @@ export default function Beginner(props: any) {
         workout('beginner');
     }, [muscle]);
     const handleOpen = () => props.setIsOpen(true);
+    const handleWork = () => setIsOpenAdd(true);
+
+    // for open Add to workout modal
+    function handleAddworkout(data: any){
+        props.setCurrentItem(data);
+        console.log(data)
+        handleWork();
+    }
 
     // for choose muscle 
     const handleChange = (e: any) => {
@@ -84,16 +95,19 @@ export default function Beginner(props: any) {
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
                             <div className='contain-summry-pie workbtn'>
-                                <button className='btn-workout'>Add to Meal</button>
-                                {/* <button className='btn-workout'>Read more..</button> */}
+                                <button className='btn-workout' onClick={()=>handleAddworkout(data)}>Add to Meal</button>
                                 <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
-                    ))
-                    }
+                    ))}
+
                     {props.isOpen &&
                         <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
+                    {isOpenAdd && 
+                        <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
+                    }
+
                 </div>
             </div>
         </>

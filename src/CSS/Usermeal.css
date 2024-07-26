@@ -28,6 +28,12 @@
 .user-title{
     width: 600px;
 }
+.user-btn{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 .read-btn{
     padding: 2px;
     background-color: white;
@@ -52,5 +58,5 @@
     padding: 1px 5px;
     box-shadow: 5px 5px 10px black;
     right: 50px;
-    bottom:90px;
+    top:90px;
 }
