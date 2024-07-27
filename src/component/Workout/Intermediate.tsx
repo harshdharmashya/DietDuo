@@ -88,7 +88,7 @@ export default function Intermediate(props: any) {
           ))
           }
           {props.isOpen &&
-            <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+            <Modalworkout  worktype={'Intermediate'} currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
           }
         </div>
       </div>

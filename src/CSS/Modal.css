@@ -25,6 +25,23 @@
     height: 13px;
     width: 13px;
 }
+.workModal-Add-select{
+    display: flex;
+    column-gap: 20%;
+}
+.Addworkout-btn{
+    border: none;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+.Addworkout-btn:hover{
+    border: 1px solid black;
+}
+.select-day{
+    background-color: rgb(57, 85, 57);
+    color: whitesmoke;
+    border-radius: 5px;
+}
 
 @media (max-width: 480px) {
     .card-Box{

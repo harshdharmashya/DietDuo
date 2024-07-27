@@ -43,7 +43,6 @@ export default function Beginner(props: any) {
     // for open Add to workout modal
     function handleAddworkout(data: any){
         props.setCurrentItem(data);
-        console.log(data)
         handleWork();
     }
 
@@ -105,7 +104,7 @@ export default function Beginner(props: any) {
                         <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
                     {isOpenAdd && 
-                        <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
+                        <Addtoworkout_Modal worktype={'Beginner'} currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
                     }
 
                 </div>
