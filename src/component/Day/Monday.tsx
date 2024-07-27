@@ -4,7 +4,7 @@ import Modalcard from '../Modalcard';
 import { update } from '../../Redux/Usermeal';
 export default function Monday(props: any) {
   const dispatch = useDispatch();
-  
+
   // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,13 +23,11 @@ export default function Monday(props: any) {
     setIsOpen(true)
   }
   function handledelete(index: number): void {
-    let filterData = props.meal.filter((v: any, i: number) => i != index)
-    dispatch(update({filterData}))
-    // setdata(filterData)
+    let filterData = data.filter((v: any, i: number) => i != index)
+    dispatch(update({ filterData }))
+    setdata(filterData)
   }
-  const filterMeal = useSelector((state:any)=> state.meal.filter)
-  // setdata(filterMeal)
-  console.log(filterMeal)
+
   return (
     <>
       <table className="table">

@@ -69,109 +69,109 @@ export default function Usermeal(props: any) {
           <h2>𝓑𝓻𝓮𝓪𝓴𝓯𝓪𝓼𝓽</h2>
           {value === 0 &&
             <Box>
-              <Monday meal={Mon_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Mon_Break} />
             </Box>
           }
           {value === 1 &&
             <Box>
-              <Monday meal={Tus_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} />
+              <Monday meal={Tus_Break} />
             </Box>
           }
           {value === 2 &&
             <Box>
-              <Monday meal={Wed_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Wed_Break} />
               </Box>
           }
           {value === 3 &&
             <Box>
-              <Monday meal={Thur_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Thur_Break} />
               </Box>
           }
           {value === 4 &&
             <Box>
-              <Monday meal={Fri_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Fri_Break} />
               </Box>
           }
           {value === 5 &&
             <Box>
-              <Monday meal={Sat_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Sat_Break} />
               </Box>
           }
           {value === 6 &&
             <Box>
-              <Monday meal={Sun_Break} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Sun_Break} />
               </Box>
           }
           <h2>𝓛𝓾𝓷𝓬𝓱</h2>
           {value === 0 &&
             <Box>
-              <Monday meal={Mon_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Mon_Lunch} />
             </Box>
           }
           {value === 1 &&
             <Box>
-              <Monday meal={Tus_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Tus_Lunch} />
               </Box>
           }
           {value === 2 &&
             <Box>
-              <Monday meal={Wed_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Wed_Lunch} />
               </Box>
           }
           {value === 3 &&
             <Box>
-              <Monday meal={Thur_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Thur_Lunch} />
               </Box>
           }
           {value === 4 &&
             <Box>
-              <Monday meal={Fri_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Fri_Lunch} />
               </Box>
           }
           {value === 5 &&
             <Box>
-              <Monday meal={Sat_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Sat_Lunch} />
               </Box>
           }
           {value === 6 &&
             <Box>
-              <Monday meal={Sun_Lunch} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Sun_Lunch} />
               </Box>
           }
           <h2>𝓓𝓲𝓷𝓷𝓮𝓻</h2>
           {value === 0 &&
             <Box>
-              <Monday meal={Mon_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Mon_Dinner} />
             </Box>
           }
           {value === 1 &&
             <Box>
-              <Monday meal={Tus_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Tus_Dinner} />
               </Box>
           }
           {value === 2 &&
             <Box>
-              <Monday meal={Wed_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Wed_Dinner} />
               </Box>
           }
           {value === 3 &&
             <Box>
-              <Monday meal={Thur_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Thur_Dinner} />
               </Box>
           }
           {value === 4 &&
             <Box>
-              <Monday meal={Fri_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Fri_Dinner} />
               </Box>
           }
           {value === 5 &&
             <Box>
-              <Monday meal={Sat_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Sat_Dinner} />
               </Box>
           }
           {value === 6 &&
             <Box>
-              <Monday meal={Sun_Dinner} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+              <Monday meal={Sun_Dinner} />
               </Box>
           }
         </div>

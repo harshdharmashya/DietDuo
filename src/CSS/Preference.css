@@ -58,7 +58,8 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .Preference {
-        height: 45vh;
+        min-height: 57vh;
+        max-height: auto;
         flex-direction: column;
         row-gap: 30px;
         padding: 5% 0% 0% 0%;
@@ -71,7 +72,9 @@
         flex-basis: none;
         width: 90%;
     }
-
+    .text-section p{
+        width: 100%;
+    }
     .image-section {
         background-color: #d9dc80;
         height: 180px;
@@ -106,7 +109,7 @@
 
 @media (max-width: 480px) {
     .Preference {
-        min-height: 55vh;
+        min-height: 42vh;
         max-height: auto;
         flex-direction: column;
         row-gap: 30px;

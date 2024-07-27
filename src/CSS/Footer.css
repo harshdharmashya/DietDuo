@@ -45,6 +45,9 @@
     .footer-data {
         column-gap: 9%;
     }
+    .copyright {
+        top: 35px;
+    }
 }
 
 @media (max-width: 768px) {
