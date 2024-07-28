@@ -18,11 +18,10 @@ export default function Addtoworkout_Modal(props: any) {
     const handleClose = () => props.setIsOpenAdd(false);
     
     function handleAddtoworkout(data:any) {
-        dispatch(setWork({ data, day: day + "_" + props.worktype}))
+        dispatch(setWork({ data, day }))
         handleClose()
     };
-    const work = useSelector((state:any)=>state.workout.setWork)
-    console.log(work)
+
     const style = {
         position: 'absolute' as 'absolute',
         top: '50%',
@@ -34,6 +33,7 @@ export default function Addtoworkout_Modal(props: any) {
         boxShadow: 24,
         p: 2,
     };
+
     return (
         <Modal
             open={props.isOpenAdd}
@@ -43,7 +43,7 @@ export default function Addtoworkout_Modal(props: any) {
         >
             <Card className='modal-container' sx={{ ...style, borderRadius: '20px', border: 'none', boxShadow: '10px 10px 15px grey' }}>
                 <Box className='card-Box'>
-                    <div className='modal-inner-cont' style={{ height: 210, color: 'black' }}>
+                    <div className='modal-inner-cont' style={{ height: 'auto', color: 'black' }}>
                         <h2>{data.name}</h2>
                         <p className="equipment"><strong>Equipment : </strong>{data?.equipment}</p>
                         <p className="muscle"><strong>Muscle : </strong>{data?.muscle}</p>
@@ -58,6 +58,7 @@ export default function Addtoworkout_Modal(props: any) {
                             <option value="">Day</option>
                             <option value="Mon">Mon</option>
                             <option value="Tus">Tues</option>
+                            <option value="Wed">Wed</option>
                             <option value="Thur">Thur</option>
                             <option value="Fri">fri</option>
                             <option value="Sat">Sat</option>

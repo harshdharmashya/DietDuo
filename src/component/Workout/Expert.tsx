@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setexpert } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
+import Addtoworkout_Modal from '../Addtoworkout_Modal';
 
 
 export default function Expert(props: any) {
     const dispatch = useDispatch();
     const [muscle, setmuscle] = useState('');
+    // for open modal for Add to cart
+    const [isOpenAdd, setIsOpenAdd] = useState(false);
+
     const workout = async (difficulty: string) => {
         const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
         const data = await response.json();
@@ -19,6 +23,13 @@ export default function Expert(props: any) {
 
     // to open modal
     const handleOpen = () => props.setIsOpen(true);
+    const handleWork = () => setIsOpenAdd(true);
+
+    // for open Add to workout modal
+    function handleAddworkout(data: any){
+        props.setCurrentItem(data);
+        handleWork();
+    }
 
     // transfer the data to the modal
     function handleModal(data: any) {
@@ -55,14 +66,17 @@ export default function Expert(props: any) {
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
                             <div className='contain-summry-pie workbtn'>
-                                <button className='btn-workout'>Add to Meal</button>
+                                <button className='btn-workout' onClick={()=>handleAddworkout(data)}>Add to Meal</button>
                                 <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
                     ))
                     }
                     {props.isOpen &&
-                        <Modalworkout worktype={'Expert'} currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+                        <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+                    }
+                     {isOpenAdd && 
+                        <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
                     }
                 </div>
             </div>

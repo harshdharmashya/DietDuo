@@ -6,11 +6,11 @@ import img1 from "../Images/Veg bg.jpg";
 import img2 from "../Images/Allu roti veg meal.jpg";
 import img3 from "../Images/planmeal-weekly-menu-planning-removebg-preview.png"
 
-export default function Header() {
+export default function Header(props:any) {
   return (
     <>
     <header className="background-Color header">
-    <Navbar />
+    <Navbar setshow={props.setshow} show={props.show}/>
     <div className='first-prv'>
         <div className='header-img-left'>
             <img className='img1' src={img1} alt=""/>

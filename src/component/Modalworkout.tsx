@@ -1,13 +1,11 @@
 import React from 'react'
-import img1 from "../Images/modalworkout-bg.png"
 import { Box } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import DoneIcon from '@mui/icons-material/Done';
 import Card from '@mui/material/Card';
 import Modal from '@mui/material/Modal';
 import "../CSS/Modal.css"
 import "../CSS/Modalworkout.css"
-export default function Modalworkout(props:any) {
+
+export default function Modalworkout(props: any) {
     let data = props.currentItem;
     const handleClose = () => props.setIsOpen(false);
 
@@ -22,24 +20,24 @@ export default function Modalworkout(props:any) {
         boxShadow: 24,
         p: 2,
     };
-  return (
-    <Modal
+    return (
+        <Modal
             open={props.isOpen}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Card className='modal-container' sx={{ ...style,borderRadius:'20px',border:'none',boxShadow: '10px 10px 15px grey'}}>
+            <Card className='modal-container' sx={{ ...style, borderRadius: '20px', border: 'none', boxShadow: '10px 10px 15px grey' }}>
                 <Box className='card-Box'>
-                <div className='modal-inner-cont' style={{ height: 210, color: 'black' }}>
+                    <div className='modal-inner-cont' style={{ height: 210, color: 'black' }}>
                         <h2>{data.name}</h2>
                         <p className="equipment"><strong>Equipment : </strong>{data?.equipment}</p>
                         <p className="muscle"><strong>Muscle : </strong>{data?.muscle}</p>
                         <p className="type"><strong>Type : </strong>{data?.type}</p>
                     </div>
-                        {/* <p className="type"><strong>Instructions : </strong>{data?.instructions}</p> */}
+                    {/* <p className="type"><strong>Instructions : </strong>{data?.instructions}</p> */}
                 </Box>
             </Card>
         </Modal>
-  )
+    )
 }

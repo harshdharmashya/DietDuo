@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>{show ?
       <div>
-        <Header />
+        <Header setshow={setshow} show={show}/>
         <Carousel />
         <Meal setshow={setshow} show={show} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
         <Modal />

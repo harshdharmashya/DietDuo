@@ -9,8 +9,10 @@ import {
   Route
 } from 'react-router-dom';
 
-import { setBreakfast} from './Redux/frontSlice';
+import { setBreakfast } from './Redux/frontSlice';
 import Home from './component/Home';
+import Usermeal from './component/Usermeal';
+import User_Workout from './component/Workout/User_Workout';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,18 +30,20 @@ function App() {
       // 33f2cc0aa5bd4b88ac7f4b6b73558dfd
       // 6845c5e2d08f447aba1b24ed78bae323
       // console.log(data)
-        dispatch(setBreakfast(data))
+      dispatch(setBreakfast(data))
     };
     fetchMeals('breakfast');
   }, []);
   return (
     <>
-    <Router>
-            <Routes>
-            <Route path="/" element={<Home/>}/>
-            </Routes>
-    </Router>
-      
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route exact path="/meal" element={<Usermeal />} />
+          <Route exact path="/work_out" element={<User_Workout />} />
+        </Routes>
+      </Router>
+
     </>
   )
 }

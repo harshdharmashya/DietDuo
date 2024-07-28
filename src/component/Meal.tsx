@@ -53,7 +53,7 @@ export default function Meal(props:any) {
         {/* <Link to='' state={props.cart}> */}
         <button className='addcardicon' onClick={()=>props.setshow(false)}>
         <i className="fa-solid fa-burger"></i>
-            <p className='cartcount'>{0}</p>
+            <p className='cartcount'>{2}</p>
         </button>
       </Link>
       </div>

@@ -104,7 +104,7 @@ export default function Beginner(props: any) {
                         <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
                     {isOpenAdd && 
-                        <Addtoworkout_Modal worktype={'Beginner'} currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
+                        <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
                     }
 
                 </div>

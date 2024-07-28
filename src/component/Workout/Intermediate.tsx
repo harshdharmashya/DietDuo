@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setintermediate } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
+import Addtoworkout_Modal from '../Addtoworkout_Modal';
 
 export default function Intermediate(props: any) {
   const dispatch = useDispatch();
+  // for open add workout modal
+  const [isOpenAdd, setIsOpenAdd] = useState(false);
+
   const [muscle, setmuscle] = useState('');
   const muscle_array = [
     { name: 'abdominals' },
@@ -33,6 +37,13 @@ export default function Intermediate(props: any) {
     workout('intermediate');
   }, [muscle]);
   const handleOpen = () => props.setIsOpen(true);
+  const handleWork = () => setIsOpenAdd(true);
+
+  // for open Add to workout modal
+  function handleAddworkout(data: any) {
+    props.setCurrentItem(data);
+    handleWork();
+  }
 
   // for choose muscle 
   const handleChange = (e: any) => {
@@ -81,14 +92,17 @@ export default function Intermediate(props: any) {
                 <p className="type"><strong>Type : </strong>{data.type}</p>
               </div>
               <div className='contain-summry-pie workbtn'>
-                <button className='btn-workout'>Add to Meal</button>
+                <button className='btn-workout' onClick={() => handleAddworkout(data)}>Add to Meal</button>
                 <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
               </div>
             </div>
           ))
           }
           {props.isOpen &&
-            <Modalworkout  worktype={'Intermediate'} currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+            <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+          }
+          {isOpenAdd &&
+            <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
           }
         </div>
       </div>
