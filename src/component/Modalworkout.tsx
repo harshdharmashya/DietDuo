@@ -7,7 +7,7 @@ import "../CSS/Modalworkout.css"
 
 export default function Modalworkout(props: any) {
     let data = props.currentItem;
-    const handleClose = () => props.setIsOpen(false);
+    const handleClose = () => props.setIsOpenAdd(false);
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -22,12 +22,12 @@ export default function Modalworkout(props: any) {
     };
     return (
         <Modal
-            open={props.isOpen}
+            open={props.isOpenAdd}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Card className='modal-container' sx={{ ...style, borderRadius: '20px', border: 'none', boxShadow: '10px 10px 15px grey' }}>
+            <Card className='modal-container' sx={{ ...style, borderRadius: '20px', border: 'none', boxShadow: '10px 7px 15px grey' }}>
                 <Box className='card-Box'>
                     <div className='modal-inner-cont' style={{ height: 210, color: 'black' }}>
                         <h2>{data.name}</h2>

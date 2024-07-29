@@ -1,4 +1,7 @@
 .modal-container{
     background-image: url(../Images/modalworkout-bg.png);
     background-position: left;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 10px 7px 15px grey;
 }

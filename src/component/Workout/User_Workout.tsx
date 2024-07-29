@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux';
 import Monday_Workout from './Monday_Workout';
 
 export default function User_Workout(props:any) {
+    // for data transfer to the modal
+  const [currentItem, setCurrentItem] = useState({});
     // for tab
     const [value, setValue] = useState(0);
 
@@ -52,41 +54,41 @@ export default function User_Workout(props:any) {
                     </div>
                     {value === 0 &&
                         <Box>
-                            <Monday_Workout work={Mon} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Mon} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                     {value === 1 &&
                         <Box>
-                            <Monday_Workout work={Tus} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Tus} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                     {value === 2 &&
                         <Box>
-                            <Monday_Workout work={Wed} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Wed} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                     {value === 3 &&
                         <Box>
-                            <Monday_Workout work={Thur} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Thur} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                     {value === 4 &&
                         <Box>
-                            <Monday_Workout work={Fri} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Fri} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                     {value === 5 &&
                         <Box>
-                            <Monday_Workout work={Sat} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Sat} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                     {value === 6 &&
                         <Box>
-                            <Monday_Workout work={Sun} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem}/>
+                            <Monday_Workout work={Sun} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
                         </Box>
                     }
                 </div>
-                <button className='GoBack-btn' onClick={() => props.setshow(true)}>Go Back</button>
+                {/* <button className='GoBack-btn' onClick={() => props.setshow(true)}>Go Back</button> */}
             </div>
         </>
     )

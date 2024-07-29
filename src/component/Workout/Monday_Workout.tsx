@@ -7,7 +7,7 @@ export default function Monday_Workout(props:any) {
   const dispatch = useDispatch();
 
   // for open modal for read more
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenAdd, setIsOpenAdd] = useState(false);
 
   const [data, setdata] = useState(props.work);
   console.log(data);
@@ -15,7 +15,7 @@ export default function Monday_Workout(props:any) {
   // view exercise function 
   function handlemodal(data: any): void {
     props.setCurrentItem(data)
-    setIsOpen(true)
+    setIsOpenAdd(true)
   }
   function handledelete(index: number): void {
     let filterData = data.filter((v: any, i: number) => i != index)
@@ -54,8 +54,8 @@ export default function Monday_Workout(props:any) {
                   </td>
                 </tr>
               )))}
-          {isOpen &&
-            <Modalworkout currentItem={props.currentItem} isOpen={isOpen} setIsOpen={setIsOpen} />
+          {isOpenAdd &&
+            <Modalworkout currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
           }
         </tbody>
       </table>
