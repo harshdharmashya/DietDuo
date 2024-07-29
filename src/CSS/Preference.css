@@ -42,7 +42,7 @@
 }
 
 .image-section {
-    background-color: #d9dc80;
+    background-color: rgb(192, 192, 42);
     height: auto;
     border-radius: 50px 0px 0px 50px;
     flex-basis: 32%;

@@ -13,6 +13,7 @@ import { setBreakfast } from './Redux/frontSlice';
 import Home from './component/Home';
 import Usermeal from './component/Usermeal';
 import User_Workout from './component/Workout/User_Workout';
+import About from './component/About';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route exact path="/meal" element={<Usermeal />} />
           <Route exact path="/work_out" element={<User_Workout />} />
+          <Route exact path="/about" element={<About/>} />
         </Routes>
       </Router>
 

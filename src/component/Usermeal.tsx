@@ -8,6 +8,7 @@ import "../CSS/workout.css"
 import "../CSS/Usermeal.css"
 import Monday from './Day/Monday';
 import { useSelector } from 'react-redux';
+import Navbar from './Navbar';
 
 export default function Usermeal(props: any) {
 
@@ -42,6 +43,7 @@ export default function Usermeal(props: any) {
 
   return (
     <>
+    <Navbar/>
       <div className='usermeal'>
         <div className='headline-work headline-extra'>𝓨𝓸𝓾𝓻 𝓜𝓮𝓪𝓵...</div>
         <div>

@@ -7,6 +7,7 @@ import "../../CSS/workout.css"
 import "../../CSS/Usermeal.css"
 import { useSelector } from 'react-redux';
 import Monday_Workout from './Monday_Workout';
+import Navbar from '../Navbar';
 
 export default function User_Workout(props:any) {
     // for data transfer to the modal
@@ -28,6 +29,7 @@ export default function User_Workout(props:any) {
     
     return (
         <>
+        <Navbar/>
             <div className='usermeal'>
                 <div className='headline-work headline-extra'>𝓨𝓸𝓾𝓻 𝓦𝓸𝓻𝓴 𝓸𝓾𝓽...</div>
                 <div>
