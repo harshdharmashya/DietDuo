@@ -49,7 +49,6 @@ export default function Addtoworkout_Modal(props: any) {
                         <p className="muscle"><strong>Muscle : </strong>{data?.muscle}</p>
                         <p className="type"><strong>Type : </strong>{data?.type}</p>
                     </div>
-
                 </Box>
                 <div className='workModal-Add-select'>
                     <button className='Addworkout-btn' onClick={()=>handleAddtoworkout(data)}>Add to Workout</button>

@@ -14,7 +14,7 @@ export default function Services() {
             <div className='services-container'>
             <div className='headline-work'>𝓞𝓾𝓻 𝓢𝓮𝓻𝓿𝓲𝓬𝓮𝓼..</div>
                 <div className='card-container'>
-                    <Card sx={{ maxWidth: 345,objectFit:'cover' }}>
+                    <Card sx={{ maxWidth: 300,objectFit:'cover' }}>
                         <CardMedia className='card-media' sx={{color:'black'}}
                             component="img"
                             alt="workout"
@@ -34,7 +34,7 @@ export default function Services() {
                             <Button size="small">Learn More</Button>
                         </CardActions>
                     </Card>
-                    <Card sx={{ maxWidth: 345 }}>
+                    <Card sx={{ maxWidth: 300 }}>
                         <CardMedia
                             component="img"
                             alt="meal"

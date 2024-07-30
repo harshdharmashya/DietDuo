@@ -123,7 +123,7 @@
     border-radius: 50%;
     border: 2px solid #1A5319;
     padding: 14px;
-    background-color: #d9dc80;
+    background-color: rgb(192, 192, 42);
     box-shadow: 1px 1px 10px;
     z-index: 99;
   }

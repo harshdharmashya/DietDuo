@@ -16,7 +16,7 @@ export default function Modalcard(props: any) {
         transform: 'translate(-50%, -50%)',
         width: 400,
         bgcolor: 'background.paper',
-        border: '2px solid #000',
+        border: 'none',
         boxShadow: 24,
         p: 2,
     };
@@ -27,7 +27,7 @@ export default function Modalcard(props: any) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Card sx={{ ...style, width: "800px", height: 'auto'}}>
+            <Card sx={{ ...style, width: "800px", height: 'auto',borderRadius:'10px'}}>
                 <Box className='card-Box'>
                     <img className='read-image' src={data?.image} alt={data?.title} />
                     <Box sx={{ margin: 2 }}>

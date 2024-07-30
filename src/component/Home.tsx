@@ -9,7 +9,7 @@ import Services from './Services';
 import Footer from './Footer';
 import Usermeal from './Usermeal';
 
-export default function Home() {
+export default function Home(props:any) {
   // for toggle user meal component
   const [show, setshow] = useState(true);
   // for modal data 
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>{show ?
       <div>
-        <Header setshow={setshow} show={show}/>
+        <Header setshow={setshow} show={show} user={props.user} setUser={props.setUser}/>
         <Carousel />
         <Meal setshow={setshow} show={show} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
         <Modal />

@@ -8,12 +8,18 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import { auth } from "./component/firebase";
 import { setBreakfast } from './Redux/frontSlice';
 import Home from './component/Home';
 import Usermeal from './component/Usermeal';
 import User_Workout from './component/Workout/User_Workout';
 import About from './component/About';
+import Login from './component/login';
+import Profile from './component/profile';
+import Register from './component/register';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,16 +41,49 @@ function App() {
     };
     fetchMeals('breakfast');
   }, []);
+
+  const [user, setUser] = useState();
+  useEffect(() => {
+    auth.onAuthStateChanged((user: any) => {
+      setUser(user);
+    });
+  });
   return (
-    <>
+    <>{user ? <>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route exact path="/meal" element={<Usermeal />} />
-          <Route exact path="/work_out" element={<User_Workout />} />
-          <Route exact path="/about" element={<About/>} />
-        </Routes>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home user={user} setUser={setUser} />} />
+            <Route exact path="/meal" element={<Usermeal />} />
+            <Route exact path="/work_out" element={<User_Workout />} />
+            <Route exact path="/about" element={<About />} />
+          </Routes>
+        </div>
       </Router>
+    </>
+      :
+      <>
+
+        <Router>
+          <div className="App">
+            <div className="auth-wrapper">
+              <div className="auth-inner">
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<Login />}
+                  />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/profile" element={<Profile />} />
+                </Routes>
+                <ToastContainer />
+              </div>
+            </div>
+          </div>
+        </Router>
+      </>
+    }
 
     </>
   )

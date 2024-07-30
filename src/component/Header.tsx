@@ -10,7 +10,7 @@ export default function Header(props:any) {
   return (
     <>
     <header className="background-Color header">
-    <Navbar setshow={props.setshow} show={props.show}/>
+    <Navbar setshow={props.setshow} show={props.show} user={props.setUser} setUser={props.setUser}/>
     <div className='first-prv'>
         <div className='header-img-left'>
             <img className='img1' src={img1} alt=""/>

@@ -7,7 +7,7 @@ import "../CSS/Modalworkout.css"
 
 export default function Modalworkout(props: any) {
     let data = props.currentItem;
-    const handleClose = () => props.setIsOpenAdd(false);
+    const handleClose = () => props.setIsOpen(false);
 
     const style = {
         position: 'absolute' as 'absolute',
@@ -22,7 +22,7 @@ export default function Modalworkout(props: any) {
     };
     return (
         <Modal
-            open={props.isOpenAdd}
+            open={props.isOpen}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
