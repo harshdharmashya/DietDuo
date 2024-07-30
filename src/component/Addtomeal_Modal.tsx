@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Box } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import DoneIcon from '@mui/icons-material/Done';
+import 'react-notifications/lib/notifications.css';
 import Card from '@mui/material/Card';
 import Modal from '@mui/material/Modal';
 import "../CSS/Modal.css"
@@ -40,7 +39,7 @@ export default function Addtomeal_Modal(props: any) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Card sx={{ ...style, width: "800px", height: 'auto',borderRadius:'10px' }}>
+            <Card sx={{ ...style, width: "800px", height: 'auto', borderRadius: '10px' }}>
                 <Box className='card-Box'>
                     <img className='read-image' src={data?.image} alt={data?.title} />
                     <Box sx={{ margin: 2 }}>
@@ -49,7 +48,7 @@ export default function Addtomeal_Modal(props: any) {
                         <div style={{ display: 'flex', columnGap: '30px', alignItems: 'center' }}>
                             <div style={{ background: "#1A5319", width: '130px', borderRadius: 5, paddingLeft: 10 }}> Ready in {data?.readyInMinutes}min</div>
                             <div>
-                                <select onChange={(e)=>handleSelect(e)} value={day} style={{ padding: '0px 15px', background: '#1A5319', borderRadius: '5px' }}>
+                                <select onChange={(e) => handleSelect(e)} value={day} style={{ padding: '0px 15px', background: '#1A5319', borderRadius: '5px' }}>
                                     <option value="">Day</option>
                                     <option value="Mon">Mon</option>
                                     <option value="Tus">Tus</option>

@@ -20,7 +20,6 @@ export default function Home(props:any) {
         <Header setshow={setshow} show={show} user={props.user} setUser={props.setUser}/>
         <Carousel />
         <Meal setshow={setshow} show={show} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
-        <Modal />
         <Preference />
         <Workout />
         <Services />
