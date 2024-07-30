@@ -21,7 +21,7 @@ function App() {
     AOS.init({
       offset: 320, // offset (in px) from the original trigger point
       delay: 0, // values from 0 to 3000, with step 50ms
-      duration: 2000,
+      duration: 1000,
     }
     );
     AOS.refresh();
