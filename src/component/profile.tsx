@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import default_user from "../Images/user image default.png"
-function Profile() {
+function Profile(props: any) {
   const [userDetails, setUserDetails] = useState({
     photo: "",
     firstName: "",
@@ -26,22 +26,13 @@ function Profile() {
     fetchUserData();
   }, []);
 
-  async function handleLogout() {
-    try {
-      await auth.signOut();
-      window.location.href = "/login";
-      console.log("User logged out successfully!");
-    } catch (error: any) {
-      console.error("Error logging out:", error.message);
-    }
-  }
   return (
     <div className="login-section">
-            <h1 style={{display:"block",margin:'1% auto',width:'236px'}}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h1>
+      <h1 style={{ display: "block", margin: '1% auto', width: '236px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h1>
 
       {userDetails ? (
         <>
-              <h4 style={{margin:'2% auto'}}>Welcome {userDetails.firstName}</h4>
+          <h4 style={{ margin: '2% auto' }}>Welcome {userDetails.firstName}</h4>
           <div className="form profile">
             <div style={{ display: "flex", justifyContent: "center" }}>
               <img
@@ -56,7 +47,7 @@ function Profile() {
               <p>First Name: {userDetails.firstName}</p>
               {/* <p>Last Name: {userDetails.lastName}</p> */}
             </div>
-            <button className="btn btn-primary center" onClick={handleLogout}>
+            <button className="btn btn-primary center" onClick={() => props.handleLogout()}>
               Logout
             </button>
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Modalcard from '../Modalcard';
 import { update } from '../../Redux/Usermeal';
 export default function Monday(props: any) {

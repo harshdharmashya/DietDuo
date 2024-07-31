@@ -10,10 +10,10 @@ import Footer from './Footer'
 import meal1 from "../Images/roll-removebg-preview.png"
 import work1 from "../Images/about-work.png"
 
-export default function About(props:any) {
+export default function About(props: any) {
     return (
         <>
-            <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
+            <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
             <div className='About-section'>
                 <div className='about-info'>
                     <div className='info-text'>
@@ -61,14 +61,14 @@ export default function About(props:any) {
             </div>
             <div className='about-workout-section'>
                 <div className='meal-about'>
-                <div className='work-text'>
+                    <div className='work-text'>
                         <h2 className='work-head-line'>Easily Add Personalized Workouts to Your Daily Schedule with DietDuo</h2>
                         <p>DietDuo not only supports your dietary needs but also helps you maintain an active lifestyle by offering personalized workout plans. Our platform allows you to easily select exercises based on your fitness goals, whether it's building strength, improving flexibility, or enhancing cardiovascular health.</p>
                         <p className='extra-p'>
-                        You can schedule workouts for each day of the week, ensuring a well-balanced routine that fits seamlessly into your busy life. With a variety of exercises to choose from, DietDuo makes it simple to stay motivated and committed to your fitness journey
+                            You can schedule workouts for each day of the week, ensuring a well-balanced routine that fits seamlessly into your busy life. With a variety of exercises to choose from, DietDuo makes it simple to stay motivated and committed to your fitness journey
                         </p>
                         <p>
-                        Let us help you achieve a healthier, more active lifestyle. Start incorporating regular exercise into your daily schedule with DietDuo and experience the benefits of a balanced approach to wellness.
+                            Let us help you achieve a healthier, more active lifestyle. Start incorporating regular exercise into your daily schedule with DietDuo and experience the benefits of a balanced approach to wellness.
                         </p>
                     </div>
                     <div className='work-image-about'>

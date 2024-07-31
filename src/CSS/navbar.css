@@ -1,10 +1,12 @@
-.bgcolor{
+.bgcolor {
     background-color: #1a4b19;
 }
-.nav-item{
+
+.nav-item {
     border-radius: 10px;
-    padding: 2px 8px;   
+    padding: 2px 8px;
 }
-.nav-item:hover{
+
+.nav-item:hover {
     background-color: #0f360e;
 }

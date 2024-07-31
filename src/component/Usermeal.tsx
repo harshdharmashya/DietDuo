@@ -1,14 +1,13 @@
-import { colors } from '@mui/material'
 import React, { useState } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import "../CSS/Meal.css"
-import "../CSS/workout.css"
-import "../CSS/Usermeal.css"
 import Monday from './Day/Monday';
 import { useSelector } from 'react-redux';
 import Navbar from './Navbar';
+import "../CSS/Meal.css"
+import "../CSS/workout.css"
+import "../CSS/Usermeal.css"
 export default function Usermeal(props: any) {
 
   // for tab
@@ -42,7 +41,7 @@ export default function Usermeal(props: any) {
 
   return (
     <>
-      <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
+      <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
       <div className='usermeal'>
         <div className='headline-work headline-extra'>𝓨𝓸𝓾𝓻 𝓜𝓮𝓪𝓵...</div>
         <div>

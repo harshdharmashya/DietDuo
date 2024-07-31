@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import Header from '../component/Header'
 import Carousel from '../component/Carousel';
 import Meal from '../component/Meal';
-import Modal from './Modalcard';
 import Preference from './Preference';
 import Workout from './Workout';
 import Services from './Services';
 import Footer from './Footer';
 import Usermeal from './Usermeal';
 
-export default function Home(props:any) {
+export default function Home(props: any) {
   // for toggle user meal component
   const [show, setshow] = useState(true);
   // for modal data 
@@ -17,15 +16,15 @@ export default function Home(props:any) {
   return (
     <>{show ?
       <div>
-        <Header setshow={setshow} show={show} user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
+        <Header setshow={setshow} show={show} user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
         <Carousel />
-        <Meal setshow={setshow} show={show} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+        <Meal setshow={setshow} show={show} currentItem={currentItem} setCurrentItem={setCurrentItem} />
         <Preference />
         <Workout />
         <Services />
         <Footer />
       </div> :
-      <Usermeal setshow={setshow} show={show} setCurrentItem={setCurrentItem} currentItem={currentItem}/>
+      <Usermeal setshow={setshow} show={show} setCurrentItem={setCurrentItem} currentItem={currentItem} />
     }
     </>
   )

@@ -1,4 +1,3 @@
-// import div from "@mui/material/div";
 import img1 from "../Images/girl-removebg-preview.png"
 import "../CSS/Preference.css"
 export default function Preference() {

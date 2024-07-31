@@ -4,7 +4,6 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
 import { setLunch } from '../Redux/frontSlice';
-import { Link } from 'react-router-dom';
 import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
 
@@ -41,7 +40,7 @@ export default function Lunch(props: any) {
   }, []);
   const handleOpen = () => props.setIsOpen(true);
   const handleopenAdd = () => props.setIsOpenAdd(true);
-  
+
   // onclick for open add to cart modal
   function handleClick(datab: any): void {
     props.setCurrentItem(datab)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Box } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import DoneIcon from '@mui/icons-material/Done';
@@ -27,7 +27,7 @@ export default function Modalcard(props: any) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Card sx={{ ...style, width: "800px", height: 'auto',borderRadius:'10px'}}>
+            <Card sx={{ ...style, width: "800px", height: 'auto', borderRadius: '10px' }}>
                 <Box className='card-Box'>
                     <img className='read-image' src={data?.image} alt={data?.title} />
                     <Box sx={{ margin: 2 }}>
@@ -35,13 +35,13 @@ export default function Modalcard(props: any) {
                         <p className="read-summary">Diets :{data?.diets}</p>
                         <Box className="read-check">
                             <Box style={{ color: 'black' }}>Diary Free :{data?.diaryFree ? <DoneIcon className='DoneIcon' /> : <CloseIcon className='CloseIcon' />}</Box>
-                            <Box style={{ color: 'black', marginLeft: '9px' }}>Gluten Free :{data?.glutenFree ? <DoneIcon  className='DoneIcon' /> : <CloseIcon className='CloseIcon'/>}</Box>
+                            <Box style={{ color: 'black', marginLeft: '9px' }}>Gluten Free :{data?.glutenFree ? <DoneIcon className='DoneIcon' /> : <CloseIcon className='CloseIcon' />}</Box>
                         </Box>
                         <Box className="read-check">
-                            <p style={{ color: 'black' }}>Vegan :{data?.vegan ? <DoneIcon className='DoneIcon'/> : <CloseIcon className='CloseIcon' />}</p>
-                            <p style={{ color: 'black', marginLeft: '9px' }}>Vegetarian :{data?.vegetarian ? <DoneIcon  className='DoneIcon'/> : <CloseIcon className='CloseIcon' />}</p>
+                            <p style={{ color: 'black' }}>Vegan :{data?.vegan ? <DoneIcon className='DoneIcon' /> : <CloseIcon className='CloseIcon' />}</p>
+                            <p style={{ color: 'black', marginLeft: '9px' }}>Vegetarian :{data?.vegetarian ? <DoneIcon className='DoneIcon' /> : <CloseIcon className='CloseIcon' />}</p>
                         </Box>
-                    <div style={{background:"#1A5319",width:'130px',borderRadius:5,paddingLeft:10}}> Ready in {data?.readyInMinutes}min</div> 
+                        <div style={{ background: "#1A5319", width: '130px', borderRadius: 5, paddingLeft: 10 }}> Ready in {data?.readyInMinutes}min</div>
                     </Box>
                 </Box>
             </Card>

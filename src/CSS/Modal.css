@@ -1,55 +1,73 @@
-.card-Box{
+.card-Box {
     display: flex;
 }
-.read-image{
+
+.read-image {
     width: 400px;
 }
-.read-title,.read-summary{
+
+.read-title,
+.read-summary {
     color: black;
     height: auto;
 }
-.read-check{
+
+.read-check {
     display: flex;
     color: black;
     height: auto;
 }
-.DoneIcon{
+
+.DoneIcon {
     background-color: #1A5319;
     border-radius: 50%;
     height: 13px;
     width: 13px;
 }
-.CloseIcon{
+
+.CloseIcon {
     background-color: red;
     border-radius: 50%;
     height: 13px;
     width: 13px;
 }
-.workModal-Add-select{
+
+.workModal-Add-select {
     display: flex;
     column-gap: 20%;
 }
-.Addworkout-btn{
+
+.Addworkout-btn {
     border: none;
     border-radius: 5px;
     padding: 2px 10px;
 }
-.Addworkout-btn:hover{
+
+.Addworkout-btn:hover {
     border: 1px solid black;
 }
-.select-day{
+
+.select-day {
     background-color: gray;
     color: whitesmoke;
     border-radius: 5px;
 }
-
+.modal-container {
+    background-image: url(../Images/modalworkout-bg.png);
+    background-position: left;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 10px 7px 15px grey;
+}
 @media (max-width: 480px) {
-    .card-Box{
+    .card-Box {
         flex-direction: column;
     }
-    .read-image{
+
+    .read-image {
         width: 300px;
     }
+
     .css-1ijv3kx-MuiPaper-root-MuiCard-root {
         width: 330px !important;
     }

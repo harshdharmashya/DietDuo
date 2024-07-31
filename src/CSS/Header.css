@@ -51,7 +51,7 @@
   width: auto;
   padding: 8px 25px;
   border-radius: 5px;
-  border: none; 
+  border: none;
   background-color: white;
   color: black;
   top: 0px;
@@ -72,39 +72,45 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .header{
+  .header {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     min-height: 40vh;
     max-height: auto;
     /* filter: brightness(0.7) contrast(1.2) blur(3px); */
   }
-  .LOGO{
+
+  .LOGO {
     display: none;
   }
-  .seconds{
+
+  .seconds {
     color: white;
     margin-right: 110px;
-    
+
   }
+
   .img1 {
     display: none;
   }
+
   .img2 {
     display: none;
   }
-  .overdiv-btn1{
+
+  .overdiv-btn1 {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .btn1 {
     position: relative;
-  left: 0px;
-  width: auto;
-  padding: 8px 25px;
-  border-radius: 5px;
-  top: 300px;
+    left: 0px;
+    width: auto;
+    padding: 8px 25px;
+    border-radius: 5px;
+    top: 300px;
   }
 }
 

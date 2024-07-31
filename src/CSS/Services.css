@@ -1,9 +1,10 @@
-.services-container{
+.services-container {
     height: auto;
     background-color: #1A5319;
     padding: 2%;
 }
-.card-container{
+
+.card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -11,11 +12,10 @@
     gap: 100px;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1024px) {}
 
-}
 @media (max-width: 768px) {
-    .card-container{
+    .card-container {
         padding: 10%;
         gap: 40px;
     }

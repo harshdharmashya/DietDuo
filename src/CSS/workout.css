@@ -1,20 +1,21 @@
-.work{
+.work {
     height: auto;
     padding-top: 2%;
     background-color: #1A5319;
     color: white;
 }
-.headline-work{
+
+.headline-work {
     display: flex;
     justify-content: center;
     font-size: 3.2em;
     line-height: 1.1;
     margin-bottom: 2%;
 }
-.beginner{
 
-}
-.dropdown-muscle{
+.beginner {}
+
+.dropdown-muscle {
     background-color: white;
     color: black;
     border: 15px;
@@ -22,14 +23,17 @@
     border: none;
     border-radius: 5px;
 }
-.dropdown-muscle:hover{
+
+.dropdown-muscle:hover {
     box-shadow: 2px 2px 10px white;
 }
-.dropdown-muscle-option{
+
+.dropdown-muscle-option {
     background-color: white;
     color: black;
 }
-.workout-section{
+
+.workout-section {
     display: flex;
     flex-wrap: wrap;
     margin: 2% 3% 0% 3%;
@@ -37,10 +41,12 @@
     justify-content: center;
     column-gap: 20px;
 }
-.muscles{
+
+.muscles {
     left: 210px;
 }
-.cardwork{
+
+.cardwork {
     /* background-color: #fff; */
     background-image: url(../Images/card-bg.jpg);
     border-radius: 10px;
@@ -52,42 +58,54 @@
     box-sizing: border-box;
     color: black;
 }
+
 .cardwork h2 {
     margin-top: 0;
     color: #333;
 }
+
 .cardwork p {
     color: #555;
 }
-.cardwork p strong{
+
+.cardwork p strong {
     color: #474747;
 }
-.cardwork .equipment, .cardwork .muscle, .cardwork .type {
+
+.cardwork .equipment,
+.cardwork .muscle,
+.cardwork .type {
     font-weight: bold;
 }
-.view-button{
+
+.view-button {
     padding: 1% 10%;
     border-radius: 10px;
 }
-.workbtn{
-    column-gap:10px;
+
+.workbtn {
+    column-gap: 10px;
 }
-.btn-workout{
+
+.btn-workout {
     border-radius: 3px;
     background-color: #3c6b3b;
     flex-basis: 48%;
     border: none;
 }
-.loader-height{
+
+.loader-height {
     height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.load{
+
+.load {
     height: 70px;
     width: 70px;
 }
+
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .muscles {
         display: flex;
@@ -95,40 +113,48 @@
         left: 0;
         margin: 3% 0;
     }
+
     .cardwork {
         width: 43%;
     }
 }
 
 @media (max-width: 480px) {
-    .work{
+    .work {
         padding-top: 10%;
     }
+
     .cardwork {
         padding: 15px;
     }
-    .muscles{
+
+    .muscles {
         display: flex;
         justify-content: center;
         left: 0;
         margin: 3% 0;
     }
-    .headline-work{
+
+    .headline-work {
         display: flex;
         justify-content: center;
         font-size: 2.2em;
         margin-bottom: 5%;
     }
-    .headline-extra{
+
+    .headline-extra {
         margin-left: 55px;
     }
-    .btn-workout{
+
+    .btn-workout {
         margin-top: 0px;
     }
-    .workbtn{
-        column-gap:9px;
+
+    .workbtn {
+        column-gap: 9px;
     }
-    .beginner{
+
+    .beginner {
         padding: 5%;
     }
 }

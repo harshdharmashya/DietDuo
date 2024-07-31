@@ -4,7 +4,6 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
 import { setDinner } from '../Redux/frontSlice';
-import { Link } from 'react-router-dom';
 import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
 
@@ -48,12 +47,12 @@ export default function Dinner(props: any) {
     handleOpen();
   }
 
-   // onclick for open add to cart modal
-   function handleClick(datab: any): void {
+  // onclick for open add to cart modal
+  function handleClick(datab: any): void {
     props.setCurrentItem(datab)
     handleopenAdd();
   }
-  
+
   const meals = useSelector((state: any) => state.counter.dinner)
   // console.log(meals);
   if (meals.length === 0) {

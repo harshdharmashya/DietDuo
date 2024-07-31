@@ -1,47 +1,55 @@
-.usermeal{
+.usermeal {
     background-color: #1A5319;
     min-height: 100vh;
     max-height: auto;
     padding: 3%;
 }
-.lunch-meal{
+
+.lunch-meal {
     display: flex;
     flex-wrap: wrap;
     column-gap: 50px;
     border: 1px solid white;
     padding: 2%;
 }
-.day-tab{
+
+.day-tab {
     display: flex;
     justify-content: center;
     margin: 20px 0px;
 }
-.user-image{
+
+.user-image {
     height: 60px;
     width: 80px;
     border-radius: 5px;
 }
-.user-image:hover{
+
+.user-image:hover {
     transform: scale(1.1);
     transition: 1s;
 }
-.user-title{
+
+.user-title {
     width: 600px;
 }
-.user-btn{
+
+.user-btn {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
 }
-.read-btn{
+
+.read-btn {
     padding: 2px;
     background-color: white;
     color: black;
     border: none;
     border-radius: 5px;
 }
-.remove-btn{
+
+.remove-btn {
     margin-top: 8px;
     padding: 2px;
     background-color: white;
@@ -49,7 +57,8 @@
     border: none;
     border-radius: 5px;
 }
-.GoBack-btn{
+
+.GoBack-btn {
     position: fixed;
     background-color: white;
     border: none;
@@ -58,5 +67,5 @@
     padding: 1px 5px;
     box-shadow: 5px 5px 10px black;
     right: 50px;
-    top:90px;
+    top: 90px;
 }

@@ -3,8 +3,7 @@ import { Box } from '@mui/material';
 import Card from '@mui/material/Card';
 import Modal from '@mui/material/Modal';
 import "../CSS/Modal.css"
-import "../CSS/Modalworkout.css"
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { setWork } from '../Redux/workoutSlice';
 
 export default function Addtoworkout_Modal(props: any) {
@@ -16,8 +15,8 @@ export default function Addtoworkout_Modal(props: any) {
 
     // for close modal
     const handleClose = () => props.setIsOpenAdd(false);
-    
-    function handleAddtoworkout(data:any) {
+
+    function handleAddtoworkout(data: any) {
         dispatch(setWork({ data, day }))
         handleClose()
     };
@@ -51,7 +50,7 @@ export default function Addtoworkout_Modal(props: any) {
                     </div>
                 </Box>
                 <div className='workModal-Add-select'>
-                    <button className='Addworkout-btn' onClick={()=>handleAddtoworkout(data)}>Add to Workout</button>
+                    <button className='Addworkout-btn' onClick={() => handleAddtoworkout(data)}>Add to Workout</button>
                     <div>
                         <select className='select-day' onChange={(e) => setDay(e.target.value)} value={day}>
                             <option value="">Day</option>

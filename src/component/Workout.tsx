@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Box, Tab, Tabs } from '@mui/material'
-import "../CSS/Meal.css"
-import "../CSS/workout.css"
 import Beginner from "./Workout/Beginner"
 import Intermediate from './Workout/Intermediate'
 import Expert from './Workout/Expert'
+import "../CSS/Meal.css"
+import "../CSS/workout.css"
 export default function Workout() {
     const [value, setValue] = useState(0);
     // for data transfer to the modal
     const [currentItem, setCurrentItem] = useState({});
     // for open Read more modal
     const [isOpen, setIsOpen] = useState(false);
-    
+
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);

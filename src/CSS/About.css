@@ -87,6 +87,7 @@
 .head-line {
     font-size: 4rem;
 }
+
 .work-head-line {
     font-size: 3rem;
 }
@@ -100,6 +101,7 @@
 .meal-text {
     padding: 5% 3% 0% 3%;
 }
+
 .work-text {
     padding: 2% 3% 0% 3%;
 }
@@ -112,18 +114,21 @@
     height: 500px;
     width: 400px;
 }
-.about-workout-section{
+
+.about-workout-section {
     min-height: auto;
     max-height: auto;
     background-color: hsl(119, 54%, 21%);
     padding: 2%;
 }
-.info-work-image{
+
+.info-work-image {
     filter: drop-shadow(5px 5px 7px white);
     height: 400px;
     width: 400px;
 }
-.work-image-about{
+
+.work-image-about {
     display: block;
     margin: auto;
 }
@@ -152,12 +157,14 @@
         overflow: hidden;
         height: 70px;
     }
+
     .info-image {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
     }
+
     .about-2nd-story {
         min-height: 70vh;
         max-height: auto;
@@ -171,18 +178,23 @@
     .head-line {
         font-size: 2rem;
     }
+
     .meal-about {
         flex-wrap: wrap;
     }
-    .meal-text, .work-text{
+
+    .meal-text,
+    .work-text {
         /* padding: 5% 3% 0% 3%; */
         width: 90%;
         margin: auto;
     }
-    .extra-p{
+
+    .extra-p {
         display: none;
     }
-    .info-work-image{
+
+    .info-work-image {
         height: 250px;
         width: 250px;
     }

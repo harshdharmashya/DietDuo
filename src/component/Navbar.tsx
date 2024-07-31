@@ -1,10 +1,7 @@
 import React from 'react'
 import "../CSS/navbar.css"
 import { Link } from 'react-router-dom'
-import { auth } from './firebase';
-import { toast } from 'react-toastify';
 export default function Navbar(props: any) {
-  // }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-trans bgcolor">
@@ -21,26 +18,26 @@ export default function Navbar(props: any) {
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/about">About</Link>
               </li>
-              
+
               {
                 props.user ?
-                <>
-                <li className="nav-item">
-                <Link className='nav-link active' aria-current="page" to="" onClick={()=>props.handleLogout()}>Logout</Link>
-                </li>
-                <li className="nav-item">
-                <Link className='nav-link active' aria-current="page" to="/profile">Profile</Link>
-                </li>
-                </>
-                :
-                <>
-                <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
-                </li>
-                <li className="nav-item">
-                <Link className='nav-link active' aria-current="page" to="/register">Sign up</Link>
-                </li>
-                </>
+                  <>
+                    <li className="nav-item">
+                      <Link className='nav-link active' aria-current="page" to="" onClick={() => props.handleLogout()}>Logout</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className='nav-link active' aria-current="page" to="/profile">Profile</Link>
+                    </li>
+                  </>
+                  :
+                  <>
+                    <li className="nav-item">
+                      <Link className="nav-link active" aria-current="page" to="/login">Login</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className='nav-link active' aria-current="page" to="/register">Sign up</Link>
+                    </li>
+                  </>
               }
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/meal">Meal</Link>

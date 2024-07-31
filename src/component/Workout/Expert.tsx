@@ -26,7 +26,7 @@ export default function Expert(props: any) {
     const handleWork = () => setIsOpenAdd(true);
 
     // for open Add to workout modal
-    function handleAddworkout(data: any){
+    function handleAddworkout(data: any) {
         props.setCurrentItem(data);
         handleWork();
     }
@@ -38,15 +38,15 @@ export default function Expert(props: any) {
         handleOpen();
     }
 
-    
+
     const work_out: any = useSelector((state: any) => state.workout.expert)
     // console.log("work_out of beginner: ", work_out)
     if (work_out.length === 0) {
         return <>
-        <div className='loader-height'>
-            <div className="spinner-border text-light load" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </div>
+            <div className='loader-height'>
+                <div className="spinner-border text-light load" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
             </div>
         </>; // Display loader if data is empty
     }
@@ -66,7 +66,7 @@ export default function Expert(props: any) {
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
                             <div className='contain-summry-pie workbtn'>
-                                <button className='btn-workout' onClick={()=>handleAddworkout(data)}>Add to Meal</button>
+                                <button className='btn-workout' onClick={() => handleAddworkout(data)}>Add to Meal</button>
                                 <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ export default function Expert(props: any) {
                     {props.isOpen &&
                         <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
-                     {isOpenAdd && 
+                    {isOpenAdd &&
                         <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
                     }
                 </div>

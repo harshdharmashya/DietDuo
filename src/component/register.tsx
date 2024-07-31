@@ -1,8 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
-import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
@@ -65,7 +64,7 @@ function Register() {
                 message={message}
             // action={action}
             />
-                <h3 style={{ display: "block", margin: '2% auto', width: '130px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
+            <h3 style={{ display: "block", margin: '2% auto', width: '130px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
             <form className="form" onSubmit={handleRegister}>
                 <h4>Sign Up</h4>
 

@@ -1,4 +1,3 @@
-// import React from 'react'
 import "../CSS/Meal.css"
 import * as React from 'react';
 import { Box } from '@mui/material';
@@ -11,21 +10,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import LocalDiningOutlinedIcon from '@mui/icons-material/LocalDiningOutlined';
 
-export default function Meal(props:any) {
+export default function Meal(props: any) {
   // for tab
   const [value, setValue] = useState(0);
-
   // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);
   // for open modal for Add to cart
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   // for user meal
-  const [Usermeal,setuserMeal] = useState([]);
+  const [Usermeal, setuserMeal] = useState([]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   }
-  
+
   return (
     <>
       <div className='meal'>
@@ -38,12 +36,12 @@ export default function Meal(props:any) {
         </Box>
         {value === 0 &&
           <Box>
-            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} setIsOpenAdd={setIsOpenAdd} isOpenAdd={isOpenAdd}/>
+            <Breakfast isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} setIsOpenAdd={setIsOpenAdd} isOpenAdd={isOpenAdd} />
           </Box>
         }
         {value === 1 &&
           <Box>
-            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd}/>
+            <Lunch isOpen={isOpen} setIsOpen={setIsOpen} currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
           </Box>
         }
         {value === 2 &&
@@ -52,11 +50,11 @@ export default function Meal(props:any) {
           </Box>
         }
         <Link to=''>
-        {/* <Link to='' state={props.cart}> */}
-        <button className='addcardicon' onClick={()=>props.setshow(false)}>
-        <LocalDiningOutlinedIcon></LocalDiningOutlinedIcon>
-        </button>
-      </Link>
+          {/* <Link to='' state={props.cart}> */}
+          <button className='addcardicon' onClick={() => props.setshow(false)}>
+            <LocalDiningOutlinedIcon></LocalDiningOutlinedIcon>
+          </button>
+        </Link>
       </div>
     </>
   )

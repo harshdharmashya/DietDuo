@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Workupdate } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 
-export default function Monday_Workout(props:any) {
+export default function Monday_Workout(props: any) {
   const dispatch = useDispatch();
 
   // for open modal for read more

@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import Card from '@mui/material/Card';
 import Modal from '@mui/material/Modal';
 import "../CSS/Modal.css"
-import "../CSS/Modalworkout.css"
 
 export default function Modalworkout(props: any) {
     let data = props.currentItem;

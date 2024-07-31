@@ -72,9 +72,11 @@
         flex-basis: none;
         width: 90%;
     }
-    .text-section p{
+
+    .text-section p {
         width: 100%;
     }
+
     .image-section {
         background-color: #d9dc80;
         height: 180px;

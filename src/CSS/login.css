@@ -1,5 +1,5 @@
-.login-section{
-    background: linear-gradient(#0b380b 0% ,#186e16 80%,#20911e 100%);
+.login-section {
+    background: linear-gradient(#0b380b 0%, #186e16 80%, #20911e 100%);
     /* background-color: #1A5319; */
     padding: 2%;
     height: 100vh;
@@ -9,17 +9,20 @@
     justify-content: center;
     align-items: center;
 }
-.form{
+
+.form {
     width: 25%;
     border: 1px solid white;
     padding: 2% 3% 0% 3%;
     border-radius: 10px;
 }
-.center{
+
+.center {
     display: block;
     margin: auto;
 }
-.profile{
+
+.profile {
     padding: 2% 3% 1% 3%;
 
 }

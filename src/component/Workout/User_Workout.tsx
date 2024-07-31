@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import "../../CSS/Meal.css"
-import "../../CSS/workout.css"
-import "../../CSS/Usermeal.css"
 import { useSelector } from 'react-redux';
 import Monday_Workout from './Monday_Workout';
 import Navbar from '../Navbar';
+import "../../CSS/Meal.css"
+import "../../CSS/workout.css"
+import "../../CSS/Usermeal.css"
 
-export default function User_Workout(props:any) {
+export default function User_Workout(props: any) {
     // for data transfer to the modal
-  const [currentItem, setCurrentItem] = useState({});
+    const [currentItem, setCurrentItem] = useState({});
     // for tab
     const [value, setValue] = useState(0);
 
@@ -23,13 +23,13 @@ export default function User_Workout(props:any) {
     const Tus = useSelector((state: any) => state.workout.Tus);
     const Wed = useSelector((state: any) => state.workout.Wed);
     const Thur = useSelector((state: any) => state.workout.Thur);
-    const Fri= useSelector((state: any) => state.workout.Fri);
+    const Fri = useSelector((state: any) => state.workout.Fri);
     const Sat = useSelector((state: any) => state.workout.Sat);
     const Sun = useSelector((state: any) => state.workout.Sun);
-    
+
     return (
         <>
-        <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
+            <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
             <div className='usermeal'>
                 <div className='headline-work headline-extra'>𝓨𝓸𝓾𝓻 𝓦𝓸𝓻𝓴 𝓸𝓾𝓽...</div>
                 <div>
@@ -56,37 +56,37 @@ export default function User_Workout(props:any) {
                     </div>
                     {value === 0 &&
                         <Box>
-                            <Monday_Workout work={Mon} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Mon} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                     {value === 1 &&
                         <Box>
-                            <Monday_Workout work={Tus} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Tus} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                     {value === 2 &&
                         <Box>
-                            <Monday_Workout work={Wed} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Wed} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                     {value === 3 &&
                         <Box>
-                            <Monday_Workout work={Thur} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Thur} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                     {value === 4 &&
                         <Box>
-                            <Monday_Workout work={Fri} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Fri} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                     {value === 5 &&
                         <Box>
-                            <Monday_Workout work={Sat} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Sat} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                     {value === 6 &&
                         <Box>
-                            <Monday_Workout work={Sun} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
+                            <Monday_Workout work={Sun} currentItem={currentItem} setCurrentItem={setCurrentItem} />
                         </Box>
                     }
                 </div>
