@@ -17,7 +17,7 @@ export default function Home(props:any) {
   return (
     <>{show ?
       <div>
-        <Header setshow={setshow} show={show} user={props.user} setUser={props.setUser}/>
+        <Header setshow={setshow} show={show} user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
         <Carousel />
         <Meal setshow={setshow} show={show} currentItem={currentItem} setCurrentItem={setCurrentItem}/>
         <Preference />

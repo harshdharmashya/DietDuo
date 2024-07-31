@@ -4,15 +4,7 @@ import { Link } from 'react-router-dom'
 import { auth } from './firebase';
 import { toast } from 'react-toastify';
 export default function Navbar(props: any) {
-  async function handleLogout() {
-    try {
-      await auth.signOut();
-      window.location.href = "/login";
-      console.log("User logged out successfully!");
-    } catch (error) {
-      console.error("Error logging out:", toast.error("yes"));
-    }
-  }
+  // }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-trans bgcolor">
@@ -32,10 +24,9 @@ export default function Navbar(props: any) {
               
               {
                 props.user ?
-                
                 <>
                 <li className="nav-item">
-                <Link className='nav-link active' aria-current="page" to="" onClick={()=>handleLogout()}>Logout</Link>
+                <Link className='nav-link active' aria-current="page" to="" onClick={()=>props.handleLogout()}>Logout</Link>
                 </li>
                 <li className="nav-item">
                 <Link className='nav-link active' aria-current="page" to="/profile">Profile</Link>

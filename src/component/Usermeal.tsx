@@ -9,7 +9,6 @@ import "../CSS/Usermeal.css"
 import Monday from './Day/Monday';
 import { useSelector } from 'react-redux';
 import Navbar from './Navbar';
-
 export default function Usermeal(props: any) {
 
   // for tab
@@ -43,7 +42,7 @@ export default function Usermeal(props: any) {
 
   return (
     <>
-    <Navbar/>
+      <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
       <div className='usermeal'>
         <div className='headline-work headline-extra'>𝓨𝓸𝓾𝓻 𝓜𝓮𝓪𝓵...</div>
         <div>
@@ -82,27 +81,27 @@ export default function Usermeal(props: any) {
           {value === 2 &&
             <Box>
               <Monday meal={Wed_Break} />
-              </Box>
+            </Box>
           }
           {value === 3 &&
             <Box>
               <Monday meal={Thur_Break} />
-              </Box>
+            </Box>
           }
           {value === 4 &&
             <Box>
               <Monday meal={Fri_Break} />
-              </Box>
+            </Box>
           }
           {value === 5 &&
             <Box>
               <Monday meal={Sat_Break} />
-              </Box>
+            </Box>
           }
           {value === 6 &&
             <Box>
               <Monday meal={Sun_Break} />
-              </Box>
+            </Box>
           }
           <h2>𝓛𝓾𝓷𝓬𝓱</h2>
           {value === 0 &&
@@ -113,32 +112,32 @@ export default function Usermeal(props: any) {
           {value === 1 &&
             <Box>
               <Monday meal={Tus_Lunch} />
-              </Box>
+            </Box>
           }
           {value === 2 &&
             <Box>
               <Monday meal={Wed_Lunch} />
-              </Box>
+            </Box>
           }
           {value === 3 &&
             <Box>
               <Monday meal={Thur_Lunch} />
-              </Box>
+            </Box>
           }
           {value === 4 &&
             <Box>
               <Monday meal={Fri_Lunch} />
-              </Box>
+            </Box>
           }
           {value === 5 &&
             <Box>
               <Monday meal={Sat_Lunch} />
-              </Box>
+            </Box>
           }
           {value === 6 &&
             <Box>
               <Monday meal={Sun_Lunch} />
-              </Box>
+            </Box>
           }
           <h2>𝓓𝓲𝓷𝓷𝓮𝓻</h2>
           {value === 0 &&
@@ -149,35 +148,39 @@ export default function Usermeal(props: any) {
           {value === 1 &&
             <Box>
               <Monday meal={Tus_Dinner} />
-              </Box>
+            </Box>
           }
           {value === 2 &&
             <Box>
               <Monday meal={Wed_Dinner} />
-              </Box>
+            </Box>
           }
           {value === 3 &&
             <Box>
               <Monday meal={Thur_Dinner} />
-              </Box>
+            </Box>
           }
           {value === 4 &&
             <Box>
               <Monday meal={Fri_Dinner} />
-              </Box>
+            </Box>
           }
           {value === 5 &&
             <Box>
               <Monday meal={Sat_Dinner} />
-              </Box>
+            </Box>
           }
           {value === 6 &&
             <Box>
               <Monday meal={Sun_Dinner} />
-              </Box>
+            </Box>
           }
         </div>
-        <button className='GoBack-btn' onClick={()=>props.setshow(true)}>Go Back</button>
+        {props.setshow ?
+          <button className='GoBack-btn' onClick={() => props.setshow(true)}>Go Back</button>
+          :
+          ''
+        }
       </div>
     </>
   )

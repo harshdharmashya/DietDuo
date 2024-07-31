@@ -4,6 +4,9 @@ import { auth, db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import "../CSS/login.css"
 
 function Register() {
@@ -11,6 +14,8 @@ function Register() {
     const [password, setPassword] = useState("");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState("false");
 
     const handleRegister = async (e: any) => {
         e.preventDefault();
@@ -26,22 +31,43 @@ function Register() {
                     photo: ""
                 });
             }
-            console.log("User Registered Successfully!!");
-            toast.success("User Registered Successfully!!", {
-                position: "top-center",
-            });
-        } catch (error) {
-            console.log(toast.error("blank"));
-            toast.error(toast.error("blank"), {
-                position: "bottom-center",
-            });
+            setMessage("User Registered Successfully!!")
+            setOpen(true)
+        } catch (error: any) {
+            console.log({ error });
+            setMessage(error?.message)
+            setOpen(true);
         }
     };
 
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const action = (
+        <>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+                <CloseIcon fontSize="small" />
+            </IconButton>
+        </>
+    );
     return (
         <div className="login-section">
+            <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message={message}
+            // action={action}
+            />
+                <h3 style={{ display: "block", margin: '2% auto', width: '130px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
             <form className="form" onSubmit={handleRegister}>
-                <h3>Sign Up</h3>
+                <h4>Sign Up</h4>
 
                 <div className="mb-3">
                     <label>First name</label>

@@ -10,10 +10,10 @@ import Footer from './Footer'
 import meal1 from "../Images/roll-removebg-preview.png"
 import work1 from "../Images/about-work.png"
 
-export default function About() {
+export default function About(props:any) {
     return (
         <>
-            <Navbar />
+            <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
             <div className='About-section'>
                 <div className='about-info'>
                     <div className='info-text'>

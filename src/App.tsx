@@ -6,9 +6,10 @@ import "aos/dist/aos.css";
 import {
   BrowserRouter as Router,
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { auth } from "./component/firebase";
@@ -47,44 +48,44 @@ function App() {
     auth.onAuthStateChanged((user: any) => {
       setUser(user);
     });
-  });
+  }, []);
+
+  // function for logout
+  async function handleLogout() {
+    try {
+      await auth.signOut();
+      window.location.href = "/login";
+      console.log("User logged out successfully!");
+    } catch (error) {
+      console.error("Error logging out:", toast.error("yes"));
+    }
+  }
   return (
-    <>{user ? <>
+    <>
       <Router>
         <div className="App">
-          <Routes>
-            <Route path="/" element={<Home user={user} setUser={setUser} />} />
-            <Route exact path="/meal" element={<Usermeal />} />
-            <Route exact path="/work_out" element={<User_Workout />} />
-            <Route exact path="/about" element={<About />} />
-          </Routes>
+          {user ?
+            <Routes>
+              <Route path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout} />} />
+              <Route exact path="/meal" element={<Usermeal user={user} setUser={setUser} handleLogout={handleLogout} />} />
+              <Route exact path="/work_out" element={<User_Workout user={user} setUser={setUser} handleLogout={handleLogout} />} />
+              <Route exact path="/about" element={<About user={user} setUser={setUser} handleLogout={handleLogout} />} />
+              <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
+              <Route path="/register" element={user ? <Navigate to="/" /> : <Register />}  />
+            </Routes>
+            :
+            <Routes>
+              <Route
+                path="/"
+                element={<Login />}
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={user ? <Navigate to="/profile" /> : <Register />}  />
+              <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
+            </Routes>
+          }
         </div>
       </Router>
-    </>
-      :
-      <>
-
-        <Router>
-          <div className="App">
-            <div className="auth-wrapper">
-              <div className="auth-inner">
-                <Routes>
-                  <Route
-                    path="/"
-                    element={<Login />}
-                  />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/profile" element={<Profile />} />
-                </Routes>
-                <ToastContainer />
-              </div>
-            </div>
-          </div>
-        </Router>
-      </>
-    }
-
     </>
   )
 }

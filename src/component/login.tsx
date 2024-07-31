@@ -15,23 +15,23 @@ function Login() {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in Successfully");
       window.location.href = "/";
-      toast.success("User logged in Successfully", {
-        position: "top-center",
-      });
+      // toast.success("User logged in Successfully", {
+      //   position: "top-center",
+      // });
     } catch (error) {
-      console.log(toast.error("hello"));
+      // console.log(toast.error("hello"));
 
-      toast.error(toast.error("bye"), {
-        position: "bottom-center",
-      });
+      // toast.error(toast.error("bye"), {
+      //   position: "bottom-center",
+      // });
     }
   };
 
   return (
     <div className="login-section">
+      <h3 style={{display:"block",margin:'2% auto',width:'130px'}}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
     <form className="form" onSubmit={handleSubmit}>
-      <h3 style={{display:"block",margin:'auto',width:'130px'}}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
-      <h3>Login</h3>
+      <h4>Login</h4>
 
       <div className="mb-3">
         <label>Email address</label>

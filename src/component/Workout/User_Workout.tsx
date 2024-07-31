@@ -29,7 +29,7 @@ export default function User_Workout(props:any) {
     
     return (
         <>
-        <Navbar/>
+        <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout}/>
             <div className='usermeal'>
                 <div className='headline-work headline-extra'>𝓨𝓸𝓾𝓻 𝓦𝓸𝓻𝓴 𝓸𝓾𝓽...</div>
                 <div>
