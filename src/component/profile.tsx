@@ -37,9 +37,11 @@ function Profile() {
   }
   return (
     <div className="login-section">
+            <h1 style={{display:"block",margin:'1% auto',width:'236px'}}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h1>
+
       {userDetails ? (
         <>
-              <h3 style={{margin:'2% auto'}}>Welcome {userDetails.firstName}</h3>
+              <h4 style={{margin:'2% auto'}}>Welcome {userDetails.firstName}</h4>
           <div className="form profile">
             <div style={{ display: "flex", justifyContent: "center" }}>
               <img
