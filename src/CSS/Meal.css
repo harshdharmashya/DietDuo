@@ -14,7 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 3% 3%;
-    height: 515px;
+    height: 500px;
     justify-content: center;
     column-gap: 20px;
 }
@@ -191,7 +191,7 @@
         position: "relative";
     }
 
-    .css-lyabzg-MuiResponsiveChart-container {
+    /* .css-lyabzg-MuiResponsiveChart-container {
         width: 150px;
         position: absolute;
         bottom: 10px;
@@ -201,7 +201,7 @@
         color: white !important;
         background-color: #0f360e !important;
         border-radius: 9px !important;
-    }
+    } */
 
     .active-meal {
         row-gap: 15px;
@@ -227,7 +227,7 @@
     }
 
     .btn-Add-to-meal {
-        margin-top: 80px;
+        margin-top: 0px;
     }
 
     .ptag {

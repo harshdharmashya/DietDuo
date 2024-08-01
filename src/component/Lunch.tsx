@@ -9,7 +9,7 @@ import Addtomeal_Modal from './Addtomeal_Modal';
 
 const size = {
   width: 150,
-  height: 70,
+  height: 65,
 };
 
 const StyledText = styled('text')(({ theme }) => ({
@@ -73,9 +73,9 @@ export default function Lunch(props: any) {
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>
-                <div className='pie-chart-health'>
+              <div className='pie-chart-health' style={{position:'relative',bottom:'10px'}}>
                   <p style={{ color: "black" }}>Health Score :</p>
-                  <PieChart series={[{
+                  <PieChart sx={{position:'relative',bottom:'10px'}} series={[{
                     data: [
                       { value: datab.healthScore },
                       { value: 100}
