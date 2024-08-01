@@ -1,4 +1,3 @@
-import React from 'react'
 import img1 from "../Images/BreakFast.png"
 import img2 from "../Images/Fruits.png"
 import img3 from "../Images/Rajma Chawal.png"

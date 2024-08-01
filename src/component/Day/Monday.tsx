@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Modalcard from '../Modalcard';
 import { update } from '../../Redux/Usermeal';
@@ -23,7 +23,7 @@ export default function Monday(props: any) {
     setIsOpen(true)
   }
   function handledelete(index: number): void {
-    let filterData = data.filter((v: any, i: number) => i != index)
+    let filterData = data.filter((_v: any, i: number) => i != index)
     dispatch(update({ filterData }))
     setdata(filterData)
   }

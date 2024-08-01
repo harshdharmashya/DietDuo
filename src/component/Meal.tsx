@@ -1,5 +1,5 @@
-import "../CSS/Meal.css"
 import * as React from 'react';
+import "../CSS/Meal.css"
 import { Box } from '@mui/material';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -18,9 +18,9 @@ export default function Meal(props: any) {
   // for open modal for Add to cart
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   // for user meal
-  const [Usermeal, setuserMeal] = useState([]);
+  // const [Usermeal, setuserMeal] = useState([]);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   }
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import img1 from "../Images/workout services.jpg"
 import img2 from "../Images/Meal services.jpg"
 import Card from '@mui/material/Card';

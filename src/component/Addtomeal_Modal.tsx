@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Box } from '@mui/material';
 import 'react-notifications/lib/notifications.css';
 import Card from '@mui/material/Card';

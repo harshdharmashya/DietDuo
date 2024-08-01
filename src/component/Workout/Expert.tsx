@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setexpert } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
@@ -76,7 +76,7 @@ export default function Expert(props: any) {
                         <Modalworkout currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
                     {isOpenAdd &&
-                        <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
+                        <Addtoworkout_Modal currentItem={props.currentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} setmuscle={setmuscle}/>
                     }
                 </div>
             </div>

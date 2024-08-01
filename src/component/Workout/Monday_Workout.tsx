@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Workupdate } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
@@ -18,7 +18,7 @@ export default function Monday_Workout(props: any) {
     setIsOpenAdd(true)
   }
   function handledelete(index: number): void {
-    let filterData = data.filter((v: any, i: number) => i != index)
+    let filterData = data.filter((_v: any, i: number) => i != index)
     dispatch(Workupdate({ filterData }))
     setdata(filterData)
   }

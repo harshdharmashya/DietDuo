@@ -35,7 +35,7 @@ export default function Usermeal(props: any) {
   const Sat_Dinner = useSelector((state: any) => state.meal.Sat_Dinner);
   const Sun_Dinner = useSelector((state: any) => state.meal.Sun_Dinner);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   }
 

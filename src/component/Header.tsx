@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from "./Navbar"
 import "../CSS/base.css"
 import "../CSS/Header.css"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
@@ -42,8 +42,6 @@ function Register() {
     const handleClose = () => {
         setOpen(false);
     };
-
-    const action = (
         <>
             <IconButton
                 size="small"
@@ -54,7 +52,6 @@ function Register() {
                 <CloseIcon fontSize="small" />
             </IconButton>
         </>
-    );
     return (
         <div className="login-section">
             <Snackbar
