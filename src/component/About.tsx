@@ -44,7 +44,7 @@ export default function About(props: any) {
             <div className='About-meal-section'>
                 <div className='meal-about'>
                     <div className='meal-image'>
-                        <img className='info-image' data-aos="fade-right" src={meal1} alt="" />
+                        <img className='info-work-image roll' data-aos="fade-right" src={meal1} alt="" />
                     </div>
                     <div className='meal-text'>
                         <h2 className='head-line'>Easily Add Healthy Meals to Your Schedule with DietDuo</h2>
