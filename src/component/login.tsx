@@ -28,9 +28,9 @@ function Login() {
 
   return (
     <div className="login-section">
-      <h3 style={{ display: "block", margin: '2% auto', width: '130px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
+      <h3 className="head-DietDuo" >𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
       <form className="form" onSubmit={handleSubmit}>
-        <h4>Login</h4>
+        <h4 className="login">Login</h4>
 
         <div className="mb-3">
           <label>Email address</label>

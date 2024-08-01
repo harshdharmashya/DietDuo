@@ -163,6 +163,8 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        height: 250px;
+        width: 250px;
     }
 
     .about-2nd-story {
@@ -172,7 +174,7 @@
     }
 
     .Our-story {
-        padding: 5% 2%;
+        padding: 5% 3%;
     }
 
     .head-line {

@@ -48,7 +48,7 @@
 
 .contain-summry-pie {
     display: flex !important;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: "relative";
     column-gap: 5px;
 }
@@ -83,10 +83,10 @@
     margin-top: 25px;
 }
 
-/* .css-1kza5gv-MuiResponsiveChart-container {
+.css-1kza5gv-MuiResponsiveChart-container {
     width: 150px;
     height: 70px;
-} */
+}
 .css-lyabzg-MuiResponsiveChart-container>svg {
     width: 100% !important;
     height: 81% !important;
@@ -106,7 +106,7 @@
 }
 
 .css-1u0lry5-MuiChartsLegend-root {
-    display: none;
+    display: none !important;
 }
 
 .mealbtn {
@@ -160,7 +160,7 @@
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
     .meal {
         height: 1450px;
         padding: 6% 2% 2% 2%;

@@ -61,9 +61,9 @@ function Register() {
                 message={message}
             // action={action}
             />
-            <h3 style={{ display: "block", margin: '2% auto', width: '130px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
+            <h3 className="head-DietDuo" >𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
             <form className="form" onSubmit={handleRegister}>
-                <h4>Sign Up</h4>
+                <h4 className="login">Sign Up</h4>
 
                 <div className="mb-3">
                     <label>First name</label>
