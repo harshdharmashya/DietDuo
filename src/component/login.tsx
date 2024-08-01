@@ -28,7 +28,7 @@ function Login() {
 
   return (
     <div className="login-section">
-      <h3 className="head-DietDuo" >𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
+      <h2 className="head-DietDuo" >𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h2>
       <form className="form" onSubmit={handleSubmit}>
         <h4 className="login">Login</h4>
 

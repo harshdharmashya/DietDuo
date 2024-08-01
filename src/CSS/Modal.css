@@ -71,4 +71,10 @@
     .css-1ijv3kx-MuiPaper-root-MuiCard-root {
         width: 330px !important;
     }
+    .modal-container{
+        width: 320px !important;
+    }
+    .meal-modal-width{
+        width: 340px !important;
+    }
 }

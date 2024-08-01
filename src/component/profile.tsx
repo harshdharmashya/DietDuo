@@ -31,7 +31,7 @@ function Profile(props: any) {
   return (
     <>
       <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
-      <div style={{height:'91vh'}} className="login-section">
+      <div style={{height:'95vh'}} className="login-section">
         <h1 style={{ display: "block", margin: '1% auto', width: '236px' }}>𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h1>
 
         {userDetails ? (

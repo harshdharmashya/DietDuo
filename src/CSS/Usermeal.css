@@ -63,9 +63,9 @@
     background-color: white;
     border: none;
     color: black;
-    border-radius: 3px;
+    border-radius: 15px;
     padding: 1px 5px;
-    box-shadow: 5px 5px 10px black;
-    right: 50px;
-    top: 90px;
+    box-shadow: 3px 3px 8px white;
+    right: 20px;
+    bottom: 40px;
 }

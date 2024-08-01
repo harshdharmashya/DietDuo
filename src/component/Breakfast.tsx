@@ -70,8 +70,8 @@ export default function Breakfast(props: any) {
                   <p style={{ color: "black" }}>Health Score :</p>
                   <PieChart series={[{
                     data: [
-                      { value: datab.healthScore, label: 'A' },
-                      { value: 100, label: 'B' }
+                      { value: datab.healthScore },
+                      { value: 100}
                     ], innerRadius: 15
                   }]} {...size}>
                     <PieCenterLabel>{datab.healthScore}</PieCenterLabel>

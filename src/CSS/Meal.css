@@ -14,7 +14,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 3% 3%;
-    height: 500px;
+    height: 515px;
     justify-content: center;
     column-gap: 20px;
 }
@@ -83,7 +83,7 @@
     margin-top: 25px;
 }
 
-.css-1kza5gv-MuiResponsiveChart-container {
+/* .css-1kza5gv-MuiResponsiveChart-container {
     width: 150px;
     height: 70px;
 }
@@ -107,7 +107,7 @@
 
 .css-1u0lry5-MuiChartsLegend-root {
     display: none !important;
-}
+} */
 
 .mealbtn {
     column-gap: 10px;

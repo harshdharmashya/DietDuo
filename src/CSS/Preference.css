@@ -111,7 +111,7 @@
 
 @media (max-width: 767px) {
     .Preference {
-        min-height: 42vh;
+        min-height: 51vh;
         max-height: auto;
         flex-direction: column;
         row-gap: 30px;
