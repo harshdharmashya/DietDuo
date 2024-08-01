@@ -66,10 +66,10 @@ export default function Lunch(props: any) {
 
   return (
     <>
-      <div className='active-meal'>
+    <div className='active-meal'>
         {meals?.recipes?.map((datab: any, i: number) => (
-          <div className="card card-rec mb-3 m-2" key={i}>
-            <img style={{ height: 270, color: 'black' }} src={datab?.image} className="card-img-top" alt={datab?.title} />
+          <div className=" card card-rec mb-3 m-2" key={i}>
+            <img src={datab?.image} className="card-img-top" alt={datab?.title} />
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>
@@ -77,8 +77,8 @@ export default function Lunch(props: any) {
                   <p style={{ color: "black" }}>Health Score :</p>
                   <PieChart series={[{
                     data: [
-                      { value: datab.healthScore, label: 'A' },
-                      { value: 100, label: 'B' }
+                      { value: datab.healthScore },
+                      { value: 100}
                     ], innerRadius: 15
                   }]} {...size}>
                     <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
