@@ -73,9 +73,9 @@ export default function Lunch(props: any) {
             <div className="card-body">
               <h5 className="card-title text-dark">{datab?.title}</h5>
               <div className='contain-summry-pie'>
-              <div className='pie-chart-health' style={{position:'relative',bottom:'10px'}}>
+              <div className='pie-chart-health'>
                   <p style={{ color: "black" }}>Health Score :</p>
-                  <PieChart sx={{position:'relative',bottom:'10px'}} series={[{
+                  <PieChart sx={{position:'relative',bottom:'10px',left:'9px'}} series={[{
                     data: [
                       { value: datab.healthScore },
                       { value: 100}
@@ -86,7 +86,7 @@ export default function Lunch(props: any) {
                 </div>
                 <div className='diets-array'>
                   <p className='diets-array-p'>Diets  </p>
-                  <p style={{ color: 'black' }} className='ptag'>{datab.diets}</p>
+                  <p style={{ color: 'black' }} className='ptag'>{datab.diets+", "}</p>
                 </div>
               </div>
             </div>
