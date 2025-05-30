@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# DietDuo 🥗💪
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DietDuo** is a personalized healthy meal and workout planner web application. It helps users choose nutritious meals and workout routines according to their goals and daily schedule. Built with **React (Vite) + TypeScript**, this project emphasizes a clean UI, responsive design, and efficient state management.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Browse Meals & Workouts:** Search and select from a wide range of healthy meal and fitness plans.
+- 📅 **Daily Planner:** Assign meals and workouts to specific days and time slots.
+- 📊 **Schedule View:** View your full week’s meal & workout schedule by type and day.
+- 🧭 **Intuitive Navigation:** Smooth transitions using React Router.
+- 🔐 **Authentication:** Secure login and sign-up for personalized planning.
+- 📱 **Responsive Design:** Optimized for all devices using Bootstrap, MUI, and custom media queries.
 
-## Expanding the ESLint configuration
+## 🧱 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Frontend:** React.js (Vite), TypeScript
+- **UI Libraries:** Bootstrap, Material-UI
+- **Routing:** React Router DOM
+- **State Management:** React Hooks (Redux Toolkit planned)
+- **Deployment:** Netlify
 
-- Configure the top-level `parserOptions` property like this:
+## 🗂️ Project Structure (Key Pages)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- `Home` - Intro + Quick Access
+- `Meal` - Select meals by type and day
+- `Workout` - Choose workouts by category
+- `About` - Project story and features
+- `Schedule Button` - Fixed button to view full plan
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 🚀 How to Run Locally
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/harshdharmashya/DietDuo.git
+   cd DietDuo
+2. Install dependencies
+   -- npm install
+3. Start the development server
+   -- npm run dev
