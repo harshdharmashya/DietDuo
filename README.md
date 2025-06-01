@@ -37,3 +37,13 @@
    -- npm install
 3. Start the development server
    -- npm run dev
+
+## Screen Shot
+![Screenshot 2025-06-01 173856](https://github.com/user-attachments/assets/70746704-0fac-4836-8d4c-782579fbc970)
+![Screenshot 2025-06-01 173913](https://github.com/user-attachments/assets/01a40261-cb43-46e0-b488-6cda311ac836)
+![Screenshot 2025-06-01 173926](https://github.com/user-attachments/assets/e6f17f9e-d6fb-4b85-880c-68c1e1eb66eb)
+![Screenshot 2025-06-01 174044](https://github.com/user-attachments/assets/316f4209-f999-43bc-91b6-fcecbd4db0cf)
+
+
+
+
