@@ -1,4 +1,4 @@
-# DietDuo 🥗💪
+# DietDuo 🥗💪 https://dietduo.netlify.app/
 
 **DietDuo** is a personalized healthy meal and workout planner web application. It helps users choose nutritious meals and workout routines according to their goals and daily schedule. Built with **React (Vite) + TypeScript**, this project emphasizes a clean UI, responsive design, and efficient state management.
 
