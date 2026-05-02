@@ -1,69 +1,93 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import Modalcard from '../Modalcard';
-import { update } from '../../Redux/Usermeal';
-export default function Monday(props: any) {
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import Modalcard from "../Modalcard";
+import { update } from "../../Redux/Usermeal";
+
+export default function Monday(props: {
+  meal: unknown[];
+  setCurrentItem?: (item: unknown) => void;
+  currentItem?: unknown;
+  sectionTitle?: string;
+}) {
   const dispatch = useDispatch();
-
-  // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);
+  const [modalPayload, setModalPayload] = useState<unknown>(null);
+  const [data, setdata] = useState(Array.isArray(props.meal) ? props.meal : []);
 
-  const [data, setdata] = useState(props.meal)
-  // if (Mon.length === 0) {
-  //     return <>
-  //       <div className='loader-height'>
-  //         <div className="spinner-border text-light load" role="status">
-  //           <span className="visually-hidden">Loading...</span>
-  //         </div>
-  //       </div>
-  //     </>; // Display loader if data is empty
-  //   }
-  function handlemodal(data: any): void {
-    props.setCurrentItem(data)
-    setIsOpen(true)
+  useEffect(() => {
+    setdata(Array.isArray(props.meal) ? props.meal : []);
+  }, [props.meal]);
+
+  function handlemodal(item: unknown): void {
+    setModalPayload(item);
+    props.setCurrentItem?.(item);
+    setIsOpen(true);
   }
+
   function handledelete(index: number): void {
-    let filterData = data.filter((_v: any, i: number) => i != index)
-    dispatch(update({ filterData }))
-    setdata(filterData)
+    const filterData = data.filter((_v, i) => i !== index);
+    dispatch(update({ filterData }));
+    setdata(filterData);
   }
+
+  const modalItem = props.currentItem;
 
   return (
     <>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">image</th>
-            <th scope="col">Title</th>
-            <th scope="col">Diets</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            data.length === 0 ? (
-              <>
-                <h6>Please add your meal from meal section</h6>
-              </>
-            ) : (
-              data.map((data: any, i: number) => (
-                <tr key={i}>
-                  <th scope="row">{i + 1}</th>
-                  <td><img className='user-image' src={data?.image} alt="" /></td>
-                  <td className='user-title'>{data?.title}</td>
-                  <td className='user-title'>{data?.diets}</td>
-                  <td className='user-btn'>
-                    <button className='read-btn' onClick={() => handlemodal(data)}>View</button>
-                    <button className='remove-btn' onClick={() => handledelete(i)}>&#128465;</button>
-                  </td>
-                </tr>
-              )))}
-          {isOpen &&
-            <Modalcard currentItem={props.currentItem} isOpen={isOpen} setIsOpen={setIsOpen} />
-          }
-        </tbody>
-      </table>
+      {props.sectionTitle ? <p className="meal-panel-meta">{props.sectionTitle}</p> : null}
+
+      <div className="meal-cards-grid">
+        {data.length === 0 ? (
+          <div className="meal-empty" style={{ gridColumn: "1 / -1" }}>
+            <div className="meal-empty-icon" aria-hidden>
+              🍽️
+            </div>
+            <h3 className="display-font">Nothing here yet</h3>
+            <p>
+              Add dishes from the home page meal section for this day and meal type. They will show up here as cards you
+              can view or remove.
+            </p>
+          </div>
+        ) : (
+          data.map((item: any, i: number) => (
+            <motion.article
+              key={`${item?.title ?? "meal"}-${i}`}
+              className="meal-card"
+              layout
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.32, delay: Math.min(i * 0.05, 0.35), ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="meal-card-image-wrap">
+                <img className="meal-card-image" src={item?.image} alt="" />
+              </div>
+              <div className="meal-card-body">
+                <h3 className="meal-card-title">{item?.title}</h3>
+                <p className="meal-card-diets">{item?.diets ? String(item.diets) : "—"}</p>
+                <div className="meal-card-actions">
+                  <button type="button" className="meal-card-btn meal-card-btn--view" onClick={() => handlemodal(item)}>
+                    View details
+                  </button>
+                  <button
+                    type="button"
+                    className="meal-card-btn meal-card-btn--remove"
+                    title="Remove from list"
+                    aria-label="Remove meal"
+                    onClick={() => handledelete(i)}
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+          ))
+        )}
+      </div>
+
+      {isOpen ? (
+        <Modalcard currentItem={modalPayload ?? props.currentItem} isOpen={isOpen} setIsOpen={setIsOpen} />
+      ) : null}
     </>
-  )
+  );
 }
