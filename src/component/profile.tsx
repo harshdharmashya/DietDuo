@@ -6,13 +6,13 @@ import Navbar from "./Navbar";
 function Profile(props: any) {
   const [userDetails, setUserDetails] = useState({
     photo: "",
-    firstName: "",
-    email: ""
+    firstName: ""
   });
+  const [email, setemail] = useState("");
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user: any) => {
-      console.log(user);
-
+      console.log("user",user);
+      setemail(user.email);
       const docRef = doc(db, "Users", user.uid);
       console.log(docRef);
       const docSnap: any = await getDoc(docRef);
@@ -47,9 +47,7 @@ function Profile(props: any) {
                 />
               </div>
               <div>
-                <p>Email: {userDetails.email}</p>
-                <p>First Name: {userDetails.firstName}</p>
-                {/* <p>Last Name: {userDetails.lastName}</p> */}
+                <p>Email: {email}</p>
               </div>
               <button className="btn btn-primary center" onClick={() => props.handleLogout()}>
                 Logout

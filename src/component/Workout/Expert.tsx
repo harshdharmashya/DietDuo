@@ -12,7 +12,8 @@ export default function Expert(props: any) {
     const [isOpenAdd, setIsOpenAdd] = useState(false);
 
     const workout = async (difficulty: string) => {
-        const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
+        // const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
+        const response = await fetch(`https://diet-duo-backend.vercel.app/api/exercies?difficulty=${difficulty}&muscle=${muscle}`);
         const data = await response.json();
         dispatch(setexpert(data))
 
@@ -57,7 +58,6 @@ export default function Expert(props: any) {
             <div className='beginner'>
                 <div className='workout-section'>
                     {work_out.map((data: any, i: number) => (
-                        (i == 0 || i == 1 || i == 3 || i == 4 || i == 5 || i == 6) &&
                         <div className="cardwork" key={i}>
                             <div style={{ height: 210 }}>
                                 <h2>{data.name}</h2>

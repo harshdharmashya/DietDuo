@@ -1,6 +1,8 @@
 import "../CSS/navbar.css"
 import { Link } from 'react-router-dom'
 export default function Navbar(props: any) {
+  console.log("props nav: ",props.user)
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-trans bgcolor">

@@ -31,7 +31,7 @@ export default function Dinner(props: any) {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchMeals = async (mealType: string) => {
-      const response = await fetch(`https://api.spoonacular.com/recipes/random?number=3&tags=${mealType}&apiKey=6845c5e2d08f447aba1b24ed78bae323`);
+      const response = await fetch(`https://diet-duo-backend.vercel.app/api/recipes?mealType=${mealType}`);
       const data = await response.json();
       dispatch(setDinner(data))
     };
@@ -68,7 +68,10 @@ export default function Dinner(props: any) {
   return (
     <>
       <div className='active-meal'>
-        {meals?.recipes?.map((datab: any, i: number) => (
+        {meals &&
+          [...meals] // make a shallow copy to avoid mutating the original array
+            .sort(() => Math.random() - 0.5) // shuffle the array randomly
+            .slice(0, 3).map((datab: any, i: number) => (
           // (i==5 || i==6 || i==7) &&
           <div className=" card card-rec mb-3 m-2" key={i}>
             <img src={datab?.image} className="card-img-top" alt={datab?.title} />

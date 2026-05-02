@@ -6,6 +6,8 @@ import img2 from "../Images/Allu roti veg meal.jpg";
 import img3 from "../Images/planmeal-weekly-menu-planning-removebg-preview.png"
 
 export default function Header(props: any) {
+  console.log("props : ",props.user)
+
   return (
     <>
       <header className="background-Color header">

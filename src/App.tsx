@@ -9,7 +9,7 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import { toast} from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { auth } from "./component/firebase";
@@ -33,7 +33,7 @@ function App() {
     );
     AOS.refresh();
     const fetchMeals = async (mealType: string) => {
-      const response = await fetch(`https://api.spoonacular.com/recipes/random?number=3&tags=${mealType}&apiKey=6845c5e2d08f447aba1b24ed78bae323`);
+      const response = await fetch(`https://diet-duo-backend.vercel.app/api/recipes?mealType=${mealType}`);
       const data = await response.json();
       // 33f2cc0aa5bd4b88ac7f4b6b73558dfd
       // 6845c5e2d08f447aba1b24ed78bae323
@@ -64,26 +64,28 @@ function App() {
     <>
       <Router>
         <div className="App">
-          {user ?
-            <Routes>
-              <Route path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout} />} />
-              <Route path="/meal" element={<Usermeal user={user} setUser={setUser} handleLogout={handleLogout} />}/>
-              <Route path="/work_out" element={<User_Workout user={user} setUser={setUser} handleLogout={handleLogout} />} />
-              <Route path="/about" element={<About user={user} setUser={setUser} handleLogout={handleLogout} />} />
-              <Route path="/profile" element={<Profile user={user} setUser={setUser} handleLogout={handleLogout} />} />
-              <Route path="/register" element={user ? <Navigate to="/" /> : <Register />}  />
-            </Routes>
-            :
-            <Routes>
-              <Route
-                path="/"
-                element={<Login />}
-              />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={user ? <Navigate to="/profile" /> : <Register />}  />
-              <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
-            </Routes>
-          }
+          <Routes>
+            <Route path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout} />} />
+            {user ?
+              <>
+                <Route path="/meal" element={<Usermeal user={user} setUser={setUser} handleLogout={handleLogout} />} />
+                <Route path="/work_out" element={<User_Workout user={user} setUser={setUser} handleLogout={handleLogout} />} />
+                <Route path="/about" element={<About user={user} setUser={setUser} handleLogout={handleLogout} />} />
+                <Route path="/profile" element={<Profile user={user} setUser={setUser} handleLogout={handleLogout} />} />
+                <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+              </>
+              :
+              <>
+                <Route
+                  path="/"
+                  element={<Login />}
+                />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={user ? <Navigate to="/profile" /> : <Register />} />
+                <Route path="/profile" element={<Profile handleLogout={handleLogout} />} />
+              </>
+            }
+          </Routes>
         </div>
       </Router>
     </>

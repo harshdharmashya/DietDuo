@@ -28,7 +28,8 @@ export default function Beginner(props: any) {
         // traps,
     ]
     const workout = async (difficulty: string) => {
-        const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
+        // const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
+        const response = await fetch(`https://diet-duo-backend.vercel.app/api/exercies?difficulty=${difficulty}&muscle=${muscle}`);
         const data = await response.json();
         dispatch(setBeginner(data))
 
@@ -40,7 +41,7 @@ export default function Beginner(props: any) {
     const handleWork = () => setIsOpenAdd(true);
 
     // for open Add to workout modal
-    function handleAddworkout(data: any){
+    function handleAddworkout(data: any) {
         props.setCurrentItem(data);
         handleWork();
     }
@@ -84,7 +85,6 @@ export default function Beginner(props: any) {
                 </div>
                 <div className='workout-section'>
                     {work_out.map((data: any, i: number) => (
-                        (i == 0 || i == 1 || i == 3 || i == 4 || i == 5 || i == 6) &&
                         <div className="cardwork" key={i}>
                             <div style={{ height: 210 }}>
                                 <h2>{data.name}</h2>
@@ -93,7 +93,7 @@ export default function Beginner(props: any) {
                                 <p className="type"><strong>Type : </strong>{data.type}</p>
                             </div>
                             <div className='contain-summry-pie workbtn'>
-                                <button className='btn-workout' onClick={()=>handleAddworkout(data)}>Add to Meal</button>
+                                <button className='btn-workout' onClick={() => handleAddworkout(data)}>Add to Meal</button>
                                 <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ export default function Beginner(props: any) {
                     {props.isOpen &&
                         <Modalworkout currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
                     }
-                    {isOpenAdd && 
+                    {isOpenAdd &&
                         <Addtoworkout_Modal currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
                     }
 

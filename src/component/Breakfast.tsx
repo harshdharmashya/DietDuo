@@ -59,35 +59,38 @@ export default function Breakfast(props: any) {
   return (
     <>
       <div className='active-meal'>
-        {meals?.recipes?.map((datab: any, i: number) => (
-          // (i==5 || i==6 || i==7) &&
-          <div className=" card card-rec mb-3 m-2" key={i}>
-            <img src={datab?.image} className="card-img-top" alt={datab?.title} />
-            <div className="card-body">
-              <h5 className="card-title text-dark">{datab?.title}</h5>
-              <div className='contain-summry-pie'>
-              <div className='pie-chart-health'>
-                  <p style={{ color: "black" }}>Health Score :</p>
-                  <PieChart sx={{position:'relative',bottom:'10px',left:'9px'}} series={[{
-                    data: [
-                      { value: datab.healthScore },
-                      { value: 100}
-                    ], innerRadius: 15
-                  }]} {...size}>
-                    <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
-                  </PieChart>
+        {meals &&
+          [...meals] // make a shallow copy to avoid mutating the original array
+            .sort(() => Math.random() - 0.5) // shuffle the array randomly
+            .slice(0, 3).map((datab: any, i: number) => (
+              // (i==5 || i==6 || i==7) &&
+              <div className=" card card-rec mb-3 m-2" key={i}>
+                <img src={datab?.image} className="card-img-top" alt={datab?.title} />
+                <div className="card-body">
+                  <h5 className="card-title text-dark">{datab?.title}</h5>
+                  <div className='contain-summry-pie'>
+                    <div className='pie-chart-health'>
+                      <p style={{ color: "black" }}>Health Score :</p>
+                      <PieChart sx={{ position: 'relative', bottom: '10px', left: '9px' }} series={[{
+                        data: [
+                          { value: datab.healthScore },
+                          { value: 100 }
+                        ], innerRadius: 15
+                      }]} {...size}>
+                        <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
+                      </PieChart>
+                    </div>
+                    <div className='diets-array'>
+                      <p className='diets-array-p'>Diets  </p>
+                      <p style={{ color: 'black' }} className='ptag'>{datab.diets + ", "}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className='diets-array'>
-                  <p className='diets-array-p'>Diets  </p>
-                  <p style={{ color: 'black' }} className='ptag'>{datab.diets+", "}</p>
+                <div className='contain-summry-pie mealbtn'>
+                  <button className='btn-Add-to-meal' onClick={() => handleClick(datab)}>Add to Meal</button>
+                  <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
                 </div>
-              </div>
-            </div>
-            <div className='contain-summry-pie mealbtn'>
-              <button className='btn-Add-to-meal' onClick={() => handleClick(datab)}>Add to Meal</button>
-              <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
-            </div>
-          </div>))
+              </div>))
         }
         {props.isOpen &&
           <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
