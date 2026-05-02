@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import Modalcard from "../Modalcard";
-import { update } from "../../Redux/Usermeal";
+import { setDayMeals } from "../../Redux/Usermeal";
+import type { MealPlanKey } from "../../Redux/Usermeal";
 
 export default function Monday(props: {
   meal: unknown[];
+  mealDayKey: MealPlanKey;
   setCurrentItem?: (item: unknown) => void;
   currentItem?: unknown;
   sectionTitle?: string;
@@ -27,7 +29,7 @@ export default function Monday(props: {
 
   function handledelete(index: number): void {
     const filterData = data.filter((_v, i) => i !== index);
-    dispatch(update({ filterData }));
+    dispatch(setDayMeals({ day: props.mealDayKey, items: filterData }));
     setdata(filterData);
   }
 

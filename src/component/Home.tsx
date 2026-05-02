@@ -12,7 +12,7 @@ export default function Home(props: any) {
   // for toggle user meal component
   const [show, setshow] = useState(true);
   // for modal data 
-  const [currentItem, setCurrentItem] = useState({});
+  const [currentItem, setCurrentItem] = useState<unknown>({});
   return (
     <>{show ?
       <div>
@@ -24,7 +24,15 @@ export default function Home(props: any) {
         <Services />
         <Footer />
       </div> :
-      <Usermeal setshow={setshow} show={show} setCurrentItem={setCurrentItem} currentItem={currentItem} />
+      <Usermeal
+        setshow={setshow}
+        show={show}
+        setCurrentItem={setCurrentItem}
+        currentItem={currentItem}
+        user={props.user}
+        setUser={props.setUser}
+        handleLogout={props.handleLogout}
+      />
     }
     </>
   )

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
+import { doc, getDoc } from 'firebase/firestore';
 import './App.css'
 import * as AOS from "aos";
 import "aos/dist/aos.css";
@@ -12,8 +13,16 @@ import {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { auth } from "./component/firebase";
+import { auth, db } from "./component/firebase";
 import { setBreakfast } from './Redux/frontSlice';
+import { hydrateMealPlan, resetMealPlan } from './Redux/Usermeal';
+import { store } from './store';
+import {
+  countMealsInPlan,
+  readMealPlanFromLocalStorage,
+  richerMealPlan,
+  persistMeals,
+} from './mealsPersistence';
 import Home from './component/Home';
 import Usermeal from './component/Usermeal';
 import User_Workout from './component/Workout/User_Workout';
@@ -45,9 +54,45 @@ function App() {
 
   const [user, setUser] = useState();
   useEffect(() => {
-    auth.onAuthStateChanged((user: any) => {
-      setUser(user);
+    const unsub = auth.onAuthStateChanged(async (authUser: any) => {
+      setUser(authUser);
+
+      if (authUser?.uid) {
+        const uid = authUser.uid as string;
+        let fromDb: Record<string, unknown> | null = null;
+
+        try {
+          const snap = await getDoc(doc(db, 'Users', uid));
+          const raw = snap.exists() ? snap.data()?.mealPlan : undefined;
+          if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
+            fromDb = raw as Record<string, unknown>;
+          }
+        } catch (e) {
+          console.error('Could not load meals from Firestore:', e);
+        }
+
+        const fromLs = readMealPlanFromLocalStorage(uid);
+        const merged = richerMealPlan(fromDb, fromLs);
+
+        if (merged && countMealsInPlan(merged) > 0) {
+          store.dispatch(hydrateMealPlan(merged));
+          if (
+            fromLs &&
+            countMealsInPlan(fromLs) > countMealsInPlan(fromDb ?? undefined)
+          ) {
+            void persistMeals(uid, store.getState().meal);
+          }
+        }
+      } else {
+        const guest = readMealPlanFromLocalStorage(null);
+        if (guest && countMealsInPlan(guest) > 0) {
+          store.dispatch(hydrateMealPlan(guest));
+        } else {
+          store.dispatch(resetMealPlan());
+        }
+      }
     });
+    return () => unsub();
   }, []);
 
   // function for logout

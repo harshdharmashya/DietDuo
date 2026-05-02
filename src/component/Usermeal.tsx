@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, type Dispatch, type SetStateAction } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import Monday from "./Day/Monday";
 import Navbar from "./Navbar";
 import type { RootState } from "../store";
+import type { MealPlanKey } from "../Redux/Usermeal";
 import "../CSS/Usermeal.css";
 
 const DAY_PREFIX = ["Mon", "Tus", "Wed", "Thur", "Fri", "Sat", "Sun"] as const;
@@ -52,10 +53,11 @@ function len(arr: unknown) {
 export default function Usermeal(props: {
   user?: unknown;
   setUser?: unknown;
-  handleLogout: () => void | Promise<void>;
+  /** Only required on full-page routes (/meal); optional when embedded from Home. */
+  handleLogout?: () => void | Promise<void>;
   setshow?: (v: boolean) => void;
   show?: boolean;
-  setCurrentItem?: (item: unknown) => void;
+  setCurrentItem?: Dispatch<SetStateAction<unknown>>;
   currentItem?: unknown;
 }) {
   const [dayTab, setDayTab] = useState(0);
@@ -64,10 +66,10 @@ export default function Usermeal(props: {
 
   const meal = useSelector((s: RootState) => s.meal);
 
-  const currentKey = useMemo(() => {
+  const currentKey = useMemo((): MealPlanKey => {
     const prefix = DAY_PREFIX[dayTab];
     const period = PERIODS[periodTab];
-    return `${prefix}_${period}` as keyof RootState["meal"];
+    return `${prefix}_${period}` as MealPlanKey;
   }, [dayTab, periodTab]);
 
   const currentMeals = useMemo(() => {
@@ -108,7 +110,11 @@ export default function Usermeal(props: {
 
   return (
     <>
-      <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
+      <Navbar
+        user={props.user}
+        setUser={props.setUser}
+        handleLogout={props.handleLogout ?? (() => undefined)}
+      />
       <div className="meal-route usermeal">
         <div className="meal-route-inner">
           <Link to="/" className="meal-route-back">
@@ -194,6 +200,7 @@ export default function Usermeal(props: {
             >
               <Monday
                 meal={currentMeals}
+                mealDayKey={currentKey}
                 setCurrentItem={setCurrentItem}
                 currentItem={currentItem}
                 sectionTitle={`${DAY_LABELS[dayTab]} · ${PERIODS[periodTab]}`}
