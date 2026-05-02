@@ -31,15 +31,13 @@ export default function Monday(props: {
     setdata(filterData);
   }
 
-  const modalItem = props.currentItem;
-
   return (
     <>
       {props.sectionTitle ? <p className="meal-panel-meta">{props.sectionTitle}</p> : null}
 
       <div className="meal-cards-grid">
         {data.length === 0 ? (
-          <div className="meal-empty" style={{ gridColumn: "1 / -1" }}>
+          <div className="meal-empty meal-empty--span">
             <div className="meal-empty-icon" aria-hidden>
               🍽️
             </div>

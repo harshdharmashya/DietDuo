@@ -286,6 +286,10 @@
   filter: grayscale(0.2);
 }
 
+.meal-empty--span {
+  grid-column: 1 / -1;
+}
+
 .meal-empty h3 {
   font-family: "Fraunces", Georgia, serif;
   font-size: 1.25rem;
