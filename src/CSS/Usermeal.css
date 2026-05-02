@@ -21,6 +21,7 @@
   color: rgba(244, 255, 242, 0.88);
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
+  border: none;
 }
 
 .meal-route-back:hover {
@@ -358,4 +359,5 @@
   min-height: 100vh;
   background: transparent;
   padding: 0;
+  padding-bottom: 40px;
 }

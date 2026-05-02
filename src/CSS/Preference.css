@@ -86,9 +86,9 @@
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.image-section:hover img {
+/* .image-section:hover img {
     transform: translateY(-6px) scale(1.02);
-}
+} */
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .Preference {

@@ -117,9 +117,9 @@ export default function Usermeal(props: {
       />
       <div className="meal-route usermeal">
         <div className="meal-route-inner">
-          <Link to="/" className="meal-route-back">
+          <button className="meal-route-back bg-transparent" onClick={() => props.setshow!(true)}>
             ← Back to home
-          </Link>
+          </button>
 
           <motion.header
             className="meal-hero"
