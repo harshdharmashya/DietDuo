@@ -9,3 +9,5 @@ export const store = configureStore({
     meal:UserReducer
   },
 })
+
+export type RootState = ReturnType<typeof store.getState>

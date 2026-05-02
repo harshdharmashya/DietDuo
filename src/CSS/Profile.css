@@ -1,0 +1,378 @@
+.profile-page {
+  min-height: 100vh;
+  padding: clamp(1rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem) 4rem;
+  background: radial-gradient(900px 500px at 15% 0%, rgba(125, 207, 95, 0.18), transparent 55%),
+    radial-gradient(700px 400px at 90% 30%, rgba(212, 225, 87, 0.1), transparent 50%),
+    linear-gradient(165deg, #0f3d0e 0%, #1a5319 45%, #143d13 100%);
+}
+
+.profile-shell {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.profile-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(244, 255, 242, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.profile-back-link:hover {
+  color: #e8f5c8;
+  transform: translateX(-3px);
+}
+
+.profile-hero {
+  position: relative;
+  border-radius: 24px;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+.profile-hero::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 120%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(212, 225, 87, 0.15), transparent 55%);
+  pointer-events: none;
+}
+
+.profile-hero-inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  z-index: 1;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #cddc39, #7ecf6b, #1f7c22, #cddc39);
+  animation: profile-ring 10s linear infinite;
+}
+
+@keyframes profile-ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.profile-avatar {
+  position: relative;
+  width: clamp(96px, 22vw, 132px);
+  height: clamp(96px, 22vw, 132px);
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(13, 59, 13, 0.95);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.profile-hero-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.profile-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(212, 225, 87, 0.9);
+  margin: 0 0 0.35rem;
+}
+
+.profile-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(120deg, #fff 0%, #e8f5c8 50%, #cddc39 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.profile-email-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.profile-email {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(244, 255, 242, 0.88);
+  word-break: break-all;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.profile-badge--ok {
+  background: rgba(126, 207, 107, 0.25);
+  color: #d7ffc8;
+  border: 1px solid rgba(126, 207, 107, 0.45);
+}
+
+.profile-badge--warn {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffe082;
+  border: 1px solid rgba(255, 193, 7, 0.35);
+}
+
+.profile-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.profile-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.profile-btn--primary {
+  color: #1a2e0f;
+  background: linear-gradient(105deg, #f5fce8, #d4e157);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+
+.profile-btn--primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.profile-btn--ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f4fff2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.profile-btn--danger {
+  background: transparent;
+  color: #ffcdd2;
+  border: 1px solid rgba(239, 83, 80, 0.45);
+}
+
+.profile-btn--danger:hover {
+  background: rgba(239, 83, 80, 0.12);
+  transform: translateY(-2px);
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 640px) {
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-stat-card {
+  border-radius: 18px;
+  padding: 1.1rem 1.15rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.profile-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 225, 87, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.profile-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(244, 255, 242, 0.65);
+  margin: 0 0 0.35rem;
+}
+
+.profile-stat-value {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.profile-stat-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: rgba(244, 255, 242, 0.55);
+  line-height: 1.35;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.profile-panel {
+  border-radius: 20px;
+  padding: 1.25rem 1.35rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+}
+
+.profile-panel-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  color: rgba(244, 255, 242, 0.95);
+}
+
+.profile-dl {
+  margin: 0;
+}
+
+.profile-dl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.profile-dl > div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.profile-dt {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(244, 255, 242, 0.55);
+  flex-shrink: 0;
+}
+
+.profile-dd {
+  margin: 0;
+  font-size: 0.88rem;
+  color: rgba(244, 255, 242, 0.92);
+  text-align: right;
+}
+
+.profile-insight {
+  margin-top: 1.75rem;
+  border-radius: 18px;
+  padding: 1.15rem 1.35rem;
+  background: linear-gradient(125deg, rgba(31, 124, 34, 0.45) 0%, rgba(26, 83, 25, 0.55) 100%);
+  border: 1px solid rgba(212, 225, 87, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.profile-insight p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(244, 255, 242, 0.92);
+}
+
+.profile-loading,
+.profile-guest {
+  max-width: 480px;
+  margin: 4rem auto;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(244, 255, 242, 0.9);
+}
+
+.profile-loading-pulse {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  border: 3px solid rgba(212, 225, 87, 0.3);
+  border-top-color: #cddc39;
+  animation: profile-spin 0.9s linear infinite;
+}
+
+@keyframes profile-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-avatar-ring {
+    animation: none;
+  }
+
+  .profile-loading-pulse {
+    animation: none;
+    border-color: rgba(212, 225, 87, 0.5);
+  }
+}
