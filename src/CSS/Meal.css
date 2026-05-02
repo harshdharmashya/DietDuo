@@ -2,8 +2,9 @@
     min-height: 100vh;
     max-height: auto;
     padding: 3% 2% 2% 2%;
-    background-color: #1A5319;
+    background: linear-gradient(165deg, #143d13 0%, #1a5319 50%, #174a16 100%);
     color: white;
+    scroll-margin-top: 72px;
 }
 
 .btn-outline-light {
@@ -22,13 +23,18 @@
 .card-rec {
     width: 350px;
     height: auto;
-    box-shadow: 10px 10px 25px black;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
     padding: 15px 15px 2px 15px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.98);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
 }
 
 .card-rec:hover {
-    transition: 1s;
-    background-color: rgb(215, 214, 214);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 28px 55px rgba(0, 0, 0, 0.45);
+    background-color: rgb(252, 252, 252);
 }
 
 .card-img-top {
@@ -98,18 +104,22 @@
     position: fixed;
     right: 5%;
     bottom: 10%;
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
-    border: 2px solid #1A5319;
+    border: 2px solid rgba(255, 255, 255, 0.35);
     padding: 10px;
-    background-color: rgb(192, 192, 42);
-    box-shadow: 1px 1px 10px;
+    background: linear-gradient(145deg, #e8f5c8, #cddc39);
+    color: #1a2e0f !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
     z-index: 99;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
 
 .addcardicon:hover {
-    scale: 1.1;
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {

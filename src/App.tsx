@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import './App.css'
-import AOS from "aos";
+import * as AOS from "aos";
 import "aos/dist/aos.css";
 import {
   BrowserRouter as Router,

@@ -1,21 +1,36 @@
 .Preference {
     height: auto;
-    background-color: #1A5319;
+    background: linear-gradient(90deg, #143d13 0%, #1a5319 50%);
     padding: 3% 0%;
     display: flex;
     column-gap: 60px;
 }
 
 .text-section {
-    background-color: #1f7c22;
+    background: linear-gradient(125deg, #1f7c22 0%, #2d9a30 55%, #1f7c22 100%);
+    background-size: 200% 200%;
+    animation: pref-shift 14s ease infinite;
     height: auto;
     border-radius: 0% 50px 50px 0%;
     flex-basis: 65%;
     padding: 3%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+@keyframes pref-shift {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .text-section h2 {
     font-size: 4rem;
+    font-family: "Fraunces", Georgia, serif;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
 .text-section p {
@@ -23,22 +38,36 @@
 }
 
 .button-desk {
-    background-color: #023702;
+    background: linear-gradient(180deg, #0a5c09 0%, #023702 100%);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 1% 10%;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.button-desk:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .button-res {
-    background-color: #023702;
+    background: linear-gradient(180deg, #0a5c09 0%, #023702 100%);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 1%;
     width: 170px;
     margin-left: 2%;
     display: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.button-res:hover {
+    transform: translateY(-2px);
 }
 
 .image-section {
@@ -54,6 +83,11 @@
     position: absolute;
     bottom: -7px;
     filter: drop-shadow(5px 5px 10px black);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image-section:hover img {
+    transform: translateY(-6px) scale(1.02);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
@@ -106,6 +140,13 @@
         margin-left: 170px;
         margin-top: 30px;
         display: block;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .text-section {
+        animation: none;
+        background: linear-gradient(125deg, #1f7c22 0%, #2d9a30 100%);
     }
 }
 

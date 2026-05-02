@@ -1,0 +1,33 @@
+.App {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+@keyframes dd-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes dd-shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes dd-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 225, 87, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 28px 4px rgba(212, 225, 87, 0.2);
+  }
+}

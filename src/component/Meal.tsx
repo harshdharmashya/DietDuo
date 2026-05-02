@@ -26,7 +26,7 @@ export default function Meal(props: any) {
 
   return (
     <>
-      <div className='meal'>
+      <div className="meal" id="meals">
         <Box sx={{ width: '100%' }}>
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Breakfast" sx={{ color: "white" }} />

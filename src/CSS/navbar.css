@@ -1,12 +1,82 @@
 .bgcolor {
-    background-color: #1a4b19;
+  background-color: rgba(26, 75, 25, 0.72);
+}
+
+.navbar-glass {
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background-color: rgba(26, 75, 25, 0.72) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 .nav-item {
-    border-radius: 10px;
-    padding: 2px 8px;
+  border-radius: 10px;
+  padding: 2px 8px;
+  position: relative;
+}
+
+.nav-item .nav-link {
+  position: relative;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .nav-item:hover {
-    background-color: #0f360e;
+  background-color: rgba(15, 54, 14, 0.65);
+}
+
+.nav-item .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--dd-accent, #d4e157), transparent);
+  transform: translateX(-50%);
+  transition: width 0.28s ease;
+}
+
+.nav-item:hover .nav-link::after {
+  width: 70%;
+}
+
+.navbar-brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #fff 0%, #e8f5c8 50%, #d4e157 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+.form-control {
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #fff !important;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.btn-outline-success {
+  border-radius: 999px !important;
+  border-color: rgba(212, 225, 87, 0.65) !important;
+  color: #f4fff2 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-outline-success:hover {
+  background: rgba(212, 225, 87, 0.2) !important;
+  border-color: #d4e157 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }

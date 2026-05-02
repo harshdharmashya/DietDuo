@@ -1,22 +1,56 @@
 .services-container {
-    height: auto;
-    background-color: #1A5319;
-    padding: 2%;
+  height: auto;
+  background: linear-gradient(180deg, #174a16 0%, #1a5319 45%, #143d13 100%);
+  padding: 4% 2% 5%;
+  position: relative;
+}
+
+.services-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(212, 225, 87, 0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.services-title.headline-work {
+  display: block;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #ffffff 0%, #e8f5c8 40%, #cddc39 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
 }
 
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 48px 100px;
+  position: relative;
+  z-index: 1;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {}
+.headline-work {
+  display: flex;
+  justify-content: center;
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-bottom: 2%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+}
 
 @media (max-width: 768px) {
-    .card-container {
-        padding: 10%;
-        gap: 40px;
-    }
+  .card-container {
+    padding: 4% 6%;
+    gap: 40px;
+  }
 }

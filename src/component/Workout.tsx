@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Box, Tab, Tabs } from '@mui/material'
 import Beginner from "./Workout/Beginner"
 import Intermediate from './Workout/Intermediate'
@@ -19,7 +20,15 @@ export default function Workout() {
     return (
         <>
             <div className='work'>
-                <div className='headline-work headline-extra'>𝓦𝓸𝓻𝓴 𝓸𝓾𝓽 𝓯𝓸𝓻 𝔂𝓸𝓾...</div>
+                <motion.div
+                  className='headline-work headline-extra display-font'
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  Work out for you
+                </motion.div>
                 <Box sx={{ width: '100%' }}>
                     <Tabs value={value} onChange={handleChange} centered>
                         <Tab label="beginner" sx={{ color: "white" }} />

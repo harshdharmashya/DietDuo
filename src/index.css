@@ -1,32 +1,61 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "DM Sans", system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: black;
-  background-color: white;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --dd-green-deep: #0d3b0d;
+  --dd-green: #1a5319;
+  --dd-green-mid: #2d7a2b;
+  --dd-green-light: #7ecf6b;
+  --dd-accent: #d4e157;
+  --dd-accent-hot: #cddc39;
+  --dd-surface-glass: rgba(255, 255, 255, 0.08);
+  --dd-text-on-green: #f4fff2;
+  --dd-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
+  color: var(--dd-text-on-green);
+  background-color: var(--dd-green);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(125, 207, 95, 0.22), transparent 55%),
+    radial-gradient(900px 500px at 90% 20%, rgba(212, 225, 87, 0.12), transparent 50%),
+    linear-gradient(165deg, #0f3a0e 0%, #1a5319 40%, #143d13 100%);
+  background-attachment: fixed;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1,
+.display-font {
+  font-family: "Fraunces", Georgia, serif;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+::selection {
+  background: rgba(212, 225, 87, 0.35);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

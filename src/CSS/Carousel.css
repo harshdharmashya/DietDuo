@@ -1,45 +1,110 @@
 .marquee {
-    height: 530px;
+  height: 530px;
+  position: relative;
+  padding: 0 2%;
+  box-sizing: border-box;
+}
+
+.marquee::after {
+  content: "";
+  position: absolute;
+  inset: 0 2% auto 2%;
+  bottom: 0;
+  height: 120px;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(26, 83, 25, 0.95), transparent);
+  border-radius: 0 0 20px 20px;
+  z-index: 2;
+}
+
+.marquee .carousel {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .carousel-item {
-    height: 530px;
+  height: 530px;
+  overflow: hidden;
 }
 
 .add-image {
-    object-fit: cover;
-    height: 530px;
+  object-fit: cover;
+  height: 530px;
+  width: 100%;
+  transform: scale(1.06);
+  animation: ken-burns 18s ease-in-out infinite alternate;
+}
+
+.carousel-item:nth-child(2) .add-image {
+  animation-delay: -4s;
+}
+
+.carousel-item:nth-child(3) .add-image {
+  animation-delay: -8s;
+}
+
+.carousel-item:nth-child(4) .add-image {
+  animation-delay: -12s;
+}
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.08) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.14) translate(-1.5%, -1%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .add-image {
+    animation: none;
+    transform: scale(1);
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .marquee {
-        height: 451px;
-    }
+  .marquee {
+    height: 451px;
+  }
 
-    .add-image {
-        height: 450px;
-    }
+  .add-image {
+    height: 450px;
+  }
 
-    .carousel-fade .carousel-item {
-        height: auto;
-    }
+  .carousel-fade .carousel-item {
+    height: auto;
+  }
 }
 
 @media (max-width: 767px) {
-    .marquee {
-        height: auto;
-    }
+  .marquee {
+    height: auto;
+    padding: 0 12px;
+  }
 
-    .carousel-item {
-        height: 230px;
-    }
+  .marquee::after {
+    inset: 0 12px auto 12px;
+    height: 72px;
+    border-radius: 0 0 16px 16px;
+  }
 
-    .add-image {
-        object-fit: cover;
-        height: 218px;
-    }
+  .marquee .carousel {
+    border-radius: 16px;
+  }
 
-    .carousel-fade .carousel-item {
-        height: auto;
-    }
+  .carousel-item {
+    height: 230px;
+  }
+
+  .add-image {
+    object-fit: cover;
+    height: 218px;
+    animation-duration: 22s;
+  }
+
+  .carousel-fade .carousel-item {
+    height: auto;
+  }
 }

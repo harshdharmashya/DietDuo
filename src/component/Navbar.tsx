@@ -5,7 +5,7 @@ export default function Navbar(props: any) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-trans bgcolor">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-trans bgcolor navbar-glass">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">𝕯𝖎𝖊𝖙𝕯𝖚𝖔</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

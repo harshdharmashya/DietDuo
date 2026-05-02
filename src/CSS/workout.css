@@ -13,6 +13,17 @@
     margin-bottom: 2%;
 }
 
+.work .headline-work {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    background: linear-gradient(120deg, #ffffff 0%, #e8f5c8 45%, #cddc39 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.3));
+}
+
 .beginner {}
 
 .dropdown-muscle {
