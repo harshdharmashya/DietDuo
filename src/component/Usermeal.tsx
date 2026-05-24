@@ -2,7 +2,7 @@ import React, { useMemo, useState, type Dispatch, type SetStateAction } from "re
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import Monday from "./Day/Monday";
