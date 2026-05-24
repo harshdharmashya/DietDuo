@@ -12,7 +12,7 @@
   bottom: 0;
   height: 120px;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(26, 83, 25, 0.95), transparent);
+  /* background: linear-gradient(to top, rgba(26, 83, 25, 0.95), transparent); */
   border-radius: 0 0 20px 20px;
   z-index: 2;
 }

@@ -23,6 +23,13 @@ import {
   richerMealPlan,
   persistMeals,
 } from './mealsPersistence';
+import {
+  countWorkoutsInPlan,
+  readWorkoutPlanFromLocalStorage,
+  richerWorkoutPlan,
+  persistWorkouts,
+} from './workoutPersistence';
+import { hydrateWorkoutPlan, resetWorkoutPlan } from './Redux/workoutSlice';
 import Home from './component/Home';
 import Usermeal from './component/Usermeal';
 import User_Workout from './component/Workout/User_Workout';
@@ -60,6 +67,7 @@ function App() {
       if (authUser?.uid) {
         const uid = authUser.uid as string;
         let fromDb: Record<string, unknown> | null = null;
+        let fromDbWorkout: Record<string, unknown> | null = null;
 
         try {
           const snap = await getDoc(doc(db, 'Users', uid));
@@ -67,8 +75,12 @@ function App() {
           if (raw && typeof raw === 'object' && !Array.isArray(raw)) {
             fromDb = raw as Record<string, unknown>;
           }
+          const rawWorkout = snap.exists() ? snap.data()?.workoutPlan : undefined;
+          if (rawWorkout && typeof rawWorkout === 'object' && !Array.isArray(rawWorkout)) {
+            fromDbWorkout = rawWorkout as Record<string, unknown>;
+          }
         } catch (e) {
-          console.error('Could not load meals from Firestore:', e);
+          console.error('Could not load data from Firestore:', e);
         }
 
         const fromLs = readMealPlanFromLocalStorage(uid);
@@ -83,12 +95,31 @@ function App() {
             void persistMeals(uid, store.getState().meal);
           }
         }
+        
+        const fromLsWorkout = readWorkoutPlanFromLocalStorage(uid);
+        const mergedWorkout = richerWorkoutPlan(fromDbWorkout, fromLsWorkout);
+        if (mergedWorkout && countWorkoutsInPlan(mergedWorkout) > 0) {
+          store.dispatch(hydrateWorkoutPlan(mergedWorkout));
+          if (
+            fromLsWorkout &&
+            countWorkoutsInPlan(fromLsWorkout) > countWorkoutsInPlan(fromDbWorkout ?? undefined)
+          ) {
+            void persistWorkouts(uid, store.getState().workout);
+          }
+        }
       } else {
         const guest = readMealPlanFromLocalStorage(null);
         if (guest && countMealsInPlan(guest) > 0) {
           store.dispatch(hydrateMealPlan(guest));
         } else {
           store.dispatch(resetMealPlan());
+        }
+        
+        const guestWorkout = readWorkoutPlanFromLocalStorage(null);
+        if (guestWorkout && countWorkoutsInPlan(guestWorkout) > 0) {
+          store.dispatch(hydrateWorkoutPlan(guestWorkout));
+        } else {
+          store.dispatch(resetWorkoutPlan());
         }
       }
     });

@@ -3,6 +3,7 @@ import counterReducer from './Redux/frontSlice'
 import workoutReducer from './Redux/workoutSlice'
 import UserReducer from './Redux/Usermeal'
 import { mealPersistenceListener } from './mealPersistenceListener'
+import { workoutPersistenceListener } from './workoutPersistenceListener'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,7 @@ export const store = configureStore({
     meal: UserReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(mealPersistenceListener.middleware),
+    getDefaultMiddleware().prepend(mealPersistenceListener.middleware, workoutPersistenceListener.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>

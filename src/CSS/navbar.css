@@ -39,11 +39,16 @@
   border-radius: 2px;
   background: linear-gradient(90deg, transparent, var(--dd-accent, #d4e157), transparent);
   transform: translateX(-50%);
-  transition: width 0.28s ease;
+  transition: width 0.28s ease, background 0.28s ease;
 }
 
-.nav-item:hover .nav-link::after {
+.nav-item:hover .nav-link::after,
+.nav-link.active-link::after {
   width: 70%;
+}
+
+.nav-link.active-link {
+  color: #e8f5c8 !important;
 }
 
 .navbar-brand {

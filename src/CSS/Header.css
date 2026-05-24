@@ -39,7 +39,7 @@
 }
 
 .first-prv {
-  padding: 3% 5%;
+  padding: 2% 5%;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -76,13 +76,13 @@
 
 .header-tag {
   position: absolute;
-  right: 80px;
-  top: 50%;
+  right: 120px;
+  top: 30%;
   transform: translateY(-50%);
 }
 
 .LOGO {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(5.5rem, 8vw, 7rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0 0 0.5rem;

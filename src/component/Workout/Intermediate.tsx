@@ -23,9 +23,6 @@ export default function Intermediate(props: any) {
     { name: 'lower_back' },
     { name: 'middle_back' },
     { name: 'triceps' }
-    // neck,
-    // quadriceps,
-    // traps,
   ]
   const workout = async (difficulty: string) => {
     // const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });

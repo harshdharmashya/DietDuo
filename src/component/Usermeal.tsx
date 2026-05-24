@@ -2,7 +2,7 @@ import React, { useMemo, useState, type Dispatch, type SetStateAction } from "re
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector } from "react-redux";
 import Monday from "./Day/Monday";
@@ -63,6 +63,7 @@ export default function Usermeal(props: {
   const [dayTab, setDayTab] = useState(0);
   const [periodTab, setPeriodTab] = useState(0);
   const [localItem, setLocalItem] = useState<unknown>({});
+  const navigate = useNavigate();
 
   const meal = useSelector((s: RootState) => s.meal);
 
@@ -117,7 +118,10 @@ export default function Usermeal(props: {
       />
       <div className="meal-route usermeal">
         <div className="meal-route-inner">
-          <button className="meal-route-back bg-transparent" onClick={() => props.setshow!(true)}>
+          <button className="meal-route-back bg-transparent" onClick={() => {
+            if (props.setshow) props.setshow(true);
+            navigate('/');
+          }}>
             ← Back to home
           </button>
 
@@ -209,11 +213,12 @@ export default function Usermeal(props: {
           </AnimatePresence>
         </div>
 
-        {props.setshow ? (
-          <button type="button" className="meal-goback-btn" onClick={() => props.setshow!(true)}>
+          <button type="button" className="meal-goback-btn" onClick={() => {
+            if (props.setshow) props.setshow(true);
+            navigate('/');
+          }}>
             Go back
           </button>
-        ) : null}
       </div>
     </>
   );

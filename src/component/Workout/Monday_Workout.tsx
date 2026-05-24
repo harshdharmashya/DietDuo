@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { Workupdate } from '../../Redux/workoutSlice';
+import { motion } from "framer-motion";
+import { setDayWorkouts } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 
 export default function Monday_Workout(props: any) {
@@ -10,7 +11,9 @@ export default function Monday_Workout(props: any) {
   const [isOpenAdd, setIsOpenAdd] = useState(false);
 
   const [data, setdata] = useState(props.work);
-  console.log(data);
+  useEffect(() => {
+    setdata(props.work);
+  }, [props.work]);
 
   // view exercise function 
   function handlemodal(data: any): void {
@@ -19,46 +22,60 @@ export default function Monday_Workout(props: any) {
   }
   function handledelete(index: number): void {
     let filterData = data.filter((_v: any, i: number) => i != index)
-    dispatch(Workupdate({ filterData }))
-    setdata(filterData)
+    dispatch(setDayWorkouts({ day: props.dayKey, items: filterData }))
   }
 
   return (
     <>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            {/* <th scope="col">Difficulty</th> */}
-            <th scope="col">Exercise</th>
-            <th scope="col">Muscle</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            data.length === 0 ? (
-              <>
-                <h6>Please add your meal from meal section</h6>
-              </>
-            ) : (
-              data.map((data: any, i: number) => (
-                <tr key={i}>
-                  <th scope="row">{i + 1}</th>
-                  {/* <td className='user-title'>{data?.difficulty}</td> */}
-                  <td className='user-title'>{data.name}</td>
-                  <td className='user-title'>{data?.muscle}</td>
-                  <td className='user-btn'>
-                    <button className='read-btn' onClick={() => handlemodal(data)}>View</button>
-                    <button className='remove-btn' onClick={() => handledelete(i)}>&#128465;</button>
-                  </td>
-                </tr>
-              )))}
-          {isOpenAdd &&
-            <Modalworkout currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
-          }
-        </tbody>
-      </table>
+      <div className="meal-cards-grid">
+        {data.length === 0 ? (
+          <div className="meal-empty meal-empty--span">
+            <div className="meal-empty-icon" aria-hidden>
+              💪
+            </div>
+            <h3 className="display-font">Nothing here yet</h3>
+            <p>
+              Add exercises from the home page workout section for this day. They will show up here as cards you
+              can view or remove.
+            </p>
+          </div>
+        ) : (
+          data.map((item: any, i: number) => (
+            <motion.article
+              key={`${item?.name ?? "workout"}-${i}`}
+              className="meal-card"
+              layout
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.32, delay: Math.min(i * 0.05, 0.35), ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="meal-card-body" style={{ minHeight: '160px', display: 'flex', flexDirection: 'column' }}>
+                <h3 className="meal-card-title">{item?.name}</h3>
+                <p className="meal-card-diets">Muscle: {item?.muscle || "—"}</p>
+                <div style={{ flexGrow: 1 }}></div>
+                <div className="meal-card-actions">
+                  <button type="button" className="meal-card-btn meal-card-btn--view" onClick={() => handlemodal(item)}>
+                    View details
+                  </button>
+                  <button
+                    type="button"
+                    className="meal-card-btn meal-card-btn--remove"
+                    title="Remove from list"
+                    aria-label="Remove workout"
+                    onClick={() => handledelete(i)}
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            </motion.article>
+          ))
+        )}
+      </div>
+
+      {isOpenAdd &&
+        <Modalworkout currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
+      }
     </>
   )
 }
