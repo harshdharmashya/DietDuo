@@ -39,12 +39,10 @@
    -- npm run dev
 
 ## Screen Shot
-![Screenshot 2025-06-01 173856](<img width="1350" height="633" alt="image" src="https://github.com/user-attachments/assets/c8b9fc5f-efe8-4624-8dc4-0547c71330ac" />
-)
+![Screenshot 2025-06-01 173856](https://github.com/user-attachments/assets/c8b9fc5f-efe8-4624-8dc4-0547c71330ac)
 ![Screenshot 2025-06-01 173913](https://github.com/user-attachments/assets/01a40261-cb43-46e0-b488-6cda311ac836)
 ![Screenshot 2025-06-01 173926](https://github.com/user-attachments/assets/e6f17f9e-d6fb-4b85-880c-68c1e1eb66eb)
-![Screenshot 2025-06-01 174044](<img width="1349" height="643" alt="image" src="https://github.com/user-attachments/assets/d778bac0-6b25-4983-827d-7b3f9abe223c" />
-)
+![Screenshot 2025-06-01 174044](https://github.com/user-attachments/assets/d778bac0-6b25-4983-827d-7b3f9abe223c)
 
 
 
