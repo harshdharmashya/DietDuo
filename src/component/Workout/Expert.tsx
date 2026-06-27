@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setexpert } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
-import { MUSCLE_ICONS, MUSCLE_LIST } from './Beginner';
-
 
 export default function Expert(props: any) {
     const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { PieChart } from '@mui/x-charts/PieChart';
 import Modalcard from './Modalcard';
