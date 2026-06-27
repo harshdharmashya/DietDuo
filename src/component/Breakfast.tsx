@@ -1,104 +1,129 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { PieChart } from '@mui/x-charts/PieChart';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import { styled } from '@mui/material/styles';
 import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
 
-const size = {
-  width: 150,
-  height: 65,
-};
-
-const StyledText = styled('text')(({ theme }) => ({
-  fill: theme.palette.text.primary,
-  textAnchor: 'middle',
-  dominantBaseline: 'central',
-  fontSize: 20,
-}));
-
-function PieCenterLabel({ children }: { children: React.ReactNode }) {
-  const { width, height, left, top } = useDrawingArea();
-  return (
-    <StyledText x={left + width / 2} y={top + height / 2}>
-      {children}
-    </StyledText>
-  );
+interface BreakfastProps {
+  isOpen: boolean;
+  setIsOpen: (val: boolean) => void;
+  isOpenAdd: boolean;
+  setIsOpenAdd: (val: boolean) => void;
+  currentItem: any;
+  setCurrentItem: (item: any) => void;
 }
-export default function Breakfast(props: any) {
 
-  const meals = useSelector((state: any) => state.counter.breakfast)
-  // console.log(meals)
-  if (meals.length === 0) {
-    return <>
-      <div className='loader-height'>
-        <div className="spinner-border text-light load" role="status">
+export default function Breakfast(props: BreakfastProps) {
+  const meals = useSelector((state: any) => state.counter.breakfast);
+
+  const displayedMeals = useMemo(() => {
+    if (!meals || meals.length === 0) return [];
+    return [...meals]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+  }, [meals]);
+
+  if (!meals || meals.length === 0) {
+    return (
+      <div className="d-flex justify-content-center align-items-center loader-height" style={{ minHeight: '200px' }}>
+        <div className="spinner-border text-success" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       </div>
-    </>; // Display loader if data is empty
+    );
   }
 
-  const handleOpen = () => props.setIsOpen(true);
-  const handleOpenAdd = () => props.setIsOpenAdd(true);
-
-  // onclick function for open read more modal
-  function handleModal(data: any) {
-    props.setCurrentItem(data)
-    handleOpen();
-  }
-
-  // onclick for open add to cart modal
-  function handleClick(datab: any): void {
-    props.setCurrentItem(datab)
-    handleOpenAdd();
-  }
-
-  // console.log(meals)
   return (
     <>
-      <div className='active-meal'>
-        {meals &&
-          [...meals] // make a shallow copy to avoid mutating the original array
-            .sort(() => Math.random() - 0.5) // shuffle the array randomly
-            .slice(0, 3).map((datab: any, i: number) => (
-              // (i==5 || i==6 || i==7) &&
-              <div className=" card card-rec mb-3 m-2" key={i}>
+      <div className="active-meal-container">
+        {displayedMeals.map((datab: any, i: number) => {
+          const score = datab?.healthScore || 0;
+          
+          return (
+            <div className="modern-meal-card" key={datab.id || i}>
+              {/* Image Banner Section */}
+              <div className="card-image-wrapper">
                 <img src={datab?.image} className="card-img-top" alt={datab?.title} />
-                <div className="card-body">
-                  <h5 className="card-title text-dark">{datab?.title}</h5>
-                  <div className='contain-summry-pie'>
-                    <div className='pie-chart-health'>
-                      <p style={{ color: "black" }}>Health Score :</p>
-                      <PieChart sx={{ position: 'relative', bottom: '10px', left: '9px' }} series={[{
-                        data: [
-                          { value: datab.healthScore },
-                          { value: 100 }
-                        ], innerRadius: 15
-                      }]} {...size}>
-                        <PieCenterLabel>{datab.healthScore}</PieCenterLabel>
-                      </PieChart>
+                {/* <div className="card-badge-overlay">{datab.healthScore}</div> */}
+              </div>
+
+              {/* Main Body */}
+              <div className="card-body-content">
+                <h5 className="meal-card-title">{datab?.title}</h5>
+
+                <div className="metrics-grid">
+                  {/* Health Score Ring */}
+                  <div className="health-score-box">
+                    <span className="metric-label">Health Score</span>
+                    <div className="pie-container-relative">
+                      {/* CSS-Absolute Label prevents cutting/clipping text */}
+                      <span className="pie-center-percentage">{score}%</span>
+                      <PieChart
+                        series={[
+                          {
+                            data: [
+                              { value: score, color: '#4caf50' }, 
+                              { value: Math.max(0, 100 - score), color: '#e2e8f0' }
+                            ],
+                            innerRadius: 18,
+                            outerRadius: 25,
+                            paddingAngle: 0,
+                            cx: 26, // Manually center within chart frame box
+                            cy: 26,
+                          },
+                        ]}
+                        width={60}
+                        height={60}
+                        margin={{ top: 0, bottom: 0, left: 0, right: 0 }}
+                        slotProps={{ legend: { hidden: true } }}
+                      />
                     </div>
-                    <div className='diets-array'>
-                      <p className='diets-array-p'>Diets  </p>
-                      <p style={{ color: 'black' }} className='ptag'>{datab.diets + ", "}</p>
+                  </div>
+
+                  {/* Diets Section */}
+                  <div className="diets-box">
+                    <span className="metric-label">Diet Tags</span>
+                    <div className="diet-pill-container">
+                      {Array.isArray(datab?.diets) && datab.diets.length > 0 ? (
+                        datab.diets.slice(0, 2).map((diet: string, idx: number) => (
+                          <span key={idx} className="diet-pill">
+                            {diet}
+                          </span>
+                        ))
+                      ) : (
+                        <span className="diet-pill standard">Standard</span>
+                      )}
                     </div>
                   </div>
                 </div>
-                <div className='contain-summry-pie mealbtn'>
-                  <button className='btn-Add-to-meal' onClick={() => handleClick(datab)}>Add to Meal</button>
-                  <button className='btn-Add-to-meal' onClick={() => handleModal(datab)}>Read more..</button>
-                </div>
-              </div>))
-        }
-        {props.isOpen &&
-          <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
-        }
-        {props.isOpenAdd &&
-          <Addtomeal_Modal mealType={'Breakfast'} currentItem={props.currentItem} isOpenAdd={props.isOpenAdd} setIsOpenAdd={props.setIsOpenAdd} />
-        }
+              </div>
+
+              {/* Redesigned Button Footer */}
+              <div className="card-action-footer">
+                <button 
+                  className="btn-action btn-read" 
+                  onClick={() => { props.setCurrentItem(datab); props.setIsOpen(true); }}
+                >
+                  Details
+                </button>
+                <button 
+                  className="btn-action btn-add" 
+                  onClick={() => { props.setCurrentItem(datab); props.setIsOpenAdd(true); }}
+                >
+                  + Add to Meal
+                </button>
+              </div>
+            </div>
+          );
+        })}
       </div>
+
+      {props.isOpen && (
+        <Modalcard currentItem={props.currentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
+      )}
+      {props.isOpenAdd && (
+        <Addtomeal_Modal mealType={'Breakfast'} currentItem={props.currentItem} isOpenAdd={props.isOpenAdd} setIsOpenAdd={props.setIsOpenAdd} />
+      )}
     </>
-  )
+  );
 }

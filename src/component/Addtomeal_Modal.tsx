@@ -1,71 +1,102 @@
 import { useState } from 'react'
-import { Box } from '@mui/material';
-import 'react-notifications/lib/notifications.css';
-import Card from '@mui/material/Card';
 import Modal from '@mui/material/Modal';
-import "../CSS/Modal.css"
 import { useDispatch } from 'react-redux';
 import { setDish } from '../Redux/Usermeal';
+import "../CSS/Modal.css";
+
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
 export default function Addtomeal_Modal(props: any) {
-    const dispatch = useDispatch();
-    const [day, setDay] = useState('')
-    let data = props.currentItem;
-    const handleCloseAdd = () => props.setIsOpenAdd(false);
+  const dispatch = useDispatch();
+  const [day, setDay] = useState('');
+  const data = props.currentItem;
 
-    function handleAddtomeal() {
-        dispatch(setDish({ data, day: day + "_" + props.mealType }))
-        handleCloseAdd()
-    };
-    const style = {
-        position: 'absolute' as 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 300,
-        bgcolor: 'background.paper',
-        border: 'none',
-        boxShadow: 24,
-        p: 2
-    };
-    function handleSelect(e: any): void {
-        setDay(e.target.value)
-    }
+  const handleCloseAdd = () => props.setIsOpenAdd(false);
 
-    return (
-        <Modal
-            open={props.isOpenAdd}
-            onClose={handleCloseAdd}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-        >
-            <Card className='meal-modal-width' sx={{ ...style, width: "800px", height: 'auto', borderRadius: '10px' }}>
-                <Box className='card-Box'>
-                    <img className='read-image' src={data?.image} alt={data?.title} />
-                    <Box sx={{ margin: 2 }}>
-                        <h2 className="read-title">{data?.title}</h2>
-                        <p className="read-summary">Diets :{data?.diets}</p>
-                        <div style={{ display: 'flex', columnGap: '30px', alignItems: 'center' }}>
-                            <div style={{ background: "#1A5319", width: '130px', borderRadius: 5, paddingLeft: 10 }}> Ready in {data?.readyInMinutes}min</div>
-                            <div>
-                                <select onChange={(e) => handleSelect(e)} value={day} style={{ padding: '0px 15px', background: '#1A5319', borderRadius: '5px' }}>
-                                    <option value="">Day</option>
-                                    <option value="Mon">Mon</option>
-                                    <option value="Tus">Tus</option>
-                                    <option value="Wed">Wed</option>
-                                    <option value="Thur">Thur</option>
-                                    <option value="Fri">Fri</option>
-                                    <option value="Sat">Sat</option>
-                                    <option value="Sun">Sun</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div style={{ paddingTop: '30px' }}>
-                            <button onClick={() => handleAddtomeal()} style={{ background: '#1A5319', borderRadius: '5px', padding: '3px 15px' }}>Add to meal</button>
-                        </div>
-                    </Box>
-                </Box>
-            </Card>
-        </Modal>
-    )
+  function handleAddtomeal() {
+    dispatch(setDish({ data, day: day + '_' + props.mealType }));
+    handleCloseAdd();
+  }
+
+  return (
+    <Modal open={props.isOpenAdd} onClose={handleCloseAdd}>
+      <div className="meal-modal-overlay">
+        <div className="meal-modal">
+
+          {/* Hero image */}
+          <div className="meal-modal-hero">
+            <img src={data?.image} alt={data?.title} className="meal-modal-hero-img" />
+            <div className="meal-modal-hero-overlay" />
+            <button onClick={handleCloseAdd} className="meal-modal-close" aria-label="Close">✕</button>
+            <div className="meal-modal-hero-title-wrap">
+              <h2 className="meal-modal-hero-title">{data?.title}</h2>
+            </div>
+          </div>
+
+          {/* Body */}
+          <div className="meal-modal-body">
+
+            {/* Diet tags */}
+            {data?.diets && (
+              <div className="meal-modal-tags">
+                {(Array.isArray(data.diets) ? data.diets : [data.diets]).map((d: string) => (
+                  <span key={d} className="meal-modal-tag">{d}</span>
+                ))}
+              </div>
+            )}
+
+            {/* Stats */}
+            <div className="meal-modal-stats">
+              <div className="meal-stat-card">
+                <div className="meal-stat-icon">⏱</div>
+                <div>
+                  <p className="meal-stat-label">Ready in</p>
+                  <p className="meal-stat-value">{data?.readyInMinutes} min</p>
+                </div>
+              </div>
+              {data?.healthScore !== undefined && (
+                <div className="meal-stat-card">
+                  <div className="meal-stat-icon">❤️</div>
+                  <div>
+                    <p className="meal-stat-label">Health score</p>
+                    <p className="meal-stat-value">{data.healthScore} / 100</p>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Day picker */}
+            <div className="meal-modal-schedule">
+              <p className="meal-modal-schedule-label">Choose day</p>
+              <div className="meal-modal-days">
+                {DAYS.map(d => (
+                  <button
+                    key={d}
+                    onClick={() => setDay(d)}
+                    className={`meal-day-pill${day === d ? ' selected' : ''}`}
+                  >
+                    {d}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+          {/* Footer */}
+          <div className="meal-modal-footer">
+            <button onClick={handleCloseAdd} className="meal-modal-cancel">Cancel</button>
+            <button
+              onClick={handleAddtomeal}
+              disabled={!day}
+              className={`meal-modal-add${!day ? ' disabled' : ''}`}
+            >
+              + Add to meal plan
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </Modal>
+  );
 }

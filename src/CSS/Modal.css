@@ -1,80 +1,515 @@
-.card-Box {
+/* ── Overlay ── */
+.meal-modal-overlay {
+    position: fixed;
+    inset: 0;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.55);
 }
 
-.read-image {
-    width: 400px;
-}
-
-.read-title,
-.read-summary {
-    color: black;
-    height: auto;
-}
-
-.read-check {
+/* ── Modal container ── */
+.meal-modal {
+    background: #fff;
+    border-radius: 16px;
+    border: 0.5px solid #e0e0e0;
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
     display: flex;
-    color: black;
-    height: auto;
+    flex-direction: column;
 }
 
-.DoneIcon {
-    background-color: #1A5319;
+/* ── Hero ── */
+.meal-modal-hero {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: #1a3a2a;
+}
+
+.meal-modal-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+.meal-modal-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(10, 26, 16, 0.85) 100%);
+}
+
+.meal-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
-    height: 13px;
-    width: 13px;
-}
-
-.CloseIcon {
-    background-color: red;
-    border-radius: 50%;
-    height: 13px;
-    width: 13px;
-}
-
-.workModal-Add-select {
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
     display: flex;
-    column-gap: 20%;
+    align-items: center;
+    justify-content: center;
 }
 
-.Addworkout-btn {
-    border: none;
-    border-radius: 5px;
-    padding: 2px 10px;
+.meal-modal-hero-title-wrap {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    right: 16px;
 }
 
-.Addworkout-btn:hover {
-    border: 1px solid black;
+.meal-modal-hero-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.3;
 }
 
-.select-day {
-    background-color: gray;
-    color: whitesmoke;
-    border-radius: 5px;
+/* ── Body ── */
+.meal-modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
-.modal-container {
-    background-image: url(../Images/modalworkout-bg.png);
-    background-position: left;
+
+/* ── Diet tags ── */
+.meal-modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.meal-modal-tag {
+    background: #e6f4ec;
+    color: #1a5319;
+    border: 0.5px solid #a8d5b5;
     border-radius: 20px;
-    border: none;
-    box-shadow: 10px 7px 15px grey;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
 }
+
+/* ── Stats ── */
+.meal-modal-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.meal-stat-card {
+    flex: 1;
+    background: #f8f8f8;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.meal-stat-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #e8f4ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.meal-stat-label {
+    font-size: 11px;
+    color: #888;
+    margin: 0 0 2px;
+}
+
+.meal-stat-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #111;
+    margin: 0;
+}
+
+/* ── Day picker ── */
+.meal-modal-schedule {
+    background: #f8f8f8;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.meal-modal-schedule-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meal-modal-days {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.meal-day-pill {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 0.5px solid #ccc;
+    background: #fff;
+    color: #555;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.meal-day-pill:hover {
+    border-color: #1a5319;
+    color: #1a5319;
+    background: #e6f4ec;
+}
+
+.meal-day-pill.selected {
+    background: #1a5319;
+    border-color: #1a5319;
+    color: #fff;
+}
+
+/* ── Footer ── */
+.meal-modal-footer {
+    padding: 16px 20px;
+    border-top: 0.5px solid #e8e8e8;
+    display: flex;
+    gap: 10px;
+}
+
+.meal-modal-cancel {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 0.5px solid #ccc;
+    background: transparent;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.meal-modal-cancel:hover {
+    background: #f5f5f5;
+}
+
+.meal-modal-add {
+    flex: 2;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1a5319;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.meal-modal-add:hover {
+    opacity: 0.88;
+}
+
+.meal-modal-add.disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+/* ── Responsive ── */
 @media (max-width: 767px) {
-    .card-Box {
+    .meal-modal {
+        max-width: 100%;
+    }
+
+    .meal-modal-hero {
+        height: 160px;
+    }
+
+    .meal-modal-stats {
         flex-direction: column;
     }
 
-    .read-image {
-        width: 300px;
+    .meal-modal-days {
+        gap: 5px;
     }
 
-    .css-1ijv3kx-MuiPaper-root-MuiCard-root {
-        width: 330px !important;
+    .meal-day-pill {
+        width: 34px;
+        height: 34px;
+        font-size: 10px;
     }
-    .modal-container{
-        width: 320px !important;
+}
+
+/* ── Workout modal overlay ── */
+.workout-modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+/* ── Workout modal container ── */
+.workout-modal {
+    background: #fff;
+    border-radius: 16px;
+    border: 0.5px solid #e0e0e0;
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Header ── */
+.workout-modal-header {
+    background: #1A5319;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.workout-modal-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.workout-modal-type-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.15);
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.workout-modal-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.workout-modal-close {
+    background: rgba(255, 255, 255, 0.15);
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.workout-modal-close:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Body ── */
+.workout-modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ── Meta ── */
+.workout-modal-meta {
+    background: #f8f8f8;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.workout-modal-meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+
+.workout-meta-label {
+    color: #888;
+    font-weight: 500;
+}
+
+.workout-meta-value {
+    color: #222;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: right;
+    max-width: 60%;
+}
+
+/* ── Day picker ── */
+.workout-modal-schedule {
+    background: #f8f8f8;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.workout-modal-schedule-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.workout-modal-days {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.workout-day-pill {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 0.5px solid #ccc;
+    background: #fff;
+    color: #555;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.workout-day-pill:hover {
+    border-color: #1A5319;
+    color: #1A5319;
+    background: #e6f4ec;
+}
+
+.workout-day-pill.selected {
+    background: #1A5319;
+    border-color: #1A5319;
+    color: #fff;
+}
+
+/* ── Footer ── */
+.workout-modal-footer {
+    padding: 16px 20px;
+    border-top: 0.5px solid #e8e8e8;
+    display: flex;
+    gap: 10px;
+}
+
+.workout-modal-cancel {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 0.5px solid #ccc;
+    background: transparent;
+    color: #666;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.workout-modal-cancel:hover {
+    background: #f5f5f5;
+}
+
+.workout-modal-add {
+    flex: 2;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1A5319;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+}
+
+.workout-modal-add:hover {
+    opacity: 0.88;
+}
+
+.workout-modal-add.disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+    .workout-modal {
+        max-width: 100%;
     }
-    .meal-modal-width{
-        width: 340px !important;
+
+    .workout-modal-days {
+        gap: 5px;
     }
+
+    .workout-day-pill {
+        width: 34px;
+        height: 34px;
+        font-size: 10px;
+    }
+}
+
+/* ── Instructions block (Modalworkout only) ── */
+.workout-modal-instructions {
+    background: #f8f8f8;
+    border: 0.5px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.workout-modal-instructions-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
