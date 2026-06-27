@@ -4,8 +4,7 @@ import { auth, db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
+import { BicepsFlexed, ChartColumnIncreasing, Eye, EyeOff, Salad } from "lucide-react";
 import "../CSS/login.css"
 
 function Register() {
@@ -13,8 +12,9 @@ function Register() {
     const [password, setPassword] = useState("");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
     const [open, setOpen] = useState(false);
-    const [message, setMessage] = useState("false");
+    const [message, setMessage] = useState("");
 
     const handleRegister = async (e: any) => {
         e.preventDefault();
@@ -24,34 +24,23 @@ function Register() {
             console.log(user);
             if (user) {
                 await setDoc(doc(db, "Users", user.uid), {
-                    email: user.email,  
+                    email: user.email,
                     firstName: fname,
                     lastName: lname,
                     photo: ""
                 });
             }
-            setMessage("User Registered Successfully!!")
-            setOpen(true)
+            setMessage("User Registered Successfully!!");
+            setOpen(true);
         } catch (error: any) {
             console.log({ error });
-            setMessage(error?.message)
+            setMessage(error?.message);
             setOpen(true);
         }
     };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
-        <>
-            <IconButton
-                size="small"
-                aria-label="close"
-                color="inherit"
-                onClick={handleClose}
-            >
-                <CloseIcon fontSize="small" />
-            </IconButton>
-        </>
+    const handleClose = () => setOpen(false);
+
     return (
         <div className="login-section">
             <Snackbar
@@ -59,65 +48,100 @@ function Register() {
                 autoHideDuration={6000}
                 onClose={handleClose}
                 message={message}
-            // action={action}
             />
-            <h3 className="head-DietDuo" >𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h3>
-            <form className="form" onSubmit={handleRegister}>
-                <h4 className="login">Sign Up</h4>
 
-                <div className="mb-3">
-                    <label>First name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="First name"
-                        onChange={(e) => setFname(e.target.value)}
-                        required
-                    />
+            {/* Left panel */}
+            <div className="login-left">
+                <div className="login-left-content">
+                    <h1 className="login-brand">𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h1>
+                    <p className="login-tagline">Your personal diet & workout companion</p>
+                    <div className="login-features">
+                        <div className="login-feature-item"><Salad size={20}/> Personalised meal plans</div>
+                        <div className="login-feature-item"><BicepsFlexed size={20} /> Workout scheduling</div>
+                        <div className="login-feature-item"><ChartColumnIncreasing size={20} /> Track your progress</div>
+                    </div>
                 </div>
+            </div>
 
-                <div className="mb-3">
-                    <label>Last name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Last name"
-                        onChange={(e) => setLname(e.target.value)}
-                    />
-                </div>
+            {/* Right panel */}
+            <div className="login-right">
+                <div className="login-card">
+                    <h2 className="login-title">Create an account</h2>
+                    <p className="login-subtitle">Fill in your details to get started</p>
 
-                <div className="mb-3">
-                    <label>Email address</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Enter email"
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
+                    <form onSubmit={handleRegister} className="login-form">
 
-                <div className="mb-3">
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        placeholder="Enter password"
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
+                        {/* Name row */}
+                        <div className="login-name-row">
+                            <div className="login-field">
+                                <label className="login-label">First name</label>
+                                <input
+                                    type="text"
+                                    className="login-input"
+                                    onChange={(e) => setFname(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="login-field">
+                                <label className="login-label">Last name</label>
+                                <input
+                                    type="text"
+                                    className="login-input"
+                                    onChange={(e) => setLname(e.target.value)}
+                                />
+                            </div>
+                        </div>
 
-                <div className="d-grid">
-                    <button type="submit" className="btn btn-primary">
-                        Sign Up
-                    </button>
+                        <div className="login-field">
+                            <label className="login-label">Email address</label>
+                            <input
+                                type="email"
+                                className="login-input"
+                                placeholder="you@example.com"
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+
+                        <div className="login-field">
+                            <label className="login-label">Password</label>
+                            <div className="login-input-wrap">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="login-input"
+                                    placeholder="Create a password"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="login-eye"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    aria-label="Toggle password"
+                                >
+                                    {showPassword ? (
+                                        <EyeOff style={{ stroke: "#000" }} />
+                                    ) : (
+                                        <Eye style={{ stroke: "#000" }} />
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" className="login-btn">
+                            Create account
+                        </button>
+
+                        <p className="login-register">
+                            Already have an account? <Link to="/login">Sign in</Link>
+                        </p>
+
+                    </form>
                 </div>
-                <p className="forgot-password text-right">
-                    Already registered <Link to="/login">Login</Link>
-                </p>
-            </form>
+            </div>
+
         </div>
     );
 }
+
 export default Register;
