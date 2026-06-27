@@ -1,3 +1,4 @@
+/* ── Page wrapper ── */
 .work {
     height: auto;
     padding-top: 2%;
@@ -5,15 +6,11 @@
     color: white;
 }
 
+/* ── Headline ── */
 .headline-work {
     display: flex;
     justify-content: center;
-    font-size: 3.2em;
-    line-height: 1.1;
     margin-bottom: 2%;
-}
-
-.work .headline-work {
     font-family: "Fraunces", Georgia, serif;
     font-weight: 700;
     font-size: clamp(2rem, 4vw, 3.2rem);
@@ -24,87 +21,204 @@
     filter: drop-shadow(0 8px 28px rgba(0, 0, 0, 0.3));
 }
 
-.beginner {}
-
-.dropdown-muscle {
-    background-color: white;
-    color: black;
-    border: 15px;
-    padding: 1%;
-    border: none;
-    border-radius: 5px;
+/* ── Muscle filter bar ── */
+.muscle-filter-bar {
+    padding: 0 3% 16px;
+    margin: 20px 10px;
 }
 
-.dropdown-muscle:hover {
-    box-shadow: 2px 2px 10px white;
+.muscle-filter-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
+    margin-left: 70px;
 }
 
-.dropdown-muscle-option {
-    background-color: white;
-    color: black;
+.muscle-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
 }
 
+.muscle-chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.muscle-chip:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+.muscle-chip.active {
+    background: #fff;
+    border-color: #fff;
+    color: #1A5319;
+    font-weight: 600;
+}
+
+/* ── Cards grid ── */
 .workout-section {
     display: flex;
     flex-wrap: wrap;
-    margin: 2% 3% 0% 3%;
-    height: auto;
+    margin: 0 3% 2%;
     justify-content: center;
-    column-gap: 20px;
+    gap: 20px;
 }
 
-.muscles {
-    left: 210px;
-}
-
+/* ── Card ── */
 .cardwork {
-    /* background-color: #fff; */
     background-image: url(../Images/card-bg.jpg);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 360px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
     width: 100%;
-    padding: 15px 15px 2px 15px;
-    margin: 20px;
+    max-width: 340px;
+    padding: 18px;
     box-sizing: border-box;
-    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
-.cardwork h2 {
-    margin-top: 0;
-    color: #333;
+/* subtle dark tint so text stays readable over bg image */
+.cardwork::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.82);
+    border-radius: 12px;
+    z-index: 0;
 }
 
-.cardwork p {
-    color: #555;
+.cardwork > * {
+    position: relative;
+    z-index: 1;
 }
 
-.cardwork p strong {
-    color: #474747;
+/* ── Card badge (type) ── */
+.cardwork-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: #e6f4ec;
+    color: #1A5319;
+    border: 0.5px solid #a8d5b5;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
-.cardwork .equipment,
-.cardwork .muscle,
-.cardwork .type {
-    font-weight: bold;
+/* ── Card title ── */
+.cardwork-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.3;
 }
 
-.view-button {
-    padding: 1% 10%;
-    border-radius: 10px;
+/* ── Meta rows ── */
+.cardwork-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(248, 248, 248, 0.85);
+    border: 0.5px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 12px;
 }
 
-.workbtn {
-    column-gap: 10px;
+.cardwork-meta-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
 }
 
-.btn-workout {
-    border-radius: 3px;
-    background-color: #3c6b3b;
-    flex-basis: 48%;
+.meta-label {
+    color: #888;
+    font-weight: 500;
+}
+
+.meta-value {
+    color: #222;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: right;
+    max-width: 60%;
+}
+
+.difficulty-badge {
+    background: #fff8e1;
+    color: #b45309;
+    border: 0.5px solid #fcd34d;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+}
+
+/* ── Card actions ── */
+.cardwork-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.btn-add-workout {
+    flex: 1;
+    padding: 9px 10px;
+    border-radius: 8px;
     border: none;
+    background: #1A5319;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
 }
 
+.btn-add-workout:hover {
+    opacity: 0.85;
+}
+
+.btn-read-more {
+    flex: 1;
+    padding: 9px 10px;
+    border-radius: 8px;
+    border: 1px solid #1A5319;
+    background: transparent;
+    color: #1A5319;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-read-more:hover {
+    background: #1A5319;
+    color: #fff;
+}
+
+/* ── Loader ── */
 .loader-height {
     height: 600px;
     display: flex;
@@ -117,16 +231,14 @@
     width: 70px;
 }
 
+/* ── Responsive ── */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-    .muscles {
-        display: flex;
-        justify-content: center;
-        left: 0;
-        margin: 3% 0;
+    .muscle-filter-bar {
+        padding: 0 4% 16px;
     }
 
     .cardwork {
-        width: 43%;
+        max-width: 45%;
     }
 }
 
@@ -135,37 +247,52 @@
         padding-top: 10%;
     }
 
-    .cardwork {
-        padding: 15px;
-    }
-
-    .muscles {
-        display: flex;
-        justify-content: center;
-        left: 0;
-        margin: 3% 0;
-    }
-
     .headline-work {
-        display: flex;
-        justify-content: center;
         font-size: 2.2em;
         margin-bottom: 5%;
     }
 
-    .headline-extra {
-        margin-left: 40px;
+    .muscle-filter-bar {
+        padding: 0 5% 14px;
     }
 
-    .btn-workout {
-        margin-top: 0px;
+    .muscle-chip {
+        font-size: 11px;
+        padding: 5px 11px;
     }
 
-    .workbtn {
-        column-gap: 9px;
+    .workout-section {
+        margin: 0 4% 4%;
+        gap: 16px;
+    }
+
+    .cardwork {
+        max-width: 100%;
     }
 
     .beginner {
         padding: 5%;
     }
+}
+
+/* Intermediate difficulty badge — blue tint */
+.difficulty-badge-intermediate {
+    background: #e0f0ff;
+    color: #1d5fa6;
+    border: 0.5px solid #93c5fd;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+}
+/* Expert difficulty badge — red tint */
+.difficulty-badge-expert {
+    background: #fde8e8;
+    color: #b91c1c;
+    border: 0.5px solid #fca5a5;
+    border-radius: 12px;
+    padding: 2px 8px;
+    font-size: 11px;
+}
+.workout-section-expert{
+    margin-top: 40px;
 }

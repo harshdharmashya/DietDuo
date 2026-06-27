@@ -1,23 +1,10 @@
-import { Box } from '@mui/material';
-import Card from '@mui/material/Card';
 import Modal from '@mui/material/Modal';
 import "../CSS/Modal.css"
 
 export default function Modalworkout(props: any) {
-    let data = props.currentItem;
+    const data = props.currentItem;
     const handleClose = () => props.setIsOpen(false);
 
-    const style = {
-        position: 'absolute' as 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 400,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
-        p: 2,
-    };
     return (
         <Modal
             open={props.isOpen}
@@ -25,17 +12,60 @@ export default function Modalworkout(props: any) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Card className='modal-container' sx={{ ...style, borderRadius: '20px', border: 'none', boxShadow: '10px 7px 15px grey' }}>
-                <Box className='card-Box'>
-                    <div className='modal-inner-cont' style={{ height: 210, color: 'black' }}>
-                        <h2>{data.name}</h2>
-                        <p className="equipment"><strong>Equipment : </strong>{data?.equipment}</p>
-                        <p className="muscle"><strong>Muscle : </strong>{data?.muscle}</p>
-                        <p className="type"><strong>Type : </strong>{data?.type}</p>
+            <div className="workout-modal-overlay">
+                <div className="workout-modal">
+
+                    {/* Header */}
+                    <div className="workout-modal-header">
+                        <div className="workout-modal-header-content">
+                            <div className="workout-modal-type-badge">{data?.type}</div>
+                            <h2 className="workout-modal-title">{data?.name}</h2>
+                        </div>
+                        <button className="workout-modal-close" onClick={handleClose} aria-label="Close">✕</button>
                     </div>
-                    {/* <p className="type"><strong>Instructions : </strong>{data?.instructions}</p> */}
-                </Box>
-            </Card>
+
+                    {/* Body */}
+                    <div className="workout-modal-body">
+
+                        {/* Meta */}
+                        <div className="workout-modal-meta">
+                            <div className="workout-modal-meta-item">
+                                <span className="workout-meta-label">Equipment</span>
+                                <span className="workout-meta-value">{data?.equipment}</span>
+                            </div>
+                            <div className="workout-modal-meta-item">
+                                <span className="workout-meta-label">Muscle</span>
+                                <span className="workout-meta-value">{data?.muscle}</span>
+                            </div>
+                            <div className="workout-modal-meta-item">
+                                <span className="workout-meta-label">Type</span>
+                                <span className="workout-meta-value">{data?.type}</span>
+                            </div>
+                            {data?.difficulty && (
+                                <div className="workout-modal-meta-item">
+                                    <span className="workout-meta-label">Difficulty</span>
+                                    <span className="workout-meta-value">{data.difficulty}</span>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Instructions — shown only if available */}
+                        {data?.instructions && (
+                            <div className="workout-modal-instructions">
+                                <p className="workout-modal-schedule-label">Instructions</p>
+                                <p className="workout-modal-instructions-text">{data.instructions}</p>
+                            </div>
+                        )}
+
+                    </div>
+
+                    {/* Footer */}
+                    <div className="workout-modal-footer">
+                        <button className="workout-modal-cancel" onClick={handleClose}>Close</button>
+                    </div>
+
+                </div>
+            </div>
         </Modal>
-    )
+    );
 }

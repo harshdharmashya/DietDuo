@@ -4,29 +4,23 @@ import { setBeginner } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
 
+export const MUSCLE_LIST = [
+    'adductors', 'biceps', 'calves', 'chest',
+    'forearms', 'glutes', 'hamstrings', 'lats',
+    'lower_back', 'middle_back', 'triceps'
+];
+
+export const MUSCLE_ICONS: Record<string, string> = {
+    abdominals: '🫀', adductors: '🦵', biceps: '💪', calves: '🦶',
+    chest: '🫁', forearms: '🦾', glutes: '🍑', hamstrings: '🦵',
+    lats: '🏋️', lower_back: '🔙', middle_back: '🔙', triceps: '💪'
+};
 
 export default function Beginner(props: any) {
     const dispatch = useDispatch();
-    const [muscle, setmuscle] = useState('');
-    // for open modal for Add to cart
+    const [muscle, setMuscle] = useState('');
     const [isOpenAdd, setIsOpenAdd] = useState(false);
-    const muscle_array = [
-        { name: 'abdominals' },
-        { name: 'adductors' },
-        { name: 'biceps' },
-        { name: 'calves' },
-        { name: 'chest' },
-        { name: 'forearms' },
-        { name: 'glutes' },
-        { name: 'hamstrings' },
-        { name: 'lats' },
-        { name: 'lower_back' },
-        { name: 'middle_back' },
-        { name: 'triceps' }
-        // neck,
-        // quadriceps,
-        // traps,
-    ]
+
     const workout = async (difficulty: string) => {
         // const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
         const response = await fetch(`https://diet-duo-backend.vercel.app/api/exercies?difficulty=${difficulty}&muscle=${muscle}`);
@@ -37,77 +31,95 @@ export default function Beginner(props: any) {
     useEffect(() => {
         workout('beginner');
     }, [muscle]);
-    const handleOpen = () => props.setIsOpen(true);
-    const handleWork = () => setIsOpenAdd(true);
 
-    // for open Add to workout modal
     function handleAddworkout(data: any) {
         props.setCurrentItem(data);
-        handleWork();
+        setIsOpenAdd(true);
     }
 
-    // for choose muscle 
-    const handleChange = (e: any) => {
-        setmuscle(e.target.value);
-    }
-    // to transfer the data to modal
     function handleModal(data: any) {
-        props.setCurrentItem(data)
-        // console.log(data);
-        handleOpen();
+        props.setCurrentItem(data);
+        props.setIsOpen(true);
     }
 
+    const work_out: any = useSelector((state: any) => state.workout.Beginner);
 
-    const work_out: any = useSelector((state: any) => state.workout.Beginner)
-    // console.log("work_out of beginner: ", work_out)
     if (work_out.length === 0) {
-        return <>
-            <div className='loader-height'>
+        return (
+            <div className="loader-height">
                 <div className="spinner-border text-light load" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </div>
             </div>
-        </>; // Display loader if data is empty
+        );
     }
 
     return (
         <>
-            <div className='beginner'>
-                <div className="btn-group muscles">
-                    <span style={{ width: 70, display: 'flex', alignItems: 'center' }}>Muscle : </span><select className='dropdown-muscle' value={muscle}
-                        onChange={(e) => {
-                            handleChange(e)
-                        }}>
-                        {muscle_array.map((datam: any, i: number) => (
-                            <option className='dropdown-muscle-option' key={i} value={datam.name}>{datam.name}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className='workout-section'>
-                    {work_out.map((data: any, i: number) => (
-                        <div className="cardwork" key={i}>
-                            <div style={{ height: 210 }}>
-                                <h2>{data.name}</h2>
-                                <p className="equipment"><strong>Equipment : </strong>{data.equipment}</p>
-                                <p className="muscle"><strong>Muscle : </strong>{data.muscle}</p>
-                                <p className="type"><strong>Type : </strong>{data.type}</p>
-                            </div>
-                            <div className='contain-summry-pie workbtn'>
-                                <button className='btn-workout' onClick={() => handleAddworkout(data)}>Add to Meal</button>
-                                <button className='btn-workout' onClick={() => handleModal(data)}>Read more..</button>
-                            </div>
-                        </div>
+            {/* Muscle filter bar */}
+            <div className="muscle-filter-bar">
+                <span className="muscle-filter-label">Target muscle</span>
+                <div className="muscle-chips">
+                    {MUSCLE_LIST.map((m) => (
+                        <button
+                            key={m}
+                            className={`muscle-chip${muscle === m ? ' active' : ''}`}
+                            onClick={() => setMuscle(m)}
+                        >
+                            {MUSCLE_ICONS[m]} {m.replace('_', ' ')}
+                        </button>
                     ))}
-
-                    {props.isOpen &&
-                        <Modalworkout currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpen={props.isOpen} setIsOpen={props.setIsOpen} />
-                    }
-                    {isOpenAdd &&
-                        <Addtoworkout_Modal currentItem={props.currentItem} setCurrentItem={props.setCurrentItem} isOpenAdd={isOpenAdd} setIsOpenAdd={setIsOpenAdd} />
-                    }
-
                 </div>
             </div>
+
+            {/* Cards grid */}
+            <div className="workout-section">
+                {work_out.map((data: any, i: number) => (
+                    <div className="cardwork" key={i}>
+                        <div className="cardwork-badge">{data.type}</div>
+                        <h2 className="cardwork-title">{data.name}</h2>
+                        <div className="cardwork-meta">
+                            <div className="cardwork-meta-item">
+                                <span className="meta-label">Equipment</span>
+                                <span className="meta-value">{data.equipment}</span>
+                            </div>
+                            <div className="cardwork-meta-item">
+                                <span className="meta-label">Muscle</span>
+                                <span className="meta-value">{data.muscle}</span>
+                            </div>
+                            <div className="cardwork-meta-item">
+                                <span className="meta-label">Difficulty</span>
+                                <span className="meta-value difficulty-badge">Beginner</span>
+                            </div>
+                        </div>
+                        <div className="cardwork-actions">
+                            <button className="btn-add-workout" onClick={() => handleAddworkout(data)}>
+                                + Add to plan
+                            </button>
+                            <button className="btn-read-more" onClick={() => handleModal(data)}>
+                                Read more
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {props.isOpen && (
+                <Modalworkout
+                    currentItem={props.currentItem}
+                    setCurrentItem={props.setCurrentItem}
+                    isOpen={props.isOpen}
+                    setIsOpen={props.setIsOpen}
+                />
+            )}
+            {isOpenAdd && (
+                <Addtoworkout_Modal
+                    currentItem={props.currentItem}
+                    setCurrentItem={props.setCurrentItem}
+                    isOpenAdd={isOpenAdd}
+                    setIsOpenAdd={setIsOpenAdd}
+                />
+            )}
         </>
-    )
+    );
 }
