@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { motion } from "framer-motion";
 import { setDayWorkouts } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
+import { BicepsFlexed } from 'lucide-react';
 
 export default function Monday_Workout(props: any) {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function Monday_Workout(props: any) {
         {data.length === 0 ? (
           <div className="meal-empty meal-empty--span">
             <div className="meal-empty-icon" aria-hidden>
-              💪
+              <BicepsFlexed />
             </div>
             <h3 className="display-font">Nothing here yet</h3>
             <p>

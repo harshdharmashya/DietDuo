@@ -3,6 +3,7 @@ import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { setDish } from '../Redux/Usermeal';
 import "../CSS/Modal.css";
+import { HeartPlus, Timer } from 'lucide-react';
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
@@ -48,7 +49,7 @@ export default function Addtomeal_Modal(props: any) {
             {/* Stats */}
             <div className="meal-modal-stats">
               <div className="meal-stat-card">
-                <div className="meal-stat-icon">⏱</div>
+                <div className="meal-stat-icon"><Timer /></div>
                 <div>
                   <p className="meal-stat-label">Ready in</p>
                   <p className="meal-stat-value">{data?.readyInMinutes} min</p>
@@ -56,7 +57,7 @@ export default function Addtomeal_Modal(props: any) {
               </div>
               {data?.healthScore !== undefined && (
                 <div className="meal-stat-card">
-                  <div className="meal-stat-icon">❤️</div>
+                  <div className="meal-stat-icon"><HeartPlus /></div>
                   <div>
                     <p className="meal-stat-label">Health score</p>
                     <p className="meal-stat-value">{data.healthScore} / 100</p>

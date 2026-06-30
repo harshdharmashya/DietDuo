@@ -4,7 +4,11 @@ import { auth } from "./firebase";
 import { Link } from "react-router-dom";
 import "../CSS/login.css"
 import { BicepsFlexed, ChartColumnIncreasing, Eye, EyeOff, Salad } from "lucide-react";
-
+// TODO: React hot toast integrate
+// TODO: loader on buttons
+// TODO: alignment of flex grid content 
+// TODO: AI intergrate
+// TODO: show skeltion on loading instead of loader 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

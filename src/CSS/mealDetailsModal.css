@@ -1,0 +1,195 @@
+/* Split Layout Config */
+.modal-split-layout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    max-height: 85vh;
+}
+
+@media (min-width: 768px) {
+    .modal-split-layout {
+        flex-direction: row;
+        height: 480px;
+        /* Force a stable, aligned row height */
+        overflow: hidden;
+    }
+}
+
+/* Fixes the Invisible Close Icon */
+.modal-close-trigger {
+    position: absolute !important;
+    top: 16px;
+    right: 16px;
+    background: #ffffff !important;
+    color: #334155 !important;
+    /* Force a dark grey icon color so it is visible */
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease !important;
+    stroke: black !important;
+}
+
+.modal-close-trigger:hover {
+    color: #ef4444 !important;
+    transform: rotate(90deg);
+}
+
+/* Left Section: Image Side Cover Fix */
+.modal-media-pane {
+    position: relative;
+    width: 100%;
+    height: 220px;
+}
+
+@media (min-width: 768px) {
+    .modal-media-pane {
+        width: 45%;
+        height: 100%;
+        /* Stretches to fill the full 480px parent container */
+    }
+}
+
+.modal-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures image crops dynamically without whitespace */
+    display: block;
+}
+
+/* Right Section: Core Text Data */
+.modal-content-pane {
+    width: 100%;
+    padding: 28px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Vertically center content perfectly */
+}
+
+@media (min-width: 768px) {
+    .modal-content-pane {
+        width: 55%;
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+.modal-recipe-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+}
+
+/* Clean Separator Rule */
+.modal-divider {
+    border: 0;
+    height: 1px;
+    background: #cbd5e1;
+    margin: 16px 0;
+}
+
+/* Dynamic Ready Badge Style */
+.recipe-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a5319;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+/* Sections Structure Layout */
+.modal-section-block {
+    margin-bottom: 20px;
+}
+
+.modal-section-heading {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.8px;
+    margin: 0 0 10px 0;
+}
+
+/* Tag Lists */
+.modal-diet-tags-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.modal-diet-tag {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* Dietary Matrix Preferences Grid Box setup */
+.diet-status-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    stroke: black !important;
+}
+
+/* Individual status elements */
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    stroke: black !important;
+}
+
+.status-pill span {
+    color: #000000 !important;
+    /* Forces the text to be pure black */
+    font-weight: 600 !important;
+    /* Keeps the text nice and readable */
+}
+
+.status-ico {
+    font-size: 16px !important;
+}
+
+/* Active Status (Green) */
+.status-pill.is-allowed {
+    background: #f4fbf4 !important;
+    border-color: rgba(76, 175, 80, 0.3) !important;
+    color: #1b5e20 !important;
+    /* Force deep visible green text */
+}
+
+.status-pill.is-allowed .status-ico {
+    color: #4caf50 !important;
+}
+
+/* Negative Status (Red) - FIXES THE BLINDING WHITE TEXT */
+.status-pill.is-restricted {
+    background: #fef2f2 !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+    color: #991b1b !important;
+    /* Force high-contrast deep red text */
+}
+
+.status-pill.is-restricted .status-ico {
+    color: #ef4444 !important;
+}

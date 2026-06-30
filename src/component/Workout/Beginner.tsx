@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setBeginner } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
+import { Heart, Footprints, BicepsFlexed, Dumbbell, Hand, PersonStanding, Bone } from "lucide-react";
 
 export const MUSCLE_LIST = [
     'adductors', 'biceps', 'calves', 'chest',
@@ -10,10 +11,19 @@ export const MUSCLE_LIST = [
     'lower_back', 'middle_back', 'triceps'
 ];
 
-export const MUSCLE_ICONS: Record<string, string> = {
-    abdominals: '🫀', adductors: '🦵', biceps: '💪', calves: '🦶',
-    chest: '🫁', forearms: '🦾', glutes: '🍑', hamstrings: '🦵',
-    lats: '🏋️', lower_back: '🔙', middle_back: '🔙', triceps: '💪'
+export const MUSCLE_ICONS: Record<string, React.ReactNode> = {
+    abdominals: <Heart size={18} />,
+    adductors: <PersonStanding size={18} />,
+    biceps: <BicepsFlexed size={18} />,
+    calves: <Footprints size={18} />,
+    chest: <Heart size={18} />,
+    forearms: <Hand size={18} />,
+    glutes: <PersonStanding size={18} />,
+    hamstrings: <PersonStanding size={18} />,
+    lats: <Dumbbell size={18} />,
+    lower_back: <Bone size={18} />,
+    middle_back: <Bone size={18} />,
+    triceps: <Dumbbell size={18} />,
 };
 
 export default function Beginner(props: any) {

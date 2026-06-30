@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Modalcard from "../Modalcard";
 import { setDayMeals } from "../../Redux/Usermeal";
 import type { MealPlanKey } from "../../Redux/Usermeal";
+import { UtensilsCrossed } from "lucide-react";
 
 export default function Monday(props: {
   meal: unknown[];
@@ -41,7 +42,7 @@ export default function Monday(props: {
         {data.length === 0 ? (
           <div className="meal-empty meal-empty--span">
             <div className="meal-empty-icon" aria-hidden>
-              🍽️
+              <UtensilsCrossed />
             </div>
             <h3 className="display-font">Nothing here yet</h3>
             <p>

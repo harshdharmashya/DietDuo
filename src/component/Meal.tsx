@@ -9,6 +9,7 @@ import Dinner from "./Dinner";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LocalDiningOutlinedIcon from '@mui/icons-material/LocalDiningOutlined';
+import { UtensilsCrossed } from 'lucide-react';
 
 export default function Meal(props: any) {
   // for tab
@@ -52,7 +53,7 @@ export default function Meal(props: any) {
         <Link to=''>
           {/* <Link to='' state={props.cart}> */}
           <button className='addcardicon' onClick={() => props.setshow(false)}>
-            <LocalDiningOutlinedIcon></LocalDiningOutlinedIcon>
+            <UtensilsCrossed />
           </button>
         </Link>
       </div>
