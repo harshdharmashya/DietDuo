@@ -37,18 +37,18 @@ export default function Navbar(props: any) {
               <motion.li className="nav-item" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link className={`nav-link fw-semibold ${isActive('/about')}`} to="/about">About</Link>
               </motion.li>
-              <motion.li className="nav-item" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link className={`nav-link fw-semibold ${isActive('/meal')}`} to="/meal">Meal</Link>
-              </motion.li>
-              <motion.li className="nav-item" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Link className={`nav-link fw-semibold ${isActive('/work_out')}`} to="/work_out">Work-out</Link>
-              </motion.li>
 
               <div className="vr mx-3 d-none d-lg-block bg-white opacity-25" style={{ height: '24px' }}></div>
 
               {
                 props.user ?
                   <>
+                    <motion.li className="nav-item" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Link className={`nav-link fw-semibold ${isActive('/meal')}`} to="/meal">Meal</Link>
+                    </motion.li>
+                    <motion.li className="nav-item" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Link className={`nav-link fw-semibold ${isActive('/work_out')}`} to="/work_out">Work-out</Link>
+                    </motion.li>
                     <motion.li className="nav-item ms-lg-2" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link className={`nav-link fw-semibold ${isActive('/profile')}`} to="/profile">Profile</Link>
                     </motion.li>

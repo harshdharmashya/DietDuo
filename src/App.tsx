@@ -142,11 +142,11 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<Home user={user} setUser={setUser} handleLogout={handleLogout} />} />
+            <Route path="/about" element={<About user={user} setUser={setUser} handleLogout={handleLogout} />} />
             {user ?
               <>
                 <Route path="/meal" element={<Usermeal user={user} setUser={setUser} handleLogout={handleLogout} />} />
                 <Route path="/work_out" element={<User_Workout user={user} setUser={setUser} handleLogout={handleLogout} />} />
-                <Route path="/about" element={<About user={user} setUser={setUser} handleLogout={handleLogout} />} />
                 <Route path="/profile" element={<Profile user={user} setUser={setUser} handleLogout={handleLogout} />} />
                 <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
               </>
