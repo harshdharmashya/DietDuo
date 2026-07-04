@@ -69,7 +69,6 @@ export default function Breakfast(props: BreakfastProps) {
                 <h5 className="meal-card-title">{datab?.title}</h5>
 
                 <div className="metrics-grid">
-                  {/* Health Score Ring */}
                   <div className="health-score-box">
                     <span className="metric-label">Health Score</span>
                     <div className="pie-container-relative">

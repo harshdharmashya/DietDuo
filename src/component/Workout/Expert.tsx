@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setexpert } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
-import { Skeleton, Box } from '@mui/material';
+import { Skeleton } from '@mui/material';
 
 export default function Expert(props: any) {
     const dispatch = useDispatch();

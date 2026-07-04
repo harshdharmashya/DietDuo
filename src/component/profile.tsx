@@ -27,14 +27,14 @@ const WORKOUT_DAY_KEYS = ["Mon", "Tus", "Wed", "Thur", "Fri", "Sat", "Sun"] as c
 
 function countMealsPlanned(meal: RootState["meal"]) {
   return MEAL_KEYS.reduce((acc, key) => {
-    const slot = meal[key as keyof typeof meal];
+    const slot = meal[key as keyof RootState["meal"]];
     return acc + (Array.isArray(slot) ? slot.length : 0);
   }, 0);
 }
 
 function countWorkoutsScheduled(workout: RootState["workout"]) {
   return WORKOUT_DAY_KEYS.reduce((acc, key) => {
-    const slot = workout[key as keyof typeof workout];
+    const slot = workout[key as keyof RootState["workout"]];
     return acc + (Array.isArray(slot) ? slot.length : 0);
   }, 0);
 }

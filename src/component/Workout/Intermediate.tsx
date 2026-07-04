@@ -4,8 +4,7 @@ import { setintermediate } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
 import { MUSCLE_ICONS, MUSCLE_LIST } from './Beginner';
-import { Skeleton, Box } from '@mui/material';
-
+import { Skeleton } from '@mui/material';
 
 export default function Intermediate(props: any) {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { setBeginner } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
 import { Heart, Footprints, BicepsFlexed, Dumbbell, Hand, PersonStanding, Bone } from "lucide-react";
-import { Skeleton, Box } from '@mui/material';
+import { Skeleton } from '@mui/material';
 
 export const MUSCLE_LIST = [
     'adductors', 'biceps', 'calves', 'chest',
