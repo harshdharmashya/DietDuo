@@ -5,6 +5,7 @@ import Modalcard from "../Modalcard";
 import { setDayMeals } from "../../Redux/Usermeal";
 import type { MealPlanKey } from "../../Redux/Usermeal";
 import { UtensilsCrossed } from "lucide-react";
+import { toast } from "react-toastify";
 
 export default function Monday(props: {
   meal: unknown[];
@@ -32,6 +33,7 @@ export default function Monday(props: {
     const filterData = data.filter((_v, i) => i !== index);
     dispatch(setDayMeals({ day: props.mealDayKey, items: filterData }));
     setdata(filterData);
+    toast.success("Meal removed successfully!");
   }
 
   return (

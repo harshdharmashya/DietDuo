@@ -54,9 +54,14 @@ export default function Navbar(props: any) {
                     </motion.li>
                     <motion.li className="" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <button 
-                        className="btn btn-sm rounded-pill px-4 fw-bold ms-lg-2" 
+                        className="btn btn-sm rounded-pill px-4 fw-bold ms-lg-2 d-flex align-items-center gap-2" 
                         style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}
-                        onClick={() => props.handleLogout()}
+                        onClick={(e) => {
+                          const btn = e.currentTarget;
+                          btn.innerHTML = '<div class="spinner-border spinner-border-sm" role="status"></div> Logging out...';
+                          btn.disabled = true;
+                          props.handleLogout();
+                        }}
                       >
                         Logout
                       </button>

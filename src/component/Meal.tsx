@@ -8,15 +8,11 @@ import Lunch from "./Lunch";
 import Dinner from "./Dinner";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LocalDiningOutlinedIcon from '@mui/icons-material/LocalDiningOutlined';
 import { UtensilsCrossed } from 'lucide-react';
 
 export default function Meal(props: any) {
-  // for tab
   const [value, setValue] = useState(0);
-  // for open modal for read more
   const [isOpen, setIsOpen] = useState(false);
-  // for open modal for Add to cart
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   // for user meal
   // const [Usermeal, setuserMeal] = useState([]);

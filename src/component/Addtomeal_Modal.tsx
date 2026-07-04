@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setDish } from '../Redux/Usermeal';
 import "../CSS/Modal.css";
 import { HeartPlus, Timer } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
@@ -16,6 +17,7 @@ export default function Addtomeal_Modal(props: any) {
 
   function handleAddtomeal() {
     dispatch(setDish({ data, day: day + '_' + props.mealType }));
+    toast.success("Meal added successfully!");
     handleCloseAdd();
   }
 
@@ -24,7 +26,6 @@ export default function Addtomeal_Modal(props: any) {
       <div className="meal-modal-overlay">
         <div className="meal-modal">
 
-          {/* Hero image */}
           <div className="meal-modal-hero">
             <img src={data?.image} alt={data?.title} className="meal-modal-hero-img" />
             <div className="meal-modal-hero-overlay" />
@@ -34,10 +35,8 @@ export default function Addtomeal_Modal(props: any) {
             </div>
           </div>
 
-          {/* Body */}
           <div className="meal-modal-body">
 
-            {/* Diet tags */}
             {data?.diets && (
               <div className="meal-modal-tags">
                 {(Array.isArray(data.diets) ? data.diets : [data.diets]).map((d: string) => (
@@ -46,7 +45,6 @@ export default function Addtomeal_Modal(props: any) {
               </div>
             )}
 
-            {/* Stats */}
             <div className="meal-modal-stats">
               <div className="meal-stat-card">
                 <div className="meal-stat-icon"><Timer /></div>
@@ -66,7 +64,6 @@ export default function Addtomeal_Modal(props: any) {
               )}
             </div>
 
-            {/* Day picker */}
             <div className="meal-modal-schedule">
               <p className="meal-modal-schedule-label">Choose day</p>
               <div className="meal-modal-days">
@@ -84,7 +81,6 @@ export default function Addtomeal_Modal(props: any) {
 
           </div>
 
-          {/* Footer */}
           <div className="meal-modal-footer">
             <button onClick={handleCloseAdd} className="meal-modal-cancel">Cancel</button>
             <button

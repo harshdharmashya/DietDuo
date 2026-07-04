@@ -5,6 +5,7 @@ import { setDinner } from '../Redux/frontSlice';
 import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
 import "../CSS/Meal.css"
+import { Skeleton, Box } from '@mui/material';
 
 interface DinnerProps {
   isOpen: boolean;
@@ -43,10 +44,29 @@ export default function Dinner(props: DinnerProps) {
 
   if (!meals || meals.length === 0) {
     return (
-      <div className="d-flex justify-content-center align-items-center loader-height" style={{ minHeight: '200px' }}>
-        <div className="spinner-border text-success" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div className="active-meal-container">
+        {[1, 2, 3].map((n) => (
+          <div className="modern-meal-card" key={n}>
+            <Skeleton variant="rectangular" height={200} sx={{ borderTopLeftRadius: '16px', borderTopRightRadius: '16px', bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+            <div className="card-body-content">
+              <Skeleton variant="text" sx={{ fontSize: '1.25rem', mb: 2, bgcolor: 'rgba(255, 255, 255, 0.1)' }} width="80%" />
+              <div className="metrics-grid">
+                <Box sx={{ pt: 0.5 }}>
+                  <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                  <Skeleton variant="circular" width={60} height={60} sx={{ mt: 1, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                </Box>
+                <Box sx={{ pt: 0.5 }}>
+                   <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                   <Skeleton variant="rounded" width={80} height={24} sx={{ mt: 1, borderRadius: 8, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                </Box>
+              </div>
+            </div>
+            <div className="card-action-footer">
+              <Skeleton variant="rounded" width="45%" height={36} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+              <Skeleton variant="rounded" width="45%" height={36} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
@@ -59,22 +79,18 @@ export default function Dinner(props: DinnerProps) {
 
           return (
             <div className="modern-meal-card" key={datab.id || i}>
-              {/* Image Header with Elegant Overlay */}
               <div className="card-image-wrapper">
                 <img src={datab?.image} className="card-img-top" alt={datab?.title} />
                 {/* <div className="card-badge-overlay">Dinner</div> */}
               </div>
 
-              {/* Central Information Base */}
               <div className="card-body-content">
                 <h5 className="meal-card-title">{datab?.title}</h5>
 
                 <div className="metrics-grid">
-                  {/* Fixed Health Score Ring Container */}
                   <div className="health-score-box">
                     <span className="metric-label">Health Score</span>
                     <div className="pie-container-relative">
-                      {/* True CSS absolute centering to eliminate text edge cutting */}
                       <span className="pie-center-percentage">{score}%</span>
                       <PieChart
                         series={[
@@ -97,7 +113,6 @@ export default function Dinner(props: DinnerProps) {
                     </div>
                   </div>
 
-                  {/* Clean Formatted Diet Tag Pill list */}
                   <div className="diets-box">
                     <span className="metric-label">Diet Tags</span>
                     <div className="diet-pill-container">
@@ -115,7 +130,6 @@ export default function Dinner(props: DinnerProps) {
                 </div>
               </div>
 
-              {/* Highly Distinct Modern Buttons Area */}
               <div className="card-action-footer">
                 <button
                   className="btn-action btn-read"

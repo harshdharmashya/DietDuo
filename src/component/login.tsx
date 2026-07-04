@@ -4,24 +4,29 @@ import { auth } from "./firebase";
 import { Link } from "react-router-dom";
 import "../CSS/login.css"
 import { BicepsFlexed, ChartColumnIncreasing, Eye, EyeOff, Salad } from "lucide-react";
-// TODO: React hot toast integrate
-// TODO: loader on buttons
+import { toast } from "react-toastify";
+
 // TODO: alignment of flex grid content 
 // TODO: AI intergrate
-// TODO: show skeltion on loading instead of loader 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log("User logged in Successfully");
+      toast.success("User logged in Successfully");
       window.location.href = "/";
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast.error(error.message || "Failed to login");
+      setLoading(false);
     }
   };
 
@@ -41,7 +46,6 @@ function Login() {
         </div>
       </div>
 
-      {/* Right panel */}
       <div className="login-right">
         <div className="login-card">
           <h2 className="login-title">Welcome back</h2>
@@ -58,6 +62,7 @@ function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
             </div>
 
@@ -71,12 +76,14 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  disabled={loading}
                 />
                 <button
                   type="button"
                   className="login-eye"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label="Toggle password"
+                  disabled={loading}
                 >
                   {showPassword ? (
                     <EyeOff style={{ stroke: "#000" }} />
@@ -87,8 +94,17 @@ function Login() {
               </div>
             </div>
 
-            <button type="submit" className="login-btn">
-              Sign in
+            <button type="submit" className="login-btn" disabled={loading} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
+              {loading ? (
+                <>
+                  <div className="spinner-border spinner-border-sm" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  Signing in...
+                </>
+              ) : (
+                "Sign in"
+              )}
             </button>
 
             <p className="login-register">

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { setDayWorkouts } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import { BicepsFlexed } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 export default function Monday_Workout(props: any) {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function Monday_Workout(props: any) {
   function handledelete(index: number): void {
     let filterData = data.filter((_v: any, i: number) => i != index)
     dispatch(setDayWorkouts({ day: props.dayKey, items: filterData }))
+    toast.success("Workout removed successfully!");
   }
 
   return (

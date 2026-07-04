@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { PieChart } from '@mui/x-charts/PieChart';
 import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
+import { Skeleton, Box } from '@mui/material';
 
 interface BreakfastProps {
   isOpen: boolean;
@@ -25,10 +26,29 @@ export default function Breakfast(props: BreakfastProps) {
 
   if (!meals || meals.length === 0) {
     return (
-      <div className="d-flex justify-content-center align-items-center loader-height" style={{ minHeight: '200px' }}>
-        <div className="spinner-border text-success" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div className="active-meal-container">
+        {[1, 2, 3].map((n) => (
+          <div className="modern-meal-card" key={n}>
+            <Skeleton variant="rectangular" height={200} sx={{ borderTopLeftRadius: '16px', borderTopRightRadius: '16px', bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+            <div className="card-body-content">
+              <Skeleton variant="text" sx={{ fontSize: '1.25rem', mb: 2, bgcolor: 'rgba(255, 255, 255, 0.1)' }} width="80%" />
+              <div className="metrics-grid">
+                <Box sx={{ pt: 0.5 }}>
+                  <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                  <Skeleton variant="circular" width={60} height={60} sx={{ mt: 1, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                </Box>
+                <Box sx={{ pt: 0.5 }}>
+                   <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                   <Skeleton variant="rounded" width={80} height={24} sx={{ mt: 1, borderRadius: 8, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                </Box>
+              </div>
+            </div>
+            <div className="card-action-footer">
+              <Skeleton variant="rounded" width="45%" height={36} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+              <Skeleton variant="rounded" width="45%" height={36} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
@@ -41,13 +61,10 @@ export default function Breakfast(props: BreakfastProps) {
           
           return (
             <div className="modern-meal-card" key={datab.id || i}>
-              {/* Image Banner Section */}
               <div className="card-image-wrapper">
                 <img src={datab?.image} className="card-img-top" alt={datab?.title} />
-                {/* <div className="card-badge-overlay">{datab.healthScore}</div> */}
               </div>
 
-              {/* Main Body */}
               <div className="card-body-content">
                 <h5 className="meal-card-title">{datab?.title}</h5>
 
@@ -56,7 +73,6 @@ export default function Breakfast(props: BreakfastProps) {
                   <div className="health-score-box">
                     <span className="metric-label">Health Score</span>
                     <div className="pie-container-relative">
-                      {/* CSS-Absolute Label prevents cutting/clipping text */}
                       <span className="pie-center-percentage">{score}%</span>
                       <PieChart
                         series={[
@@ -68,7 +84,7 @@ export default function Breakfast(props: BreakfastProps) {
                             innerRadius: 18,
                             outerRadius: 25,
                             paddingAngle: 0,
-                            cx: 26, // Manually center within chart frame box
+                            cx: 26,
                             cy: 26,
                           },
                         ]}
@@ -80,7 +96,6 @@ export default function Breakfast(props: BreakfastProps) {
                     </div>
                   </div>
 
-                  {/* Diets Section */}
                   <div className="diets-box">
                     <span className="metric-label">Diet Tags</span>
                     <div className="diet-pill-container">
@@ -97,8 +112,6 @@ export default function Breakfast(props: BreakfastProps) {
                   </div>
                 </div>
               </div>
-
-              {/* Redesigned Button Footer */}
               <div className="card-action-footer">
                 <button 
                   className="btn-action btn-read" 

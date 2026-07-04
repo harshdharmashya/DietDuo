@@ -35,7 +35,6 @@ export default function Modalcard(props: ModalcardProps) {
       <Card 
         sx={{ ...style, width: { xs: '92%', md: '800px' }, borderRadius: '16px', overflow: 'hidden' }}
       >
-        {/* Floating Close Button */}
         <IconButton 
           onClick={handleClose} 
           className="modal-close-trigger"
@@ -44,12 +43,10 @@ export default function Modalcard(props: ModalcardProps) {
         </IconButton>
 
         <div className="modal-split-layout">
-          {/* Left Media Column */}
           <div className="modal-media-pane">
             <img className="modal-hero-image" src={data?.image} alt={data?.title} />
           </div>
 
-          {/* Right Data Column */}
           <div className="modal-content-pane">
             <div>
               <h2 id="modal-recipe-title" className="modal-recipe-title">
@@ -63,7 +60,6 @@ export default function Modalcard(props: ModalcardProps) {
               
               <hr className="modal-divider" />
 
-              {/* Diet Tags */}
               <div className="modal-section-block">
                 <h4 className="modal-section-heading">Diets / Types</h4>
                 <div className="modal-diet-tags-flex">
@@ -79,7 +75,6 @@ export default function Modalcard(props: ModalcardProps) {
                 </div>
               </div>
 
-              {/* Preferences Checklist Grid */}
               <div className="modal-section-block">
                 <h4 className="modal-section-heading">Preferences Checklist</h4>
                 <div className="diet-status-grid">

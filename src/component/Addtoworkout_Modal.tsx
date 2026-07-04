@@ -3,6 +3,7 @@ import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { setWork } from '../Redux/workoutSlice';
 import "../CSS/Modal.css"
+import { toast } from 'react-toastify';
 
 const DAYS = ['Mon', 'Tus', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
@@ -15,6 +16,7 @@ export default function Addtoworkout_Modal(props: any) {
 
     function handleAddtoworkout() {
         dispatch(setWork({ data, day }));
+        toast.success("Workout added successfully!");
         handleClose();
     }
 
@@ -73,8 +75,6 @@ export default function Addtoworkout_Modal(props: any) {
                         </div>
 
                     </div>
-
-                    {/* Footer */}
                     <div className="workout-modal-footer">
                         <button className="workout-modal-cancel" onClick={handleClose}>Cancel</button>
                         <button

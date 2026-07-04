@@ -4,6 +4,7 @@ import { setBeginner } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
 import Addtoworkout_Modal from '../Addtoworkout_Modal';
 import { Heart, Footprints, BicepsFlexed, Dumbbell, Hand, PersonStanding, Bone } from "lucide-react";
+import { Skeleton, Box } from '@mui/material';
 
 export const MUSCLE_LIST = [
     'adductors', 'biceps', 'calves', 'chest',
@@ -54,12 +55,28 @@ export default function Beginner(props: any) {
 
     const work_out: any = useSelector((state: any) => state.workout.Beginner);
 
-    if (work_out.length === 0) {
+    if (!work_out || work_out.length === 0) {
         return (
-            <div className="loader-height">
-                <div className="spinner-border text-light load" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
+            <div className="workout-section" style={{ marginTop: '2rem' }}>
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <div className="cardwork" key={n}>
+                        <Skeleton variant="text" width={60} height={24} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)', mb: 2, borderRadius: 1 }} />
+                        <Skeleton variant="text" width="80%" height={32} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)', mb: 3 }} />
+                        
+                        <div className="cardwork-meta">
+                            {[1, 2, 3].map((m) => (
+                                <div className="cardwork-meta-item" key={m}>
+                                    <Skeleton variant="text" width={40} height={16} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)', mb: 0.5 }} />
+                                    <Skeleton variant="text" width={80} height={20} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="cardwork-actions">
+                            <Skeleton variant="rounded" width="45%" height={40} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                            <Skeleton variant="rounded" width="45%" height={40} sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                        </div>
+                    </div>
+                ))}
             </div>
         );
     }

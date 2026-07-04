@@ -10,7 +10,7 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import { auth, db } from "./component/firebase";
@@ -42,8 +42,8 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     AOS.init({
-      offset: 320, // offset (in px) from the original trigger point
-      delay: 0, // values from 0 to 3000, with step 50ms
+      offset: 320,
+      delay: 0,
       duration: 1000,
     }
     );
@@ -51,9 +51,6 @@ function App() {
     const fetchMeals = async (mealType: string) => {
       const response = await fetch(`https://diet-duo-backend.vercel.app/api/recipes?mealType=${mealType}`);
       const data = await response.json();
-      // 33f2cc0aa5bd4b88ac7f4b6b73558dfd
-      // 6845c5e2d08f447aba1b24ed78bae323
-      // console.log(data)
       dispatch(setBreakfast(data))
     };
     fetchMeals('breakfast');
@@ -132,12 +129,15 @@ function App() {
       await auth.signOut();
       window.location.href = "/login";
       console.log("User logged out successfully!");
+      toast.success("User logged out successfully!");
     } catch (error) {
-      console.error("Error logging out:", toast.error("yes"));
+      console.error("Error logging out:", error);
+      toast.error("Error logging out");
     }
   }
   return (
     <>
+      <ToastContainer />
       <Router>
         <div className="App">
           <Routes>
