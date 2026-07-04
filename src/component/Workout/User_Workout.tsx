@@ -68,7 +68,7 @@ export default function User_Workout(props: any) {
     return (
         <>
             <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
-            <div className="meal-route usermeal">
+            <div className="meal-route">
                 <div className="meal-route-inner">
                     <button className="meal-route-back bg-transparent" onClick={() => {
                         if (props.setshow) props.setshow(true);

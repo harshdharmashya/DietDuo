@@ -47,7 +47,7 @@ export default function About(props: any) {
                         <img className='info-work-image roll' data-aos="fade-right" src={meal1} alt="" />
                     </div>
                     <div className='meal-text'>
-                        <h2 className='head-line'>Easily Add Healthy Meals to Your Schedule with DietDuo</h2>
+                        <h2 className='head-line'>Easily Add Healthy Meals to Your Schedule</h2>
                         <p>DietDuo is your go-to platform for seamlessly incorporating nutritious meals into your daily routine. We understand the challenges of maintaining a balanced diet, especially with a busy lifestyle. Our easy-to-use interface allows you to select from a variety of healthy meal options tailored to your preferences.</p>
                         <p>
                             Whether you're planning for breakfast, lunch, or dinner, DietDuo offers diverse choices to suit every palate. You can customize your meal plan for each day of the week, ensuring you have a well-rounded and delicious menu at your fingertips.
@@ -61,7 +61,7 @@ export default function About(props: any) {
             <div className='about-workout-section'>
                 <div className='meal-about'>
                     <div className='work-text'>
-                        <h2 className='work-head-line'>Easily Add Personalized Workouts to Your Daily Schedule with DietDuo</h2>
+                        <h2 className='work-head-line'>Easily Add Personalized Workouts to Your Daily Schedule</h2>
                         <p>DietDuo not only supports your dietary needs but also helps you maintain an active lifestyle by offering personalized workout plans. Our platform allows you to easily select exercises based on your fitness goals, whether it's building strength, improving flexibility, or enhancing cardiovascular health.</p>
                         <p className='extra-p'>
                             You can schedule workouts for each day of the week, ensuring a well-balanced routine that fits seamlessly into your busy life. With a variety of exercises to choose from, DietDuo makes it simple to stay motivated and committed to your fitness journey

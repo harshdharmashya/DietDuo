@@ -331,7 +331,19 @@
   box-shadow: 0 16px 44px rgba(0, 0, 0, 0.4);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+  .meal-route {
+    padding: 1.5rem 1rem 6rem;
+  }
+
+  .meal-hero {
+    padding: 1.25rem;
+  }
+  
+  .meal-hero-title {
+    font-size: 2rem;
+  }
+
   .meal-hero-stats {
     flex-direction: column;
     align-items: stretch;
@@ -339,6 +351,10 @@
 
   .meal-stat-pill {
     justify-content: space-between;
+  }
+
+  .meal-cards-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -352,12 +368,4 @@
   .meal-card:hover {
     transform: none;
   }
-}
-
-/* Legacy class kept for any stray imports */
-.usermeal {
-  min-height: 100vh;
-  background: transparent;
-  padding: 0;
-  padding-bottom: 40px;
 }

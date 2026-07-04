@@ -18,8 +18,18 @@
     flex-basis: 45%;
 }
 
+.info-text h1 {
+    font-size: 3.2rem;
+}
+
 .info-image {
     flex: 45%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 450px;
+    width: 250px;
 }
 
 .info-img-inner-01 {
@@ -156,10 +166,27 @@
 }
 
 @media (max-width: 767px) {
+    .About-section {
+        padding: 10% 5%;
+    }
+
+    .about-info {
+        column-gap: 0;
+        row-gap: 20px;
+    }
+
+    .info-text {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .info-text h1 {
+        font-size: 2.2rem;
+    }
+
     .lorem {
-        text-overflow: ellipsis;
-        overflow: hidden;
-        height: 70px;
+        height: auto;
+        margin-bottom: 20px;
     }
 
     .info-image {
@@ -172,28 +199,50 @@
     }
 
     .about-2nd-story {
-        min-height: 70vh;
-        max-height: auto;
+        min-height: auto;
+        padding: 10% 0;
         display: flex;
     }
 
     .Our-story {
-        padding: 5% 3%;
+        width: 92%;
+        padding: 8% 6%;
+        text-align: center;
     }
 
-    .head-line {
+    .Our-story h1 {
         font-size: 2rem;
     }
 
+    .head-line,
+    .work-head-line {
+        font-size: 1.6rem;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
     .meal-about {
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-workout-section .meal-about {
+        flex-direction: column-reverse;
     }
 
     .meal-text,
     .work-text {
-        /* padding: 5% 3% 0% 3%; */
-        width: 90%;
+        width: 100%;
+        padding: 5% 4%;
         margin: auto;
+    }
+
+    .meal-text p,
+    .work-text p {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .extra-p {
@@ -201,10 +250,15 @@
     }
 
     .info-work-image {
-        height: 250px;
-        width: 250px;
+        height: auto;
+        width: 80%;
+        max-width: 280px;
+        margin-top: 20px;
     }
-    .roll{
-        height: 290px;
+
+    .roll {
+        height: auto;
+        width: 80%;
+        max-width: 280px;
     }
 }
