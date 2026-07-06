@@ -13,7 +13,7 @@ export default function Intermediate(props: any) {
 
   const workout = async () => {
     const response = await fetch(
-      `https://diet-duo-backend.vercel.app/api/exercies?difficulty=intermediate&muscle=${muscle}`
+      `${import.meta.env.VITE_BACKEND_URL}/api/exercies?difficulty=intermediate&muscle=${muscle}`
     );
     const data = await response.json();
     dispatch(setintermediate(data));

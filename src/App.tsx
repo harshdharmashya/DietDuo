@@ -49,7 +49,7 @@ function App() {
     );
     AOS.refresh();
     const fetchMeals = async (mealType: string) => {
-      const response = await fetch(`https://diet-duo-backend.vercel.app/api/recipes?mealType=${mealType}`);
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/recipes?mealType=${mealType}`);
       const data = await response.json();
       dispatch(setBreakfast(data))
     };
@@ -92,7 +92,7 @@ function App() {
             void persistMeals(uid, store.getState().meal);
           }
         }
-        
+
         const fromLsWorkout = readWorkoutPlanFromLocalStorage(uid);
         const mergedWorkout = richerWorkoutPlan(fromDbWorkout, fromLsWorkout);
         if (mergedWorkout && countWorkoutsInPlan(mergedWorkout) > 0) {
@@ -111,7 +111,7 @@ function App() {
         } else {
           store.dispatch(resetMealPlan());
         }
-        
+
         const guestWorkout = readWorkoutPlanFromLocalStorage(null);
         if (guestWorkout && countWorkoutsInPlan(guestWorkout) > 0) {
           store.dispatch(hydrateWorkoutPlan(guestWorkout));

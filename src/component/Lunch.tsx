@@ -22,7 +22,7 @@ export default function Lunch(props: LunchProps) {
   useEffect(() => {
     const fetchMeals = async (mealType: string) => {
       try {
-        const response = await fetch(`https://diet-duo-backend.vercel.app/api/recipes?mealType=${mealType}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/recipes?mealType=${mealType}`);
         const data = await response.json();
         dispatch(setLunch(data));
       } catch (error) {
