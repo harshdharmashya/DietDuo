@@ -1,10 +1,12 @@
-import React, { useMemo, useState, type Dispatch, type SetStateAction } from "react";
+import React, { useMemo, useState, useEffect, type Dispatch, type SetStateAction } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { hydrateMealPlan } from "../Redux/Usermeal";
 import Monday from "./Day/Monday";
 import Navbar from "./Navbar";
 import type { RootState } from "../store";
@@ -64,6 +66,25 @@ export default function Usermeal(props: {
   const [periodTab, setPeriodTab] = useState(0);
   const [localItem, setLocalItem] = useState<unknown>({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchMealSchedule = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+      try {
+        const mealRes = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/meal`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (mealRes.data && mealRes.data.success && mealRes.data.data) {
+          dispatch(hydrateMealPlan(mealRes.data.data));
+        }
+      } catch (error) {
+        console.error("Error fetching meal schedule:", error);
+      }
+    };
+    fetchMealSchedule();
+  }, [dispatch]);
 
   const meal = useSelector((s: RootState) => s.meal);
 

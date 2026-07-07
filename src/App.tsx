@@ -96,6 +96,17 @@ function App() {
           console.error('Could not load data from Firestore:', e);
         }
 
+        try {
+          const mealRes = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/meal`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (mealRes.data && mealRes.data.success && mealRes.data.data) {
+            fromDb = mealRes.data.data as Record<string, unknown>;
+          }
+        } catch (e) {
+          console.error('Could not load meal schedule from backend:', e);
+        }
+
         const fromLs = readMealPlanFromLocalStorage(uid);
         const merged = richerMealPlan(fromDb, fromLs);
 

@@ -5,6 +5,7 @@ import { setDish } from '../Redux/Usermeal';
 import "../CSS/Modal.css";
 import { HeartPlus, Timer } from 'lucide-react';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
@@ -15,15 +16,38 @@ export default function Addtomeal_Modal(props: any) {
 
   const handleCloseAdd = () => props.setIsOpenAdd(false);
 
-  function handleAddtomeal() {
-    if (!localStorage.getItem('token')) {
+  async function handleAddtomeal() {
+    const token = localStorage.getItem('token');
+    if (!token) {
       toast.error("Please login to add to meal plan!");
       handleCloseAdd();
       return;
     }
-    dispatch(setDish({ data, day: day + '_' + props.mealType }));
-    toast.success("Meal added successfully!");
-    handleCloseAdd();
+
+    try {
+      const payload = {
+        day: day,
+        mealType: props.mealType,
+        recipeId: data.id || data._id
+      };
+      
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/meal`, payload, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      if (response.data.success) {
+        dispatch(setDish({ data, day: day + '_' + props.mealType }));
+        toast.success("Meal added successfully!");
+        handleCloseAdd();
+      } else {
+        toast.error(response.data.message || "Failed to add meal");
+      }
+    } catch (error) {
+      console.error('Error adding meal:', error);
+      toast.error("Error adding meal to schedule");
+    }
   }
 
   return (
