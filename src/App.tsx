@@ -107,6 +107,17 @@ function App() {
           console.error('Could not load meal schedule from backend:', e);
         }
 
+        try {
+          const workoutRes = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/workout`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (workoutRes.data && workoutRes.data.success && workoutRes.data.data) {
+            fromDbWorkout = workoutRes.data.data as Record<string, unknown>;
+          }
+        } catch (e) {
+          console.error('Could not load workout schedule from backend:', e);
+        }
+
         const fromLs = readMealPlanFromLocalStorage(uid);
         const merged = richerMealPlan(fromDb, fromLs);
 

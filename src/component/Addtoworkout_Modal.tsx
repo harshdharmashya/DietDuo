@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setWork } from '../Redux/workoutSlice';
 import "../CSS/Modal.css"
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const DAYS = ['Mon', 'Tus', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
@@ -14,15 +15,35 @@ export default function Addtoworkout_Modal(props: any) {
 
     const handleClose = () => props.setIsOpenAdd(false);
 
-    function handleAddtoworkout() {
-        if (!localStorage.getItem('token')) {
+    async function handleAddtoworkout() {
+        const token = localStorage.getItem('token');
+        if (!token) {
             toast.error("Please login to add to workout plan!");
             handleClose();
             return;
         }
-        dispatch(setWork({ data, day }));
-        toast.success("Workout added successfully!");
-        handleClose();
+
+        try {
+            const payload = {
+                day: day,
+                exerciseId: data._id
+            };
+
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/workout`, payload, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+
+            if (response.data.success) {
+                dispatch(setWork({ data, day }));
+                toast.success("Workout added successfully!");
+                handleClose();
+            } else {
+                toast.error(response.data.message || "Failed to add workout");
+            }
+        } catch (error) {
+            console.error("Error adding workout:", error);
+            toast.error("Error adding workout to schedule");
+        }
     }
 
     return (

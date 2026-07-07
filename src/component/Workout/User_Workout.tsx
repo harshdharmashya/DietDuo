@@ -2,8 +2,11 @@ import React, { useState, useMemo } from 'react'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { motion, AnimatePresence } from "framer-motion";
+import { useEffect } from 'react';
+import axios from 'axios';
+import { hydrateWorkoutPlan } from '../../Redux/workoutSlice';
 import { useNavigate } from "react-router-dom";
 import Monday_Workout from './Monday_Workout';
 import Navbar from '../Navbar';
@@ -48,6 +51,25 @@ export default function User_Workout(props: any) {
     const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     }
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const fetchWorkoutSchedule = async () => {
+            const token = localStorage.getItem('token');
+            if (!token) return;
+            try {
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/workout`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                if (res.data && res.data.success && res.data.data) {
+                    dispatch(hydrateWorkoutPlan(res.data.data));
+                }
+            } catch (error) {
+                console.error("Error fetching workout schedule:", error);
+            }
+        };
+        fetchWorkoutSchedule();
+    }, [dispatch]);
 
     const workout = useSelector((state: any) => state.workout);
 
