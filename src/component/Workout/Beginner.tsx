@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { setBeginner } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
@@ -34,8 +35,8 @@ export default function Beginner(props: any) {
 
     const workout = async (difficulty: string) => {
         // const response = await fetch(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}&difficulty=${difficulty}`, { headers: { 'X-Api-Key': 'vUwkaH0pCOAUL4d2BVAPiw==XLQAUW4A9eQ5zjfF' } });
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/exercies?difficulty=${difficulty}&muscle=${muscle}`);
-        const data = await response.json();
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/exercies?difficulty=${difficulty}&muscle=${muscle}`);
+        const data = response.data;
         dispatch(setBeginner(data))
 
     };

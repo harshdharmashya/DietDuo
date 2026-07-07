@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { setDinner } from '../Redux/frontSlice';
@@ -22,8 +23,8 @@ export default function Dinner(props: DinnerProps) {
   useEffect(() => {
     const fetchMeals = async (mealType: string) => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/recipes?mealType=${mealType}`);
-        const data = await response.json();
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/recipes?mealType=${mealType}`);
+        const data = response.data;
         dispatch(setDinner(data));
       } catch (error) {
         console.error("Failed fetching dinner items:", error);

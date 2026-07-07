@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
 import { setexpert } from '../../Redux/workoutSlice';
 import Modalworkout from '../Modalworkout';
@@ -11,10 +12,10 @@ export default function Expert(props: any) {
     const [isOpenAdd, setIsOpenAdd] = useState(false);
 
     const workout = async () => {
-        const response = await fetch(
+        const response = await axios.get(
             `${import.meta.env.VITE_BACKEND_URL}/api/exercies?difficulty=expert&muscle=${muscle}`
         );
-        const data = await response.json();
+        const data = response.data;
         dispatch(setexpert(data));
     };
 

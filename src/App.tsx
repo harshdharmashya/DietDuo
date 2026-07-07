@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { doc, getDoc } from 'firebase/firestore';
 import './App.css'
@@ -49,20 +50,35 @@ function App() {
     );
     AOS.refresh();
     const fetchMeals = async (mealType: string) => {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/recipes?mealType=${mealType}`);
-      const data = await response.json();
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/recipes?mealType=${mealType}`);
+      const data = response.data;
       dispatch(setBreakfast(data))
     };
     fetchMeals('breakfast');
   }, []);
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState<any>();
   useEffect(() => {
-    const unsub = auth.onAuthStateChanged(async (authUser: any) => {
-      setUser(authUser);
+    const checkAuth = async () => {
+      const token = localStorage.getItem('token');
+      let authUser: any = null;
+      if (token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          authUser = payload.user || payload;
+          setUser(authUser);
+        } catch (error) {
+          console.error("Token invalid or expired", error);
+          localStorage.removeItem('token');
+          setUser(undefined);
+        }
+      } else {
+        setUser(undefined);
+      }
 
-      if (authUser?.uid) {
-        const uid = authUser.uid as string;
+      const uid = authUser?.uid || authUser?._id || authUser?.id;
+
+      if (uid) {
         let fromDb: Record<string, unknown> | null = null;
         let fromDbWorkout: Record<string, unknown> | null = null;
 
@@ -119,14 +135,15 @@ function App() {
           store.dispatch(resetWorkoutPlan());
         }
       }
-    });
-    return () => unsub();
+    };
+    checkAuth();
   }, []);
 
   // function for logout
   async function handleLogout() {
     try {
-      await auth.signOut();
+      localStorage.removeItem('token');
+      setUser(undefined);
       window.location.href = "/login";
       console.log("User logged out successfully!");
       toast.success("User logged out successfully!");

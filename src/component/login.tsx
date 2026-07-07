@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 import "../CSS/login.css"
 import { BicepsFlexed, ChartColumnIncreasing, Eye, EyeOff, Salad } from "lucide-react";
 import { toast } from "react-toastify";
@@ -19,13 +18,24 @@ function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
+        email,
+        password,
+      });
+      console.log("Backend response:", res.data);
+      const token = res.data?.token || res.data?.jwt || res.data?.accessToken || res.data?.access_token || res.data?.data?.token;
+      if (token) {
+          localStorage.setItem('token', token);
+      } else {
+          // Fallback just in case we can't find the exact key, store the whole object so we can see it
+          localStorage.setItem('token', typeof res.data === 'string' ? res.data : JSON.stringify(res.data));
+      }
       console.log("User logged in Successfully");
       toast.success("User logged in Successfully");
       window.location.href = "/";
     } catch (error: any) {
       console.log(error);
-      toast.error(error.message || "Failed to login");
+      toast.error(error.response?.data?.message || error.message || "Failed to login");
       setLoading(false);
     }
   };

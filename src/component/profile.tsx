@@ -2,20 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import type { User } from "firebase/auth";
-import { auth, db } from "./firebase";
-import { doc, getDoc } from "firebase/firestore";
 import default_user from "../Images/user image default.png";
 import Navbar from "./Navbar";
 import type { RootState } from "../store";
 import "../CSS/Profile.css";
-
-type FirestoreUser = {
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  photo?: string;
-};
+import axios from "axios";
 
 const MEAL_KEYS = [
   "Mon_Breakfast", "Tus_Breakfast", "Wed_Breakfast", "Thur_Breakfast", "Fri_Breakfast", "Sat_Breakfast", "Sun_Breakfast",
@@ -39,7 +30,7 @@ function countWorkoutsScheduled(workout: RootState["workout"]) {
   }, 0);
 }
 
-function formatFirebaseDate(iso?: string) {
+function formatApiDate(iso?: string) {
   if (!iso) return "—";
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? "—" : d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
@@ -57,7 +48,7 @@ function formatRelative(iso?: string) {
   if (hrs < 24) return `${hrs}h ago`;
   const days = Math.floor(hrs / 24);
   if (days < 14) return `${days}d ago`;
-  return formatFirebaseDate(iso);
+  return formatApiDate(iso);
 }
 
 function insightMessage(meals: number, workouts: number) {
@@ -103,56 +94,54 @@ export default function Profile(props: { user?: unknown; setUser?: unknown; hand
   const mealsCount = useMemo(() => countMealsPlanned(mealState), [mealState]);
   const workoutsCount = useMemo(() => countWorkoutsScheduled(workoutState), [workoutState]);
 
-  const [loading, setLoading] = useState(true);
-  const [firebaseUser, setFirebaseUser] = useState<User | null>(null);
-  const [docData, setDocData] = useState<FirestoreUser | null>(null);
+  const token = localStorage.getItem("token");
+  const [loading, setLoading] = useState(!!token);
+  const [apiUser, setApiUser] = useState<any>(null);
 
   useEffect(() => {
-    const unsub = auth.onAuthStateChanged(async (user) => {
-      setFirebaseUser(user);
-      if (!user) {
-        setDocData(null);
+    const fetchProfile = async () => {
+      if (!token) {
+        setApiUser(null);
         setLoading(false);
         return;
       }
       try {
-        const docRef = doc(db, "Users", user.uid);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setDocData(docSnap.data() as FirestoreUser);
-        } else {
-          setDocData({ email: user.email ?? undefined, firstName: "", lastName: "", photo: "" });
-        }
-      } catch {
-        setDocData({ email: user.email ?? undefined, firstName: "", lastName: "", photo: "" });
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/me`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        // API response containing user info
+        setApiUser(res.data.data || res.data);
+      } catch (err) {
+        console.error("Error fetching profile from /api/me", err);
+        setApiUser(null);
       } finally {
         setLoading(false);
       }
-    });
-    return () => unsub();
+    };
+    fetchProfile();
   }, []);
 
   const displayName = useMemo(() => {
-    const fn = docData?.firstName?.trim() ?? "";
-    const ln = docData?.lastName?.trim() ?? "";
+    const fn = apiUser?.name?.trim() ?? "";
+    const ln = apiUser?.last?.trim() ?? "";
     const combined = [fn, ln].filter(Boolean).join(" ");
     if (combined) return combined;
-    const em = firebaseUser?.email ?? docData?.email ?? "";
+    const em = apiUser?.email ?? "";
     if (em) return em.split("@")[0] ?? "Member";
     return "Member";
-  }, [docData, firebaseUser]);
+  }, [apiUser]);
 
-  const email = firebaseUser?.email ?? docData?.email ?? "";
-  const avatarSrc =
-    docData?.photo && (docData.photo.startsWith("http") || docData.photo.startsWith("data:"))
-      ? docData.photo
-      : default_user;
+  const email = apiUser?.email ?? "";
+  const avatarSrc = apiUser?.profilePic ?? default_user;
 
-  const memberSince = formatFirebaseDate(firebaseUser?.metadata?.creationTime);
-  const lastSignIn = formatFirebaseDate(firebaseUser?.metadata?.lastSignInTime);
-  const lastSignInRelative = formatRelative(firebaseUser?.metadata?.lastSignInTime);
-  const verified = firebaseUser?.emailVerified ?? false;
-  const uidShort = firebaseUser?.uid ? `${firebaseUser.uid.slice(0, 6)}…${firebaseUser.uid.slice(-4)}` : "—";
+  // Assuming your backend returns createdAt, lastSignIn, isVerified etc.
+  const memberSince = apiUser?.createdAt || apiUser?.created_at ? formatApiDate(apiUser.createdAt || apiUser.created_at) : "Active Member";
+  const lastSignIn = apiUser?.lastLogin ? formatApiDate(apiUser.lastLogin) : "Recently active";
+  const lastSignInRelative = apiUser?.lastLogin ? formatRelative(apiUser.lastLogin) : "";
+  const verified = apiUser?.isVerified ?? true;
+
+  const uid = apiUser?._id || apiUser?.id;
+  const uidShort = uid ? `${uid.slice(0, 6)}…${uid.slice(-4)}` : "—";
 
   if (loading) {
     return (
@@ -168,7 +157,7 @@ export default function Profile(props: { user?: unknown; setUser?: unknown; hand
     );
   }
 
-  if (!firebaseUser) {
+  if (!apiUser) {
     return (
       <>
         <Navbar user={props.user} setUser={props.setUser} handleLogout={props.handleLogout} />
@@ -204,8 +193,11 @@ export default function Profile(props: { user?: unknown; setUser?: unknown; hand
           >
             <motion.div className="profile-hero-inner" variants={fadeUp}>
               <div className="profile-avatar-wrap">
-                <div className="profile-avatar-ring" aria-hidden />
-                <img className="profile-avatar" src={avatarSrc} width={132} height={132} alt={`${displayName} profile`} />
+                <img
+                  className="profile-avatar"
+                  src={avatarSrc}
+                  alt={displayName}
+                />
               </div>
               <div className="profile-hero-text">
                 <p className="profile-kicker">Your DietDuo space</p>
@@ -271,7 +263,7 @@ export default function Profile(props: { user?: unknown; setUser?: unknown; hand
                 </div>
                 <div>
                   <dt className="profile-dt">User ID</dt>
-                  <dd className="profile-dd" title={firebaseUser.uid}>
+                  <dd className="profile-dd" title={uid}>
                     {uidShort}
                   </dd>
                 </div>

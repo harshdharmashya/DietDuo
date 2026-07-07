@@ -6,34 +6,57 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BicepsFlexed, ChartColumnIncreasing, Eye, EyeOff, Salad } from "lucide-react";
 import "../CSS/login.css"
+import axios from "axios";
 
 function Register() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const [formData, setFormData] = useState({
+        name: '',
+        last: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        profilePic: '',
+    });
 
     const handleRegister = async (e: any) => {
         e.preventDefault();
         setLoading(true);
+
+        const { name, last, email, password, confirmPassword, profilePic } = formData;
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match!');
+            return;
+        }
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            const user = auth.currentUser;
-            console.log(user);
-            if (user) {
-                await setDoc(doc(db, "Users", user.uid), {
-                    email: user.email,
-                    firstName: fname,
-                    lastName: lname,
-                    photo: ""
-                });
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register`, {
+                name,
+                last,
+                email,
+                password,
+                profilePic,
+            });
+
+            console.log("Backend response:", res.data);
+            const token = res.data?.token || res.data?.jwt || res.data?.accessToken || res.data?.access_token || res.data?.data?.token;
+            if (token) {
+                localStorage.setItem('token', token);
+            } else {
+                localStorage.setItem('token', typeof res.data === 'string' ? res.data : JSON.stringify(res.data));
             }
+
             toast.success("User Registered Successfully!!");
+            setTimeout(() => {
+                window.location.href = "/login";
+            }, 1000);
         } catch (error: any) {
             console.log({ error });
-            toast.error(error?.message || "Failed to register");
+            toast.error(error.response?.data?.message || error?.message || "Failed to register");
             setLoading(false);
         }
     };
@@ -47,7 +70,7 @@ function Register() {
                     <h1 className="login-brand">𝓓𝓲𝓮𝓽𝓓𝓾𝓸</h1>
                     <p className="login-tagline">Your personal diet & workout companion</p>
                     <div className="login-features">
-                        <div className="login-feature-item"><Salad size={20}/> Personalised meal plans</div>
+                        <div className="login-feature-item"><Salad size={20} /> Personalised meal plans</div>
                         <div className="login-feature-item"><BicepsFlexed size={20} /> Workout scheduling</div>
                         <div className="login-feature-item"><ChartColumnIncreasing size={20} /> Track your progress</div>
                     </div>
@@ -69,7 +92,7 @@ function Register() {
                                 <input
                                     type="text"
                                     className="login-input"
-                                    onChange={(e) => setFname(e.target.value)}
+                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                     required
                                     disabled={loading}
                                 />
@@ -79,7 +102,7 @@ function Register() {
                                 <input
                                     type="text"
                                     className="login-input"
-                                    onChange={(e) => setLname(e.target.value)}
+                                    onChange={(e) => setFormData({ ...formData, last: e.target.value })}
                                     disabled={loading}
                                 />
                             </div>
@@ -91,7 +114,7 @@ function Register() {
                                 type="email"
                                 className="login-input"
                                 placeholder="you@example.com"
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 required
                                 disabled={loading}
                             />
@@ -104,7 +127,7 @@ function Register() {
                                     type={showPassword ? "text" : "password"}
                                     className="login-input"
                                     placeholder="Create a password"
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                                     required
                                     disabled={loading}
                                 />
@@ -116,6 +139,32 @@ function Register() {
                                     disabled={loading}
                                 >
                                     {showPassword ? (
+                                        <EyeOff style={{ stroke: "#000" }} />
+                                    ) : (
+                                        <Eye style={{ stroke: "#000" }} />
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                        <div className="login-field">
+                            <label className="login-label">Confirm Password</label>
+                            <div className="login-input-wrap">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="login-input"
+                                    placeholder="Confirm your password"
+                                    onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                                    required
+                                    disabled={loading}
+                                />
+                                <button
+                                    type="button"
+                                    className="login-eye"
+                                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    aria-label="Toggle password"
+                                    disabled={loading}
+                                >
+                                    {showConfirmPassword ? (
                                         <EyeOff style={{ stroke: "#000" }} />
                                     ) : (
                                         <Eye style={{ stroke: "#000" }} />

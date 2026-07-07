@@ -16,6 +16,11 @@ export default function Addtomeal_Modal(props: any) {
   const handleCloseAdd = () => props.setIsOpenAdd(false);
 
   function handleAddtomeal() {
+    if (!localStorage.getItem('token')) {
+      toast.error("Please login to add to meal plan!");
+      handleCloseAdd();
+      return;
+    }
     dispatch(setDish({ data, day: day + '_' + props.mealType }));
     toast.success("Meal added successfully!");
     handleCloseAdd();

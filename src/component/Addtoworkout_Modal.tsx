@@ -15,6 +15,11 @@ export default function Addtoworkout_Modal(props: any) {
     const handleClose = () => props.setIsOpenAdd(false);
 
     function handleAddtoworkout() {
+        if (!localStorage.getItem('token')) {
+            toast.error("Please login to add to workout plan!");
+            handleClose();
+            return;
+        }
         dispatch(setWork({ data, day }));
         toast.success("Workout added successfully!");
         handleClose();

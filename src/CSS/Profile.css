@@ -59,32 +59,18 @@
 }
 
 .profile-avatar-wrap {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.profile-avatar-ring {
-  position: absolute;
-  inset: -4px;
+  display: inline-flex;
+  padding: 4px;
   border-radius: 50%;
-  background: conic-gradient(from 180deg, #cddc39, #7ecf6b, #1f7c22, #cddc39);
-  animation: profile-ring 10s linear infinite;
-}
-
-@keyframes profile-ring {
-  to {
-    transform: rotate(360deg);
-  }
+  background: linear-gradient(135deg, #cddc39, #1f7c22);
 }
 
 .profile-avatar {
-  position: relative;
-  width: clamp(96px, 22vw, 132px);
-  height: clamp(96px, 22vw, 132px);
+  width: 132px;
+  height: 132px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid rgba(13, 59, 13, 0.95);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  display: block;
 }
 
 .profile-hero-text {
