@@ -119,6 +119,13 @@
   background: #fff;
 }
 
+.alert{
+  color: red;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px 10px;
+}
+
 /* ── Password toggle ── */
 .login-input-wrap {
   position: relative;

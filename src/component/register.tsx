@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "./firebase";
-import { setDoc, doc } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BicepsFlexed, ChartColumnIncreasing, Eye, EyeOff, Salad } from "lucide-react";
@@ -25,7 +22,6 @@ function Register() {
 
     const handleRegister = async (e: any) => {
         e.preventDefault();
-        setLoading(true);
 
         const { name, last, email, password, confirmPassword, profilePic } = formData;
 
@@ -33,6 +29,9 @@ function Register() {
             setError('Passwords do not match!');
             return;
         }
+
+        setError("");
+        setLoading(true);
         try {
             const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/register`, {
                 name,
@@ -42,7 +41,7 @@ function Register() {
                 profilePic,
             });
 
-            console.log("Backend response:", res.data);
+            // console.log("Backend response:", res.data);
             const token = res.data?.token || res.data?.jwt || res.data?.accessToken || res.data?.access_token || res.data?.data?.token;
             if (token) {
                 localStorage.setItem('token', token);
@@ -172,7 +171,11 @@ function Register() {
                                 </button>
                             </div>
                         </div>
-
+                        {error && (
+                            <p className="alert">
+                                {error}
+                            </p>
+                        )}
                         <button type="submit" className="login-btn" disabled={loading} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}>
                             {loading ? (
                                 <>

@@ -14,7 +14,7 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
-import { auth, db } from "./component/firebase";
+import { db } from "./component/firebase";
 import { setBreakfast } from './Redux/frontSlice';
 import { hydrateMealPlan, resetMealPlan } from './Redux/Usermeal';
 import { store } from './store';
