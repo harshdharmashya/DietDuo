@@ -164,11 +164,12 @@ function App() {
   // function for logout
   async function handleLogout() {
     try {
-      localStorage.removeItem('token');
+      localStorage.removeItem("token");
       setUser(undefined);
-      window.location.href = "/login";
-      console.log("User logged out successfully!");
+
       toast.success("User logged out successfully!");
+
+      window.location.href = "/login";
     } catch (error) {
       console.error("Error logging out:", error);
       toast.error("Error logging out");
