@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   font-family: "DM Sans", system-ui, sans-serif;
   line-height: 1.5;
@@ -10,6 +12,7 @@
   --dd-green-deep: #0d3b0d;
   --dd-green: #1a5319;
   --dd-green-mid: #2d7a2b;
+
   --dd-green-light: #7ecf6b;
   --dd-accent: #d4e157;
   --dd-accent-hot: #cddc39;
@@ -64,4 +67,9 @@ h1,
 .Toastify__toast, .Toastify__toast * {
   color: black !important;
   -webkit-text-stroke: 0.5px black;
+}
+
+/* Fix Bootstrap and Tailwind CSS class conflict on .collapse */
+.collapse {
+  visibility: visible;
 }

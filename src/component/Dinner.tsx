@@ -7,6 +7,7 @@ import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
 import "../CSS/Meal.css"
 import { Skeleton, Box } from '@mui/material';
+import { Drumstick } from 'lucide-react';
 
 interface DinnerProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ interface DinnerProps {
   setIsOpenAdd: (val: boolean) => void;
   currentItem: any;
   setCurrentItem: (item: any) => void;
+  foodType: "veg" | "non-veg";
 }
 
 export default function Dinner(props: DinnerProps) {
@@ -38,10 +40,11 @@ export default function Dinner(props: DinnerProps) {
   // Cache the shuffled results so the card contents don't wildly jump around on re-renders
   const displayedMeals = useMemo(() => {
     if (!meals || meals.length === 0) return [];
-    return [...meals]
+    return meals
+      .filter((meal: any) => props.foodType === "veg" ? meal.vegetarian === true : !meal.vegetarian)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
-  }, [meals]);
+  }, [meals, props.foodType]);
 
   if (!meals || meals.length === 0) {
     return (
@@ -57,8 +60,8 @@ export default function Dinner(props: DinnerProps) {
                   <Skeleton variant="circular" width={60} height={60} sx={{ mt: 1, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
                 </Box>
                 <Box sx={{ pt: 0.5 }}>
-                   <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
-                   <Skeleton variant="rounded" width={80} height={24} sx={{ mt: 1, borderRadius: 8, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                  <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                  <Skeleton variant="rounded" width={80} height={24} sx={{ mt: 1, borderRadius: 8, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
                 </Box>
               </div>
             </div>
@@ -86,7 +89,13 @@ export default function Dinner(props: DinnerProps) {
               </div>
 
               <div className="card-body-content">
-                <h5 className="meal-card-title">{datab?.title}</h5>
+                <div className="flex justify-between gap-2">
+                  <h5 className="meal-card-title flex-1">{datab?.title}</h5>
+                  {datab?.vegetarian === false && (
+                    <div className='bg-red-500 h-5 w-5 rounded-full flex items-center justify-center'>
+                      <Drumstick size={14} />
+                    </div>)}
+                </div>
 
                 <div className="metrics-grid">
                   <div className="health-score-box">

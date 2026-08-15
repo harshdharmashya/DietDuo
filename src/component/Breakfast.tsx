@@ -4,6 +4,7 @@ import { PieChart } from '@mui/x-charts/PieChart';
 import Modalcard from './Modalcard';
 import Addtomeal_Modal from './Addtomeal_Modal';
 import { Skeleton, Box } from '@mui/material';
+import { Drumstick } from 'lucide-react';
 
 interface BreakfastProps {
   isOpen: boolean;
@@ -12,17 +13,19 @@ interface BreakfastProps {
   setIsOpenAdd: (val: boolean) => void;
   currentItem: any;
   setCurrentItem: (item: any) => void;
+  foodType: "veg" | "non-veg";
 }
 
 export default function Breakfast(props: BreakfastProps) {
   const meals = useSelector((state: any) => state.counter.breakfast);
-
+  console.log("Breakfast meals from Redux:", meals);
   const displayedMeals = useMemo(() => {
     if (!meals || meals.length === 0) return [];
-    return [...meals]
+    return meals
+      .filter((meal: any) => props.foodType === "veg" ? meal.vegetarian === true : !meal.vegetarian)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3);
-  }, [meals]);
+  }, [meals, props.foodType]);
 
   if (!meals || meals.length === 0) {
     return (
@@ -38,8 +41,8 @@ export default function Breakfast(props: BreakfastProps) {
                   <Skeleton variant="circular" width={60} height={60} sx={{ mt: 1, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
                 </Box>
                 <Box sx={{ pt: 0.5 }}>
-                   <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
-                   <Skeleton variant="rounded" width={80} height={24} sx={{ mt: 1, borderRadius: 8, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                  <Skeleton variant="text" width="60%" sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
+                  <Skeleton variant="rounded" width={80} height={24} sx={{ mt: 1, borderRadius: 8, bgcolor: 'rgba(255, 255, 255, 0.1)' }} />
                 </Box>
               </div>
             </div>
@@ -58,7 +61,7 @@ export default function Breakfast(props: BreakfastProps) {
       <div className="active-meal-container">
         {displayedMeals.map((datab: any, i: number) => {
           const score = datab?.healthScore || 0;
-          
+
           return (
             <div className="modern-meal-card" key={datab.id || i}>
               <div className="card-image-wrapper">
@@ -66,7 +69,13 @@ export default function Breakfast(props: BreakfastProps) {
               </div>
 
               <div className="card-body-content">
-                <h5 className="meal-card-title">{datab?.title}</h5>
+                <div className="flex justify-between gap-2">
+                  <h5 className="meal-card-title flex-1">{datab?.title}</h5>
+                  {datab?.vegetarian === false && (
+                    <div className='bg-red-500 h-5 w-5 rounded-full flex items-center justify-center'>
+                      <Drumstick size={14} />
+                    </div>)}
+                </div>
 
                 <div className="metrics-grid">
                   <div className="health-score-box">
@@ -77,7 +86,7 @@ export default function Breakfast(props: BreakfastProps) {
                         series={[
                           {
                             data: [
-                              { value: score, color: '#4caf50' }, 
+                              { value: score, color: '#4caf50' },
                               { value: Math.max(0, 100 - score), color: '#e2e8f0' }
                             ],
                             innerRadius: 18,
@@ -112,14 +121,14 @@ export default function Breakfast(props: BreakfastProps) {
                 </div>
               </div>
               <div className="card-action-footer">
-                <button 
-                  className="btn-action btn-read" 
+                <button
+                  className="btn-action btn-read"
                   onClick={() => { props.setCurrentItem(datab); props.setIsOpen(true); }}
                 >
                   Details
                 </button>
-                <button 
-                  className="btn-action btn-add" 
+                <button
+                  className="btn-action btn-add"
                   onClick={() => { props.setCurrentItem(datab); props.setIsOpenAdd(true); }}
                 >
                   + Add to Meal

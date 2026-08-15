@@ -74,8 +74,8 @@ export default function Navbar(props: any) {
                     </motion.li>
                     <motion.li className="nav-item" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Link 
-                        className="btn btn-sm rounded-pill px-4 fw-bold shadow-sm ms-lg-2" 
-                        style={{ backgroundColor: '#cddc39', color: '#1A5319', border: 'none' }} 
+                        className="btn btn-sm rounded-pill px-4 fw-bold shadow-sm ms-lg-2 sign-up-btn" 
+                        style={{ backgroundColor: '#cddc39', color: '#1A5319', border: 'none', boxShadow: 'none' }} 
                         to="/register"
                       >
                         Sign up

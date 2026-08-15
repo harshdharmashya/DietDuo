@@ -3,7 +3,7 @@ import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { setDish } from '../Redux/Usermeal';
 import "../CSS/Modal.css";
-import { HeartPlus, Timer } from 'lucide-react';
+import { Drumstick, HeartPlus, Timer } from 'lucide-react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
@@ -30,13 +30,13 @@ export default function Addtomeal_Modal(props: any) {
         mealType: props.mealType,
         recipeId: data.id || data._id
       };
-      
+
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/schedule/meal`, payload, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      
+
       if (response.data.success) {
         dispatch(setDish({ data, day: day + '_' + props.mealType }));
         toast.success("Meal added successfully!");
@@ -60,7 +60,13 @@ export default function Addtomeal_Modal(props: any) {
             <div className="meal-modal-hero-overlay" />
             <button onClick={handleCloseAdd} className="meal-modal-close" aria-label="Close">✕</button>
             <div className="meal-modal-hero-title-wrap">
-              <h2 className="meal-modal-hero-title">{data?.title}</h2>
+              <div className="flex justify-between gap-2">
+                <h5 className="meal-card-title flex-1">{data?.title}</h5>
+                {data?.vegetarian === false && (
+                  <div className='bg-red-500 h-5 w-5 rounded-full flex items-center justify-center'>
+                    <Drumstick size={14} />
+                  </div>)}
+              </div>
             </div>
           </div>
 

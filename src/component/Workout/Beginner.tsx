@@ -91,7 +91,7 @@ export default function Beginner(props: any) {
                     {MUSCLE_LIST.map((m) => (
                         <button
                             key={m}
-                            className={`muscle-chip${muscle === m ? ' active' : ''}`}
+                            className={`muscle-chip ${muscle === m ? ' active' : ''}`}
                             onClick={() => setMuscle(m)}
                         >
                             {MUSCLE_ICONS[m]} {m.replace('_', ' ')}

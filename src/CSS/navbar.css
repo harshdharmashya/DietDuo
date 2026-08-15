@@ -25,9 +25,9 @@
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
-.nav-item:hover {
+/* .nav-item:hover {
   background-color: rgba(15, 54, 14, 0.65);
-}
+} */
 
 .nav-item .nav-link::after {
   content: "";
