@@ -281,12 +281,6 @@
   background: rgba(0, 0, 0, 0.15);
 }
 
-.meal-empty-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.75rem;
-  filter: grayscale(0.2);
-}
-
 .meal-empty--span {
   grid-column: 1 / -1;
 }

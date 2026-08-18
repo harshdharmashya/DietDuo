@@ -43,8 +43,10 @@ export default function Monday(props: {
       <div className="meal-cards-grid">
         {data.length === 0 ? (
           <div className="meal-empty meal-empty--span">
-            <div className="meal-empty-icon" aria-hidden>
-              <UtensilsCrossed />
+            <div
+              className="mb-3 text-[2.5rem] grayscale-[20%] flex justify-center"
+              aria-hidden
+            >              <UtensilsCrossed />
             </div>
             <h3 className="display-font">Nothing here yet</h3>
             <p>

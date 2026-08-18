@@ -33,7 +33,10 @@ export default function Monday_Workout(props: any) {
       <div className="meal-cards-grid">
         {data.length === 0 ? (
           <div className="meal-empty meal-empty--span">
-            <div className="meal-empty-icon" aria-hidden>
+            <div
+              className="mb-3 text-[2.5rem] grayscale-[20%] flex justify-center"
+              aria-hidden
+            >
               <BicepsFlexed />
             </div>
             <h3 className="display-font">Nothing here yet</h3>

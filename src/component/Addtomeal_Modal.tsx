@@ -61,7 +61,7 @@ export default function Addtomeal_Modal(props: any) {
             <button onClick={handleCloseAdd} className="meal-modal-close" aria-label="Close">✕</button>
             <div className="meal-modal-hero-title-wrap">
               <div className="flex justify-between gap-2">
-                <h5 className="meal-card-title flex-1">{data?.title}</h5>
+                <h5 className="meal-card-title flex-1 text-white!">{data?.title}</h5>
                 {data?.vegetarian === false && (
                   <div className='bg-red-500 h-5 w-5 rounded-full flex items-center justify-center'>
                     <Drumstick size={14} />
