@@ -2,7 +2,7 @@ import Navbar from "./Navbar"
 import "../CSS/base.css"
 import "../CSS/Header.css"
 import { motion } from "framer-motion"
-import img1 from "../Images/Veg bg.jpg";
+import img1 from "../Images/Veg bg.png";
 import img2 from "../Images/Allu roti veg meal.jpg";
 import img3 from "../Images/planmeal-weekly-menu-planning-removebg-preview.png"
 

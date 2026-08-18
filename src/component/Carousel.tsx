@@ -1,7 +1,7 @@
-import img1 from "../Images/BreakFast.png"
-import img2 from "../Images/Fruits.png"
-import img3 from "../Images/Rajma Chawal.png"
-import img4 from "../Images/Car 2.png"
+import img1 from "../Images/breakfast.jpg"
+import img2 from "../Images/lunch.jpg"
+import img3 from "../Images/Sprout.jpg"
+import img4 from "../Images/dinner.jpg"
 import "../CSS/Carousel.css"
 import { motion } from "framer-motion"
 
