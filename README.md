@@ -6,7 +6,7 @@ The project started as a learning project and has been continuously improved wit
 
 ## 🚀 Live Demo
 
-**[DietDuo Live Demo](https://diet-duo-six.vercel.app)**
+**[DietDuo Live Demo](https://dietduo.netlify.app/)**
 
 ## 📂 Repository
 
