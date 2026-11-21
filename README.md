@@ -391,6 +391,48 @@ The application will be available at the local Vite development URL.
 
 ---
 
+## 🐳 Docker Setup
+
+DietDuo includes a multi-stage Docker setup supporting both development (with hot-reload) and production (optimized static assets served via Nginx).
+
+### Prerequisites
+* [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+
+### 1. Development Mode (with Hot-Reload)
+Runs the Vite development server inside a container with live code sync:
+
+```bash
+docker compose up app-dev --build
+# Or via npm script:
+npm run docker:dev
+```
+Application will be available at **http://localhost:5173**.
+
+### 2. Production Mode (Nginx + SPA Routing)
+Builds the optimized production bundle and serves it using a lightweight Nginx Alpine container:
+
+```bash
+docker compose up app-prod --build
+# Or via npm script:
+npm run docker:prod
+```
+Application will be available at **http://localhost:8080**.
+
+### 3. Stopping Containers
+```bash
+docker compose down
+# Or via npm script:
+npm run docker:down
+```
+
+### 4. Customizing Backend URL
+Set `VITE_BACKEND_URL` in `.env` or pass it inline:
+```bash
+VITE_BACKEND_URL=https://your-backend-api.com docker compose up app-prod --build
+```
+
+---
+
 ## 🏭 Production Build
 
 To create a production build:

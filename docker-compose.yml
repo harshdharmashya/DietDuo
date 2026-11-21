@@ -1,0 +1,31 @@
+services:
+  # Development container with Vite hot module replacement
+  app-dev:
+    build:
+      context: .
+      target: dev
+    container_name: dietduo-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mount local repository for hot-reload
+      - .:/app
+      # Prevent host node_modules from overwriting container node_modules
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+
+  # Production container serving static build through Nginx
+  app-prod:
+    build:
+      context: .
+      target: production
+      args:
+        VITE_BACKEND_URL: ${VITE_BACKEND_URL:-https://diet-duo-backend.vercel.app}
+    container_name: dietduo-prod
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
